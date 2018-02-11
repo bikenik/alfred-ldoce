@@ -89,5 +89,5 @@
     "preuninstall": "alfy-cleanup",
     "test": "xo && ava"
   },
-  "version": "1.0.1"
+  "version": "1.0.2"
 }
