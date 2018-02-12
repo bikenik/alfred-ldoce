@@ -20,9 +20,9 @@ alfy.fetch(url).then(data => {
           arg: {
             definition: [
               `${
-                $.run_ons[i].derived_form
+              $.run_ons[i].derived_form
               }<span class="neutral span"> [</span>${
-                $.run_ons[i].part_of_speech
+              $.run_ons[i].part_of_speech
               }<span class="neutral span">]</span>`
             ],
             examples: $.run_ons[i].examples,
@@ -48,7 +48,7 @@ alfy.fetch(url).then(data => {
           arg: {
             definition: [
               `${sense.lexical_unit}<span class="neutral span"> [</span>${
-                sense.definition
+              sense.definition
               }<span class="neutral span">]</span>`
             ],
             examples: sense.examples,
@@ -91,7 +91,7 @@ alfy.fetch(url).then(data => {
                 examples: sense.gramatical_examples[x].examples,
                 definition: [
                   `${sense.definition}<span class="neutral span"> [</span>${
-                    sense.gramatical_examples[x].pattern
+                  sense.gramatical_examples[x].pattern
                   }<span class="neutral span">]</span>`
                 ],
                 sense: sense
@@ -119,7 +119,7 @@ alfy.fetch(url).then(data => {
                 examples: [sense.collocation_examples[y].example],
                 definition: [
                   `${sense.definition}<span class="neutral span"> [</span>${
-                    sense.collocation_examples[y].collocation
+                  sense.collocation_examples[y].collocation
                   }<span class="neutral span">]</span>`
                 ],
                 sense: sense
@@ -158,6 +158,7 @@ alfy.fetch(url).then(data => {
       variables: {
         word: `${data.result.headword}`
       },
+      autocomplete: x.title,
       quicklookurl: `https://www.ldoceonline.com/dictionary/${data.result.headword.replace(
         /\s/g,
         '-'

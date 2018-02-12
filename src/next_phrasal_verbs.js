@@ -23,7 +23,7 @@ alfy.fetch(url).then(data => {
               arg: {
                 definition: [
                   `<span class="neutral span">[</span>${
-                    $.phrasal_verbs[i].headword
+                  $.phrasal_verbs[i].headword
                   }<span class="neutral span">] </span>${sense.definition}`
                 ],
                 examples: sense.examples,
@@ -46,9 +46,9 @@ alfy.fetch(url).then(data => {
                     examples: sense.gramatical_examples[x].examples,
                     definition: [
                       `<span class="neutral span">[</span>${
-                        $.phrasal_verbs[i].headword
+                      $.phrasal_verbs[i].headword
                       }<span class="neutral span">] </span>> ${
-                        sense.definition
+                      sense.definition
                       } [${sense.gramatical_examples[x].pattern}]`
                     ],
                     sense: sense
@@ -92,7 +92,8 @@ alfy.fetch(url).then(data => {
       },
       variables: {
         word: `${data.result.headword}`
-      }
+      },
+      autocomplete: x.title
     }));
   alfy.output(variantsToSingleChoose);
 
