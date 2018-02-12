@@ -33,7 +33,7 @@ _Requires: [Node.js](https://nodejs.org) 4+, Alfred [Powerpack](https://www.alfr
   - Show Quick Look preview from [ldoceonline.com/dictionary/query](https://www.ldoceonline.com)
 * `<query>` 
 — Search for previous matching `ldoce <query>`
-  * `↩` or `⌘+NUM` or click - select to choose sense for creating card
+  * `⇥`, `↩` or `⌘+NUM` or click - select to choose sense for creating card
   * `⌘+L` — Show one of example sentences in Alfred's Large Type window
   * `⌘+↩` — create card from selected senses of word
   * `⌥+↩` - create card from all matching of current query
