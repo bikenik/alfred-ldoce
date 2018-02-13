@@ -1,4 +1,4 @@
-# alfred-ldoce-express [![Build Status](https://travis-ci.org/bikenik/alfred-ldoce.svg?branch=travis)](https://travis-ci.org/bikenik/alfred-ldoce)
+# alfred-ldoce-express [![Build Status](https://travis-ci.org/bikenik/alfred-ldoce.svg?branch=master)](https://travis-ci.org/bikenik/alfred-ldoce)
 
 > [Alfred 3](https://www.alfredapp.com) workflow to quick look of Longman dictionary and creating [Anki](https://apps.ankiweb.net) cards.
 
