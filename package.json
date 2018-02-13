@@ -1,93 +1,99 @@
 {
-  "_from": "alfred-ldoce",
-  "_id": "alfred-ldoce@1.0.1",
-  "_inBundle": false,
-  "_integrity": "sha512-CzvweFDPJSxP1oXuWwgThUShrvAQlhh/MfXParR4NN0jlpoenm/MVY7sIMhLT/bxvvdxpfV1GkghLzqAxh/DTQ==",
-  "_location": "/alfred-ldoce",
-  "_phantomChildren": {},
-  "_requested": {
-    "type": "tag",
-    "registry": true,
-    "raw": "alfred-ldoce",
-    "name": "alfred-ldoce",
-    "escapedName": "alfred-ldoce",
-    "rawSpec": "",
-    "saveSpec": null,
-    "fetchSpec": "latest"
-  },
-  "_requiredBy": [
-    "#USER"
-  ],
-  "_resolved": "https://registry.npmjs.org/alfred-ldoce/-/alfred-ldoce-1.0.1.tgz",
-  "_shasum": "592b070006d0898223669819319044453fe849b5",
-  "_spec": "alfred-ldoce",
-  "_where": "/Users/bikenik",
-  "author": {
-    "name": "bikeNik",
-    "email": "bikenik@icloud.com",
-    "url": "github.com/bikenik"
-  },
-  "bugs": {
-    "url": "https://github.com/bikeNik/alfred-ldoce/issues"
-  },
-  "bundleDependencies": false,
-  "dependencies": {
-    "@stdlib/stdlib": "0.0.31",
-    "JSONStream": "^1.3.2",
-    "alfy": "^0.6.0",
-    "bootstrap": "^3.3.7",
-    "chalk": "^2.3.0",
-    "cheerio": "^1.0.0-rc.2",
-    "createscript": "^1.0.2",
-    "del": "^3.0.0",
-    "google-translate-api": "^2.3.0",
-    "jsonfile": "^4.0.0",
-    "p-all": "^1.0.0",
-    "p-map": "^1.2.0",
-    "promise": "^8.0.1",
-    "request": "^2.83.0",
-    "request-promise": "^4.2.2",
-    "stream-to-promise": "^2.2.0",
-    "translate": "^1.0.1",
-    "xmlhttprequest": "1.4.0"
-  },
-  "deprecated": false,
-  "description": "dictionary",
-  "devDependencies": {
-    "alfy-test": "^0.3.0",
-    "ava": "^0.18.0",
-    "xo": "^0.17.0"
-  },
-  "engines": {
-    "node": ">=4"
-  },
-  "files": [
-    "config",
-    "icons",
-    "src",
-    "icon.png",
-    "info.plist"
-  ],
-  "homepage": "https://github.com/bikeNik/alfred-ldoce#readme",
-  "keywords": [
-    "alfred",
-    "ldoce",
-    "longman",
-    "anki",
-    "ankiConnect",
-    "workflow",
-    "alfy"
-  ],
-  "license": "MIT",
-  "name": "alfred-ldoce",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/bikeNik/alfred-ldoce.git"
-  },
-  "scripts": {
-    "postinstall": "alfy-init",
-    "preuninstall": "alfy-cleanup",
-    "test": "xo && ava"
-  },
-  "version": "1.0.3"
+	"_from": "alfred-ldoce",
+	"_id": "alfred-ldoce@1.0.1",
+	"_inBundle": false,
+	"_integrity": "sha512-CzvweFDPJSxP1oXuWwgThUShrvAQlhh/MfXParR4NN0jlpoenm/MVY7sIMhLT/bxvvdxpfV1GkghLzqAxh/DTQ==",
+	"_location": "/alfred-ldoce",
+	"_phantomChildren": {},
+	"_requested": {
+		"type": "tag",
+		"registry": true,
+		"raw": "alfred-ldoce",
+		"name": "alfred-ldoce",
+		"escapedName": "alfred-ldoce",
+		"rawSpec": "",
+		"saveSpec": null,
+		"fetchSpec": "latest"
+	},
+	"_requiredBy": [
+		"#USER"
+	],
+	"_resolved": "https://registry.npmjs.org/alfred-ldoce/-/alfred-ldoce-1.0.1.tgz",
+	"_shasum": "592b070006d0898223669819319044453fe849b5",
+	"_spec": "alfred-ldoce",
+	"_where": "/Users/bikenik",
+	"author": {
+		"name": "bikeNik",
+		"email": "bikenik@icloud.com",
+		"url": "github.com/bikenik"
+	},
+	"bugs": {
+		"url": "https://github.com/bikeNik/alfred-ldoce/issues"
+	},
+	"bundleDependencies": false,
+	"dependencies": {
+		"@stdlib/stdlib": "0.0.31",
+		"JSONStream": "^1.3.2",
+		"alfred-notifier": "^0.2.3",
+		"alfy": "^0.6.0",
+		"bootstrap": "^3.3.7",
+		"chalk": "^2.3.0",
+		"cheerio": "^1.0.0-rc.2",
+		"createscript": "^1.0.2",
+		"del": "^3.0.0",
+		"google-translate-api": "^2.3.0",
+		"jsonfile": "^4.0.0",
+		"p-all": "^1.0.0",
+		"p-map": "^1.2.0",
+		"promise": "^8.0.1",
+		"request": "^2.83.0",
+		"request-promise": "^4.2.2",
+		"stream-to-promise": "^2.2.0",
+		"translate": "^1.0.1",
+		"xmlhttprequest": "1.4.0"
+	},
+	"deprecated": false,
+	"description": "dictionary",
+	"main": "srs/index.js",
+	"devDependencies": {
+		"alfy-test": "^0.3.0",
+		"ava": "^0.18.0",
+		"eslint": "^4.17.0",
+		"xo": "^0.17.0"
+	},
+	"xo": {
+		"space": false
+	},
+	"engines": {
+		"node": ">=4"
+	},
+	"files": [
+		"config",
+		"icons",
+		"src",
+		"icon.png",
+		"info.plist"
+	],
+	"homepage": "https://github.com/bikeNik/alfred-ldoce#readme",
+	"keywords": [
+		"alfred",
+		"ldoce",
+		"longman",
+		"anki",
+		"ankiConnect",
+		"workflow",
+		"alfy"
+	],
+	"license": "MIT",
+	"name": "alfred-ldoce",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/bikeNik/alfred-ldoce.git"
+	},
+	"scripts": {
+		"postinstall": "alfy-init",
+		"preuninstall": "alfy-cleanup",
+		"test": "xo && ava"
+	},
+	"version": "1.0.3"
 }

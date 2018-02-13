@@ -375,7 +375,7 @@
 				<key>runningsubtext</key>
 				<string>Searching...</string>
 				<key>script</key>
-				<string>./node_modules/.bin/run-node src/next_body.js "$1"</string>
+				<string>./node_modules/.bin/run-node src/next-body.js "$1"</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -425,7 +425,7 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>./node_modules/.bin/run-node src/next_header.js $1</string>
+				<string>./node_modules/.bin/run-node src/next-header.js $1</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -510,7 +510,7 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>./node_modules/.bin/run-node src/next_body_all.js
+				<string>./node_modules/.bin/run-node src/next-body-all.js
 ./node_modules/.bin/run-node src/index.js</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
@@ -693,7 +693,7 @@ rm $file.bk
 				<key>runningsubtext</key>
 				<string>Searching...</string>
 				<key>script</key>
-				<string>./node_modules/.bin/run-node src/next_phrasal_verbs.js "$1"</string>
+				<string>./node_modules/.bin/run-node src/next-phrasal-verbs.js "$1"</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -913,19 +913,19 @@ It's scrapping from API</string>
 	<dict>
 		<key>language</key>
 		<string>ru</string>
-		<key>name_of_deck</key>
+		<key>nameOfDeck</key>
 		<string>Ldoce-Express</string>
-		<key>path_to_anki_media</key>
+		<key>pathToAnkiMedia</key>
 		<string>/Library/Application Support/Anki2/English/collection.media</string>
 	</dict>
 	<key>variablesdontexport</key>
 	<array>
-		<string>name_of_deck</string>
-		<string>path_to_anki_media</string>
+		<string>nameOfDeck</string>
+		<string>pathToAnkiMedia</string>
 		<string>language</string>
 	</array>
 	<key>version</key>
-	<string>1.0.1</string>
+	<string>1.0.3</string>
 	<key>webaddress</key>
 	<string>https://github.com/bikeNik/alfred-ldoce#readme</string>
 </dict>

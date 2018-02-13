@@ -1,0 +1,103 @@
+[
+  {
+    "definition": [
+      "play (a game of) cat and mouse (with somebody)<span class=\"neutral span\"> [</span>to pretend to allow someone to do or have what they want, and then to stop them from doing or having it<span class=\"neutral span\">]</span>"
+    ],
+    "examples": [
+      {
+        "audio": [
+          {
+            "type": "example",
+            "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001701509.mp3"
+          }
+        ],
+        "text": "The police played an elaborate game of cat and mouse to trap him."
+      }
+    ],
+    "sense": {
+      "definition": [
+        "to pretend to allow someone to do or have what they want, and then to stop them from doing or having it"
+      ],
+      "examples": [
+        {
+          "audio": [
+            {
+              "type": "example",
+              "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001701509.mp3"
+            }
+          ],
+          "text": "The police played an elaborate game of cat and mouse to trap him."
+        }
+      ],
+      "lexical_unit": "play (a game of) cat and mouse (with somebody)"
+    }
+  },
+  {
+    "definition": [
+      "the cat's whiskers/pyjamas<span class=\"neutral span\"> [</span>something or someone that is better than everything else<span class=\"neutral span\">]</span>"
+    ],
+    "examples": [
+      {
+        "audio": [
+          {
+            "type": "example",
+            "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001701515.mp3"
+          }
+        ],
+        "text": "I really thought I looked the cat's whiskers in that dress."
+      }
+    ],
+    "sense": {
+      "definition": [
+        "something or someone that is better than everything else"
+      ],
+      "examples": [
+        {
+          "audio": [
+            {
+              "type": "example",
+              "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001701515.mp3"
+            }
+          ],
+          "text": "I really thought I looked the cat's whiskers in that dress."
+        }
+      ],
+      "lexical_unit": "the cat's whiskers/pyjamas",
+      "register_label": "informal"
+    }
+  },
+  {
+    "definition": [
+      "not stand/have a cat in hell's chance (of doing something)<span class=\"neutral span\"> [</span>to not have any chance of succeeding<span class=\"neutral span\">]</span>"
+    ],
+    "examples": [
+      {
+        "audio": [
+          {
+            "type": "example",
+            "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001701521.mp3"
+          }
+        ],
+        "text": "They don't have a cat in hell's chance of being elected."
+      }
+    ],
+    "sense": {
+      "definition": [
+        "to not have any chance of succeeding"
+      ],
+      "examples": [
+        {
+          "audio": [
+            {
+              "type": "example",
+              "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001701521.mp3"
+            }
+          ],
+          "text": "They don't have a cat in hell's chance of being elected."
+        }
+      ],
+      "lexical_unit": "not stand/have a cat in hell's chance (of doing something)",
+      "register_label": "informal"
+    }
+  }
+]

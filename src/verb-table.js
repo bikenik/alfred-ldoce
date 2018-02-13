@@ -1,9 +1,10 @@
 const header = require('./input/header.json');
+
 let verbTable = '';
 header.forEach(elem => {
-  if (elem.Inflections) {
-    if (elem.Inflections.past_tense) {
-      verbTable += `
+	if (elem.Inflections) {
+		if (elem.Inflections.past_tense) {
+			verbTable += `
 <div id="DIV_2">
   <span id="SPAN_3">Verb table</span>
   <span id="SPAN_4">${elem.Headword}</span>
@@ -139,9 +140,9 @@ header.forEach(elem => {
     </tbody>
   </table>
 </div>`;
-    }
-    if (elem.Inflections.present_participle) {
-      verbTable += `
+		}
+		if (elem.Inflections.present_participle) {
+			verbTable += `
 <div class="DIV_2">
   <table id="TABLE_68">
     <tbody id="TBODY_69">
@@ -299,7 +300,7 @@ header.forEach(elem => {
     </tbody>
   </table>
 </div>`;
-    }
-  }
+		}
+	}
 });
-module.exports = { verbTable: verbTable };
+module.exports = {verbTable: verbTable};
