@@ -1,507 +1,267 @@
 [
   {
-    "definition": [
-      "casually<span class=\"neutral span\"> [</span>adverb<span class=\"neutral span\">]</span>"
-    ],
     "examples": [
       {
         "audio": [
           {
             "type": "example",
-            "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001064673.mp3"
+            "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001734902.mp3"
           }
         ],
-        "text": "a casually dressed young man"
-      },
-      {
-        "audio": [
-          {
-            "type": "example",
-            "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001680229.mp3"
-          }
-        ],
-        "text": "‘Where do you work?' she asked casually."
-      },
-      {
-        "audio": [
-          {
-            "type": "example",
-            "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001680230.mp3"
-          }
-        ],
-        "text": "He walked down the road, casually swinging his bag."
+        "text": "Can anyone give me an example of a transitive verb?"
       }
     ],
+    "definition": [
+      "a specific fact, idea, person, or thing that is used to explain or support a general idea, or to show what is typical of a larger group<span class=\"neutral span\"> [</span>example of<span class=\"neutral span\">]</span>"
+    ],
     "sense": {
-      "derived_form": "casually",
-      "examples": [
-        {
-          "audio": [
-            {
-              "type": "example",
-              "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001064673.mp3"
-            }
-          ],
-          "text": "a casually dressed young man"
-        },
-        {
-          "audio": [
-            {
-              "type": "example",
-              "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001680229.mp3"
-            }
-          ],
-          "text": "‘Where do you work?' she asked casually."
-        },
-        {
-          "audio": [
-            {
-              "type": "example",
-              "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001680230.mp3"
-            }
-          ],
-          "text": "He walked down the road, casually swinging his bag."
-        }
+      "definition": [
+        "a specific fact, idea, person, or thing that is used to explain or support a general idea, or to show what is typical of a larger group"
       ],
-      "part_of_speech": "adverb"
+      "gramatical_examples": [
+        {
+          "examples": [
+            {
+              "audio": [
+                {
+                  "type": "example",
+                  "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001734902.mp3"
+                }
+              ],
+              "text": "Can anyone give me an example of a transitive verb?"
+            }
+          ],
+          "pattern": "example of"
+        }
+      ]
     }
   },
   {
     "definition": [
-      "relaxed and not worried, or seeming not to care about something"
+      "for example<span class=\"neutral span\"> [</span>used before mentioning a specific thing, person, place etc in order to explain what you mean or to support an argument<span class=\"neutral span\">]</span>"
     ],
     "examples": [
       {
         "audio": [
           {
             "type": "example",
-            "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001680190.mp3"
+            "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001225150.mp3"
           }
         ],
-        "text": "a casual manner"
+        "text": "Many countries, for example Mexico and Japan, have a lot of earthquakes."
       },
       {
         "audio": [
           {
             "type": "example",
-            "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001064628.mp3"
+            "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001734919.mp3"
           }
         ],
-        "text": "His eyes were angry, though he sounded casual."
-      },
-      {
-        "audio": [
-          {
-            "type": "example",
-            "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001064629.mp3"
-          }
-        ],
-        "text": "Marsha was quite casual about appearing on TV."
-      },
-      {
-        "audio": [
-          {
-            "type": "example",
-            "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001680191.mp3"
-          }
-        ],
-        "text": "She had a casual attitude to life."
+        "text": "Car prices can vary a lot. For example, in Belgium the VW Golf costs $1,000 less than in Britain."
       }
     ],
     "sense": {
       "definition": [
-        "relaxed and not worried, or seeming not to care about something"
+        "used before mentioning a specific thing, person, place etc in order to explain what you mean or to support an argument"
       ],
       "examples": [
         {
           "audio": [
             {
               "type": "example",
-              "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001680190.mp3"
+              "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001225150.mp3"
             }
           ],
-          "text": "a casual manner"
+          "text": "Many countries, for example Mexico and Japan, have a lot of earthquakes."
         },
         {
           "audio": [
             {
               "type": "example",
-              "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001064628.mp3"
+              "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001734919.mp3"
             }
           ],
-          "text": "His eyes were angry, though he sounded casual."
-        },
-        {
-          "audio": [
-            {
-              "type": "example",
-              "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001064629.mp3"
-            }
-          ],
-          "text": "Marsha was quite casual about appearing on TV."
-        },
-        {
-          "audio": [
-            {
-              "type": "example",
-              "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001680191.mp3"
-            }
-          ],
-          "text": "She had a casual attitude to life."
+          "text": "Car prices can vary a lot. For example, in Belgium the VW Golf costs $1,000 less than in Britain."
         }
       ],
-      "signpost": "relaxed"
+      "lexical_unit": "for example"
     }
   },
   {
     "definition": [
-      "not formal or not for a formal situation"
+      "someone whose behaviour is very good and should be copied by others, or this type of behaviour"
     ],
     "examples": [
       {
         "audio": [
           {
             "type": "example",
-            "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001680193.mp3"
+            "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001734925.mp3"
           }
         ],
-        "text": "Jean felt more comfortable in casual clothes."
+        "text": "Parents should set an example for their children."
       },
       {
         "audio": [
           {
             "type": "example",
-            "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-002083889.mp3"
+            "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001225186.mp3"
           }
         ],
-        "text": "a casual jacket"
+        "text": "I suggest you follow Rosie's example(=copy her behaviour) and start doing regular exercise."
+      },
+      {
+        "audio": [
+          {
+            "type": "example",
+            "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001734935.mp3"
+          }
+        ],
+        "text": "The team captain leads by example."
+      },
+      {
+        "audio": [
+          {
+            "type": "example",
+            "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001734939.mp3"
+          }
+        ],
+        "text": "She's a shining example(=a very good example) of what a mother should be."
       }
     ],
     "sense": {
       "definition": [
-        "not formal or not for a formal situation"
+        "someone whose behaviour is very good and should be copied by others, or this type of behaviour"
       ],
       "examples": [
         {
           "audio": [
             {
               "type": "example",
-              "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001680193.mp3"
+              "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001734925.mp3"
             }
           ],
-          "text": "Jean felt more comfortable in casual clothes."
+          "text": "Parents should set an example for their children."
         },
         {
           "audio": [
             {
               "type": "example",
-              "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-002083889.mp3"
+              "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001225186.mp3"
             }
           ],
-          "text": "a casual jacket"
+          "text": "I suggest you follow Rosie's example(=copy her behaviour) and start doing regular exercise."
+        },
+        {
+          "audio": [
+            {
+              "type": "example",
+              "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001734935.mp3"
+            }
+          ],
+          "text": "The team captain leads by example."
+        },
+        {
+          "audio": [
+            {
+              "type": "example",
+              "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001734939.mp3"
+            }
+          ],
+          "text": "She's a shining example(=a very good example) of what a mother should be."
         }
       ],
-      "opposite": "formal",
-      "signpost": "not formal"
+      "gramatical_examples": [
+        {
+          "examples": [
+            {
+              "audio": [
+                {
+                  "type": "example",
+                  "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001734924.mp3"
+                }
+              ],
+              "text": "Her courage is an example to us all."
+            }
+          ],
+          "pattern": "example to"
+        }
+      ]
     }
   },
   {
-    "definition": [
-      "employed as a temporary worker or working for only a short period of time"
-    ],
     "examples": [
       {
         "audio": [
           {
             "type": "example",
-            "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001064640.mp3"
+            "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001734924.mp3"
           }
         ],
-        "text": "casual labour"
-      },
-      {
-        "audio": [
-          {
-            "type": "example",
-            "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001680198.mp3"
-          }
-        ],
-        "text": "staff employed on a casual basis"
-      },
-      {
-        "audio": [
-          {
-            "type": "example",
-            "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001680202.mp3"
-          }
-        ],
-        "text": "Chris has occasional casual work but mostly he is unemployed."
+        "text": "Her courage is an example to us all."
       }
+    ],
+    "definition": [
+      "someone whose behaviour is very good and should be copied by others, or this type of behaviour<span class=\"neutral span\"> [</span>example to<span class=\"neutral span\">]</span>"
     ],
     "sense": {
       "definition": [
-        "employed as a temporary worker or working for only a short period of time"
+        "someone whose behaviour is very good and should be copied by others, or this type of behaviour"
       ],
       "examples": [
         {
           "audio": [
             {
               "type": "example",
-              "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001064640.mp3"
+              "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001734925.mp3"
             }
           ],
-          "text": "casual labour"
+          "text": "Parents should set an example for their children."
         },
         {
           "audio": [
             {
               "type": "example",
-              "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001680198.mp3"
+              "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001225186.mp3"
             }
           ],
-          "text": "staff employed on a casual basis"
+          "text": "I suggest you follow Rosie's example(=copy her behaviour) and start doing regular exercise."
         },
         {
           "audio": [
             {
               "type": "example",
-              "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001680202.mp3"
+              "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001734935.mp3"
             }
           ],
-          "text": "Chris has occasional casual work but mostly he is unemployed."
+          "text": "The team captain leads by example."
+        },
+        {
+          "audio": [
+            {
+              "type": "example",
+              "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001734939.mp3"
+            }
+          ],
+          "text": "She's a shining example(=a very good example) of what a mother should be."
         }
       ],
-      "signpost": "work"
-    }
-  },
-  {
-    "definition": [
-      "knowing someone or having sex with someone without wanting a close relationship with them"
-    ],
-    "examples": [
-      {
-        "audio": [
-          {
-            "type": "example",
-            "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001680207.mp3"
-          }
-        ],
-        "text": "She will never be more than a casual acquaintance."
-      },
-      {
-        "audio": [
-          {
-            "type": "example",
-            "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001680208.mp3"
-          }
-        ],
-        "text": "They had been conducting a casual affair for years."
-      },
-      {
-        "audio": [
-          {
-            "type": "example",
-            "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001680212.mp3"
-          }
-        ],
-        "text": "John just wanted casual sex."
-      }
-    ],
-    "sense": {
-      "definition": [
-        "knowing someone or having sex with someone without wanting a close relationship with them"
-      ],
-      "examples": [
+      "gramatical_examples": [
         {
-          "audio": [
+          "examples": [
             {
-              "type": "example",
-              "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001680207.mp3"
+              "audio": [
+                {
+                  "type": "example",
+                  "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001734924.mp3"
+                }
+              ],
+              "text": "Her courage is an example to us all."
             }
           ],
-          "text": "She will never be more than a casual acquaintance."
-        },
-        {
-          "audio": [
-            {
-              "type": "example",
-              "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001680208.mp3"
-            }
-          ],
-          "text": "They had been conducting a casual affair for years."
-        },
-        {
-          "audio": [
-            {
-              "type": "example",
-              "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001680212.mp3"
-            }
-          ],
-          "text": "John just wanted casual sex."
+          "pattern": "example to"
         }
-      ],
-      "opposite": "serious",
-      "signpost": "relationship"
-    }
-  },
-  {
-    "definition": [
-      "without any serious interest or attention"
-    ],
-    "examples": [
-      {
-        "audio": [
-          {
-            "type": "example",
-            "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001064646.mp3"
-          }
-        ],
-        "text": "He gave us a casual glance as he walked by, but didn't stop."
-      },
-      {
-        "audio": [
-          {
-            "type": "example",
-            "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001680217.mp3"
-          }
-        ],
-        "text": "To the casual observer(=to someone who is not looking carefully) Mary seemed quite calm."
-      }
-    ],
-    "sense": {
-      "definition": [
-        "without any serious interest or attention"
-      ],
-      "examples": [
-        {
-          "audio": [
-            {
-              "type": "example",
-              "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001064646.mp3"
-            }
-          ],
-          "text": "He gave us a casual glance as he walked by, but didn't stop."
-        },
-        {
-          "audio": [
-            {
-              "type": "example",
-              "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001680217.mp3"
-            }
-          ],
-          "text": "To the casual observer(=to someone who is not looking carefully) Mary seemed quite calm."
-        }
-      ],
-      "signpost": "without attention"
-    }
-  },
-  {
-    "definition": [
-      "happening by chance without being planned"
-    ],
-    "examples": [
-      {
-        "audio": [
-          {
-            "type": "example",
-            "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001064656.mp3"
-          }
-        ],
-        "text": "a casual conversation"
-      },
-      {
-        "audio": [
-          {
-            "type": "example",
-            "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001680222.mp3"
-          }
-        ],
-        "text": "He made some casual remark (=one without thinking much about it) about her holiday."
-      }
-    ],
-    "sense": {
-      "definition": [
-        "happening by chance without being planned"
-      ],
-      "examples": [
-        {
-          "audio": [
-            {
-              "type": "example",
-              "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001064656.mp3"
-            }
-          ],
-          "text": "a casual conversation"
-        },
-        {
-          "audio": [
-            {
-              "type": "example",
-              "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001680222.mp3"
-            }
-          ],
-          "text": "He made some casual remark (=one without thinking much about it) about her holiday."
-        }
-      ],
-      "gramatical_info": {
-        "type": "only before noun"
-      },
-      "signpost": "not planned"
-    }
-  },
-  {
-    "definition": [
-      "doing something or using something sometimes but not regularly or often"
-    ],
-    "examples": [
-      {
-        "audio": [
-          {
-            "type": "example",
-            "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001064669.mp3"
-          }
-        ],
-        "text": "a casual drug user"
-      },
-      {
-        "audio": [
-          {
-            "type": "example",
-            "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001680228.mp3"
-          }
-        ],
-        "text": "The museum is of great interest, both to experts and to casual visitors."
-      }
-    ],
-    "sense": {
-      "definition": [
-        "doing something or using something sometimes but not regularly or often"
-      ],
-      "examples": [
-        {
-          "audio": [
-            {
-              "type": "example",
-              "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001064669.mp3"
-            }
-          ],
-          "text": "a casual drug user"
-        },
-        {
-          "audio": [
-            {
-              "type": "example",
-              "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001680228.mp3"
-            }
-          ],
-          "text": "The museum is of great interest, both to experts and to casual visitors."
-        }
-      ],
-      "gramatical_info": {
-        "type": "only before noun"
-      },
-      "signpost": "not regular",
-      "synonym": "occasional"
+      ]
     }
   }
 ]
