@@ -32,23 +32,23 @@ for (let i = 0; i < mainData.length; i++) {
 	if (sense.gramatical_info) {
 		options += `<span class="GRAM"><span class="neutral span"> [</span>${
 			sense.gramatical_info.type
-		}<span class="neutral span">]</span></span>`;
+			}<span class="neutral span">]</span></span>`;
 	}
-	if (header[0].Type_of_gramm) {
+	if (header[0].Type_of_gramm && !sense.gramatical_info) {
 		options += `<span class="GRAM"><span class="neutral span"> [</span>${
 			header[0].Type_of_gramm
-		}<span class="neutral span">]</span></span>`;
+			}<span class="neutral span">]</span></span>`;
 	}
 
 	if (sense.opposite) {
 		options += `<span class="OPP"> <span class="synopp span">OPP</span> ${
 			sense.opposite
-		}</span>`;
+			}</span>`;
 	}
 	if (sense.synonym) {
 		options += `<span class="SYN"> <span class="synopp span">SYN</span> ${
 			sense.synonym
-		}</span>`;
+			}</span>`;
 	}
 	let options2 = '';
 	if (sense.geography) {
@@ -69,17 +69,17 @@ for (let i = 0; i < mainData.length; i++) {
 		if (sense.variants[0].link_word) {
 			options2 += `<span class="neutral span">(</span><span class="LINKWORD">${
 				sense.variants[0].link_word
-			}</span>`;
+				}</span>`;
 		}
 		if (sense.variants[0].lexical_variant) {
 			options2 += `<span class="LEXVAR"> ${
 				sense.variants[0].lexical_variant
-			}</span>`;
+				}</span>`;
 		}
 		if (sense.variants[0].lang) {
 			options2 += `<span class="geo span"> ${
 				sense.variants[0].lang
-			}</span><span class="neutral span">)</span>`;
+				}</span><span class="neutral span">)</span>`;
 		}
 	}
 	if (options2 !== '') {
@@ -129,13 +129,13 @@ for (let i = 0; i < mainData.length; i++) {
 	if (data.definition) {
 		HTMLoutput += `<span class="newline Sense"><span class="DEF">${
 			data.definition[0]
-		}</span>`;
+			}</span>`;
 	}
 	if (data.examples && data.headword === undefined) {
 		for (let x = 0; x < data.examples.length; x++) {
 			HTMLoutput += `<span class="EXAMPLE"><span class="speaker exafile fa fa-volume-up">${
 				data.examples[x].audio[0].url
-			}</span>${data.examples[x].text}</span>`;
+				}</span>${data.examples[x].text}</span>`;
 			// console.log("examle: ", x);
 		}
 	}

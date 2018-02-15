@@ -21,7 +21,7 @@ alfy.fetch(url).then(data => {
 			Register_label: data.result.register_label
 		}
 	];
-	if (data.result.run_ons) {
+	if (data.result.run_ons && !data.result.part_of_speech) {
 		header[0].Part_of_speech = data.result.run_ons[0].part_of_speech;
 	}
 	if (data.result.images) {
