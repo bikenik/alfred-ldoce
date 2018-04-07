@@ -1,267 +1,57 @@
 [
-  {
-    "examples": [
-      {
-        "audio": [
-          {
-            "type": "example",
-            "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001734902.mp3"
-          }
-        ],
-        "text": "Can anyone give me an example of a transitive verb?"
-      }
-    ],
-    "definition": [
-      "a specific fact, idea, person, or thing that is used to explain or support a general idea, or to show what is typical of a larger group<span class=\"neutral span\"> [</span>example of<span class=\"neutral span\">]</span>"
-    ],
-    "sense": {
-      "definition": [
-        "a specific fact, idea, person, or thing that is used to explain or support a general idea, or to show what is typical of a larger group"
-      ],
-      "gramatical_examples": [
-        {
-          "examples": [
-            {
-              "audio": [
-                {
-                  "type": "example",
-                  "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001734902.mp3"
-                }
-              ],
-              "text": "Can anyone give me an example of a transitive verb?"
-            }
-          ],
-          "pattern": "example of"
-        }
-      ]
+{
+  "definition": [
+    "to tell someone a secret, especially without intending to"
+  ],
+  "examples": [
+    {
+      "text": "That Jefferson is one cool cat."
+    },
+    {
+      "text": "Mr Cruitt says ad spending will triple this year, when the company will begin promoting the cat version of the drug."
+    },
+    {
+      "text": "No one was about except a black and white cat asleep in the sun."
     }
-  },
-  {
+  ],
+  "sense": {
     "definition": [
-      "for example<span class=\"neutral span\"> [</span>used before mentioning a specific thing, person, place etc in order to explain what you mean or to support an argument<span class=\"neutral span\">]</span>"
+      "to tell someone a secret, especially without intending to"
     ],
-    "examples": [
-      {
-        "audio": [
-          {
-            "type": "example",
-            "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001225150.mp3"
-          }
-        ],
-        "text": "Many countries, for example Mexico and Japan, have a lot of earthquakes."
-      },
-      {
-        "audio": [
-          {
-            "type": "example",
-            "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001734919.mp3"
-          }
-        ],
-        "text": "Car prices can vary a lot. For example, in Belgium the VW Golf costs $1,000 less than in Britain."
-      }
-    ],
-    "sense": {
-      "definition": [
-        "used before mentioning a specific thing, person, place etc in order to explain what you mean or to support an argument"
-      ],
-      "examples": [
-        {
-          "audio": [
-            {
-              "type": "example",
-              "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001225150.mp3"
-            }
-          ],
-          "text": "Many countries, for example Mexico and Japan, have a lot of earthquakes."
-        },
-        {
-          "audio": [
-            {
-              "type": "example",
-              "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001734919.mp3"
-            }
-          ],
-          "text": "Car prices can vary a lot. For example, in Belgium the VW Golf costs $1,000 less than in Britain."
-        }
-      ],
-      "lexical_unit": "for example"
-    }
-  },
-  {
-    "definition": [
-      "someone whose behaviour is very good and should be copied by others, or this type of behaviour"
-    ],
-    "examples": [
-      {
-        "audio": [
-          {
-            "type": "example",
-            "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001734925.mp3"
-          }
-        ],
-        "text": "Parents should set an example for their children."
-      },
-      {
-        "audio": [
-          {
-            "type": "example",
-            "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001225186.mp3"
-          }
-        ],
-        "text": "I suggest you follow Rosie's example(=copy her behaviour) and start doing regular exercise."
-      },
-      {
-        "audio": [
-          {
-            "type": "example",
-            "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001734935.mp3"
-          }
-        ],
-        "text": "The team captain leads by example."
-      },
-      {
-        "audio": [
-          {
-            "type": "example",
-            "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001734939.mp3"
-          }
-        ],
-        "text": "She's a shining example(=a very good example) of what a mother should be."
-      }
-    ],
-    "sense": {
-      "definition": [
-        "someone whose behaviour is very good and should be copied by others, or this type of behaviour"
-      ],
-      "examples": [
-        {
-          "audio": [
-            {
-              "type": "example",
-              "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001734925.mp3"
-            }
-          ],
-          "text": "Parents should set an example for their children."
-        },
-        {
-          "audio": [
-            {
-              "type": "example",
-              "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001225186.mp3"
-            }
-          ],
-          "text": "I suggest you follow Rosie's example(=copy her behaviour) and start doing regular exercise."
-        },
-        {
-          "audio": [
-            {
-              "type": "example",
-              "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001734935.mp3"
-            }
-          ],
-          "text": "The team captain leads by example."
-        },
-        {
-          "audio": [
-            {
-              "type": "example",
-              "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001734939.mp3"
-            }
-          ],
-          "text": "She's a shining example(=a very good example) of what a mother should be."
-        }
-      ],
-      "gramatical_examples": [
-        {
-          "examples": [
-            {
-              "audio": [
-                {
-                  "type": "example",
-                  "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001734924.mp3"
-                }
-              ],
-              "text": "Her courage is an example to us all."
-            }
-          ],
-          "pattern": "example to"
-        }
-      ]
-    }
-  },
-  {
-    "examples": [
-      {
-        "audio": [
-          {
-            "type": "example",
-            "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001734924.mp3"
-          }
-        ],
-        "text": "Her courage is an example to us all."
-      }
-    ],
-    "definition": [
-      "someone whose behaviour is very good and should be copied by others, or this type of behaviour<span class=\"neutral span\"> [</span>example to<span class=\"neutral span\">]</span>"
-    ],
-    "sense": {
-      "definition": [
-        "someone whose behaviour is very good and should be copied by others, or this type of behaviour"
-      ],
-      "examples": [
-        {
-          "audio": [
-            {
-              "type": "example",
-              "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001734925.mp3"
-            }
-          ],
-          "text": "Parents should set an example for their children."
-        },
-        {
-          "audio": [
-            {
-              "type": "example",
-              "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001225186.mp3"
-            }
-          ],
-          "text": "I suggest you follow Rosie's example(=copy her behaviour) and start doing regular exercise."
-        },
-        {
-          "audio": [
-            {
-              "type": "example",
-              "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001734935.mp3"
-            }
-          ],
-          "text": "The team captain leads by example."
-        },
-        {
-          "audio": [
-            {
-              "type": "example",
-              "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001734939.mp3"
-            }
-          ],
-          "text": "She's a shining example(=a very good example) of what a mother should be."
-        }
-      ],
-      "gramatical_examples": [
-        {
-          "examples": [
-            {
-              "audio": [
-                {
-                  "type": "example",
-                  "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001734924.mp3"
-                }
-              ],
-              "text": "Her courage is an example to us all."
-            }
-          ],
-          "pattern": "example to"
-        }
-      ]
-    }
+    "lexical_unit": "let the cat out of the bag"
   }
-]
+},
+
+{
+  "definition": [
+    "play (a game of) cat and mouse (with somebody)<span class=\"neutral span\"> [</span>to pretend to allow someone to do or have what they want, and then to stop them from doing or having it<span class=\"neutral span\">]</span>"
+  ],
+  "examples": [
+    {
+      "audio": [
+        {
+          "type": "example",
+          "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001701509.mp3"
+        }
+      ],
+      "text": "The police played an elaborate game of cat and mouse to trap him."
+    }
+  ],
+  "sense": {
+    "definition": [
+      "to pretend to allow someone to do or have what they want, and then to stop them from doing or having it"
+    ],
+    "examples": [
+      {
+        "audio": [
+          {
+            "type": "example",
+            "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001701509.mp3"
+          }
+        ],
+        "text": "The police played an elaborate game of cat and mouse to trap him."
+      }
+    ],
+    "lexical_unit": "play (a game of) cat and mouse (with somebody)"
+  }
+}]

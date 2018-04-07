@@ -1,3 +1,6 @@
+# Created by https://www.gitignore.io/api/node
+
+### Node ###
 # Logs
 logs
 *.log
@@ -56,3 +59,14 @@ typings/
 
 # dotenv environment variables file
 .env
+
+#other dev tools
+*.codekit3
+
+#temporary folder
+/src/input/
+
+#other
+.DS_Store
+
+# End of https://www.gitignore.io/api/node

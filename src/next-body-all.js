@@ -1,6 +1,6 @@
-'use strict';
-const alfy = require('alfy');
-const jsonfile = require('jsonfile');
+'use strict'
+const alfy = require('alfy')
+const jsonfile = require('jsonfile')
 
 jsonfile.writeFile(
 	'./src/input/body.json',
@@ -9,6 +9,6 @@ jsonfile.writeFile(
 		spaces: 2
 	},
 	function (err) {
-		console.error(err);
+		console.error(err)
 	}
-);
+)
