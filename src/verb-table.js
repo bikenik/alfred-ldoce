@@ -1,6 +1,6 @@
-const header = require('./input/header.json');
+const header = require('./input/header.json')
 
-let verbTable = '';
+let verbTable = ''
 header.forEach(elem => {
 	if (elem.Inflections) {
 		if (elem.Inflections.past_tense) {
@@ -139,7 +139,7 @@ header.forEach(elem => {
       </tr>
     </tbody>
   </table>
-</div>`;
+</div>`
 		}
 		if (elem.Inflections.present_participle) {
 			verbTable += `
@@ -299,8 +299,8 @@ header.forEach(elem => {
       </tr>
     </tbody>
   </table>
-</div>`;
+</div>`
 		}
 	}
-});
-module.exports = {verbTable: verbTable};
+})
+module.exports = {verbTable: verbTable}

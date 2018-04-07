@@ -1,9 +1,10 @@
 /* eslint camelcase: ["error", {properties: "never"}] */
-const os = require('os');
+const os = require('os')
 
-const user = os.userInfo();
-const {pathToAnkiMedia} = process.env;
-console.log(user);
+const user = os.userInfo()
+// const {pathToAnkiMedia} = process.env
+const pathToAnkiMedia = '/Library/Application Support/Anki2/English/collection.media'
+// console.log(user)
 
 module.exports = {
 	concurrency: 10,
@@ -20,6 +21,9 @@ module.exports = {
 		tag: 'Tag'
 	},
 	get mediaDir() {
-		return user.homedir + pathToAnkiMedia;
+		return user.homedir + pathToAnkiMedia
+	},
+	defaults: {
+		'default-deck': 'default'
 	}
-};
+}
