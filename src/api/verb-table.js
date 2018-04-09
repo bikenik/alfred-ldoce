@@ -1,4 +1,4 @@
-const header = require('./input/header.json')
+const header = require('../input/header.json')
 
 let verbTable = ''
 header.forEach(elem => {

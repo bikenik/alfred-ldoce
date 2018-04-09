@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 'use strict'
 const alfy = require('alfy')
-const utils = require('./utils.js')
+const utils = require('../utils')
 
 const url = 'http://api.pearson.com' + utils.wordOfURL
 const warning = {

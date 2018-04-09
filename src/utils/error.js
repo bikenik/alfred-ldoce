@@ -5,10 +5,17 @@ class WorkflowError extends Error {
 		//   .autocomplete - self-explanatory
 
 		super(message)
-		this.name = 'WorkflowError'
+		this.name = 'Workflow'
 
 		Object.assign(this, data)
 	}
+}
+
+module.exports.checkStatus = response => {
+	if (response.status === 200) {
+		return Promise.resolve(response)
+	}
+	return Promise.reject(new Error(response.status))
 }
 
 module.exports = WorkflowError

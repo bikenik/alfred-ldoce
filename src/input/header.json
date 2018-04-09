@@ -1,13 +1,9 @@
 [
   {
-    "Headword": "cat",
-    "Brit_audio": "/v2/dictionaries/assets/ldoce/gb_pron/ld45cat.mp3",
-    "Amer_audio": "/v2/dictionaries/assets/ldoce/us_pron/ld45cat.mp3",
+    "Headword": "Manx cat",
+    "Brit_audio": "/v2/dictionaries/assets/ldoce/gb_pron/ld41manx_cat.mp3",
+    "Amer_audio": "/v2/dictionaries/assets/ldoce/us_pron/ld41manx_cat.mp3",
     "Part_of_speech": "noun",
-    "Image": "/v2/dictionaries/assets/ldoce/dvd_pics/cat.jpg",
-    "Type_of_gramm": "countable",
-    "Inflections": {
-      "plural": "cats"
-    }
+    "Type_of_gramm": "countable"
   }
 ]

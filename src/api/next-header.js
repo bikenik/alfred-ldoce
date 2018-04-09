@@ -6,7 +6,7 @@
 const fs = require('fs')
 const alfy = require('alfy')
 const jsonfile = require('jsonfile')
-const utils = require('./utils.js')
+const utils = require('../utils')
 
 const url = 'http://api.pearson.com' + utils.wordOfURL
 const fileHeader = './src/input/header.json'
