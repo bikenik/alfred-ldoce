@@ -1,7 +1,7 @@
 /* eslint camelcase: ["error", {properties: "never"}] */
 const md5 = require('md5')
-const mainDataExp = require('./input/body.json')
-const header = require('./input/header.json')
+const mainDataExp = require('../input/body.json')
+const header = require('../input/header.json')
 
 const body = {
 	definitionForTranslate: [],

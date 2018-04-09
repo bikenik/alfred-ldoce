@@ -1,8 +1,8 @@
 const alfy = require('alfy')
-const WorkflowError = require('../error')
+const WorkflowError = require('../utils/error')
 // const decksNames = require('../output/decks')
-const config = require('../config/config')
-const decks = require('../output/decks')
+const config = require('../config')
+const decks = require('../anki/anki-decks')
 const {capitalize, hasOwnProperty} = require('../utils')
 
 const variables = {
@@ -66,33 +66,36 @@ module.exports = input => {
 	const value = chunks.slice(2).join(' ')
 
 	if (chunks.length >= 3) {
-		if (value === '') {
-			return variable.outputOptions(
-				value,
-				name => `!set ${variableName} ${name}`
-			)
-		}
-		// if (true) {
-		// if (value === '') {
-		// if (value !== '') {
-		return [{
-			title: `Set ${variableName} to '${value}'`,
-			subtitle: `Old value ⇒ ${alfy.config.get(variableName)}`,
-			valid: true,
-			arg: JSON.stringify({
-				alfredworkflow: {
-					variables: {
-						action: 'config',
-						/* eslint-disable camelcase */
-						config_variable: variableName,
-						config_value: value
-						// config_value: variable.prettify(value)
-						/* eslint-enable camelcase */
+		return (async () => {
+			const ankiDecks = await variable.outputOptions()
+			// if (value === '') {
+			if (ankiDecks.indexOf(value) === -1) {
+				return variable.outputOptions.render(
+					value,
+					name => `!set ${variableName} ${name}`,
+					ankiDecks
+				)
+			}
+			// if (ankiDecks.indexOf(value) === -1) {
+			return [{
+				title: `Set ${variableName} to '${value}'`,
+				subtitle: `Old value ⇒ ${alfy.config.get(variableName)}`,
+				valid: true,
+				arg: JSON.stringify({
+					alfredworkflow: {
+						variables: {
+							action: 'config',
+							/* eslint-disable camelcase */
+							config_variable: variableName,
+							config_value: value
+							// config_value: variable.prettify(value)
+							/* eslint-enable camelcase */
+						}
 					}
-				}
-			})
-		}]
-		// }
+				})
+			}]
+			// }
+		})()
 	}
 }
 

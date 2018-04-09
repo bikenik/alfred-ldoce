@@ -11,11 +11,11 @@ const translate = require('google-translate-api')
 const streamToPromise = require('stream-to-promise')
 const pMap = require('p-map')
 const chalk = require('chalk')
-const ankiAddCard = require('./anki-add-card.js')
-const data = require('./mydata.js')
-const verbTable = require('./verb-table.js')
+const ankiAddCard = require('./anki/anki-add-card')
+const data = require('./api/mydata')
+const verbTable = require('./api/verb-table')
 // Config file
-const config = require('./config/config.js')
+const config = require('./config')
 
 const language = 'ru'
 // const {language} = process.env

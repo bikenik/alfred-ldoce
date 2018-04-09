@@ -446,7 +446,7 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>./node_modules/.bin/run-node src/save-word.js "$1"</string>
+				<string>./node_modules/.bin/run-node src/utils/save-word.js "$1"</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -471,7 +471,7 @@
 				<key>argumenttrimmode</key>
 				<integer>0</integer>
 				<key>argumenttype</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>keyword</key>
@@ -485,7 +485,7 @@
 				<key>queuemode</key>
 				<integer>1</integer>
 				<key>runningsubtext</key>
-				<string>Searching...</string>
+				<string>Searching Anki Decks ... | Hint ↩︎</string>
 				<key>script</key>
 				<string>./node_modules/.bin/run-node index.js "$1" "search"</string>
 				<key>scriptargtype</key>
@@ -495,7 +495,7 @@
 				<key>subtext</key>
 				<string></string>
 				<key>title</key>
-				<string>Search generic =&gt; {query}</string>
+				<string>Search generic =&gt;</string>
 				<key>type</key>
 				<integer>0</integer>
 				<key>withspace</key>
@@ -534,13 +534,13 @@
 				<key>runningsubtext</key>
 				<string>Searching...</string>
 				<key>script</key>
-				<string>./node_modules/.bin/run-node src/next-body.js "$1"</string>
+				<string>./node_modules/.bin/run-node src/api/next-body.js "$1"</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
 				<string>index.js</string>
 				<key>subtext</key>
-				<string>LAST</string>
+				<string></string>
 				<key>title</key>
 				<string>search</string>
 				<key>type</key>
@@ -642,7 +642,7 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>./node_modules/.bin/run-node src/next-body-all.js "$1"
+				<string>./node_modules/.bin/run-node src/api/next-body-all.js "$1"
 ./node_modules/.bin/run-node src/index.js "$1"</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
@@ -666,7 +666,7 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>./node_modules/.bin/run-node src/next-header.js $1</string>
+				<string>./node_modules/.bin/run-node src/api/next-header.js $1</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -791,6 +791,53 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>2</integer>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>24</integer>
+				<key>keyword</key>
+				<string>ldp</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<false/>
+				<key>queuedelaymode</key>
+				<integer>1</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Searching...</string>
+				<key>script</key>
+				<string>./node_modules/.bin/run-node src/api/next-phrasal-verbs.js "$1"</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string>index.js</string>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string>search</string>
+				<key>type</key>
+				<integer>5</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>4BE519FC-203E-44DF-8789-DD4E6FF5BB62</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>concurrently</key>
 				<true/>
 				<key>escaping</key>
@@ -821,59 +868,12 @@ rm $file.bk
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>alfredfiltersresults</key>
-				<false/>
-				<key>alfredfiltersresultsmatchmode</key>
-				<integer>2</integer>
-				<key>argumenttrimmode</key>
-				<integer>0</integer>
-				<key>argumenttype</key>
-				<integer>1</integer>
-				<key>escaping</key>
-				<integer>24</integer>
-				<key>keyword</key>
-				<string>ldp</string>
-				<key>queuedelaycustom</key>
-				<integer>3</integer>
-				<key>queuedelayimmediatelyinitially</key>
-				<false/>
-				<key>queuedelaymode</key>
-				<integer>1</integer>
-				<key>queuemode</key>
-				<integer>1</integer>
-				<key>runningsubtext</key>
-				<string>Searching...</string>
-				<key>script</key>
-				<string>./node_modules/.bin/run-node src/next-phrasal-verbs.js "$1"</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string>index.js</string>
-				<key>subtext</key>
-				<string>Phrasal Verbs</string>
-				<key>title</key>
-				<string>search</string>
-				<key>type</key>
-				<integer>5</integer>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
-			<key>uid</key>
-			<string>4BE519FC-203E-44DF-8789-DD4E6FF5BB62</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>concurrently</key>
 				<true/>
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>./node_modules/.bin/run-node src/save-word.js "$1"</string>
+				<string>./node_modules/.bin/run-node src/utils/save-word.js "$1"</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -934,7 +934,7 @@ rm $file.bk
 				<key>argumenttrimmode</key>
 				<integer>0</integer>
 				<key>argumenttype</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>keyword</key>
@@ -948,7 +948,7 @@ rm $file.bk
 				<key>queuemode</key>
 				<integer>1</integer>
 				<key>runningsubtext</key>
-				<string>Searching...</string>
+				<string>Searching Anki Decks ... | Hint ↩︎</string>
 				<key>script</key>
 				<string>./node_modules/.bin/run-node index.js "$1" "headword"</string>
 				<key>scriptargtype</key>
@@ -958,7 +958,7 @@ rm $file.bk
 				<key>subtext</key>
 				<string></string>
 				<key>title</key>
-				<string>Search headwords =&gt; {query} {var:config_value}</string>
+				<string>Search headwords =&gt;</string>
 				<key>type</key>
 				<integer>0</integer>
 				<key>withspace</key>
@@ -1157,7 +1157,7 @@ http://developer.pearson.com/apis/dictionaries</string>
 			<key>note</key>
 			<string>JSON BODY</string>
 			<key>xpos</key>
-			<integer>1790</integer>
+			<integer>2150</integer>
 			<key>ypos</key>
 			<integer>20</integer>
 		</dict>
@@ -1166,7 +1166,7 @@ http://developer.pearson.com/apis/dictionaries</string>
 			<key>colorindex</key>
 			<integer>5</integer>
 			<key>xpos</key>
-			<integer>2230</integer>
+			<integer>2590</integer>
 			<key>ypos</key>
 			<integer>150</integer>
 		</dict>
@@ -1175,7 +1175,7 @@ http://developer.pearson.com/apis/dictionaries</string>
 			<key>colorindex</key>
 			<integer>4</integer>
 			<key>xpos</key>
-			<integer>800</integer>
+			<integer>1160</integer>
 			<key>ypos</key>
 			<integer>50</integer>
 		</dict>
@@ -1184,7 +1184,7 @@ http://developer.pearson.com/apis/dictionaries</string>
 			<key>colorindex</key>
 			<integer>9</integer>
 			<key>xpos</key>
-			<integer>940</integer>
+			<integer>1300</integer>
 			<key>ypos</key>
 			<integer>280</integer>
 		</dict>
@@ -1195,7 +1195,7 @@ http://developer.pearson.com/apis/dictionaries</string>
 			<key>note</key>
 			<string>Added All</string>
 			<key>xpos</key>
-			<integer>1790</integer>
+			<integer>2150</integer>
 			<key>ypos</key>
 			<integer>150</integer>
 		</dict>
@@ -1204,14 +1204,14 @@ http://developer.pearson.com/apis/dictionaries</string>
 			<key>colorindex</key>
 			<integer>4</integer>
 			<key>xpos</key>
-			<integer>1180</integer>
+			<integer>1540</integer>
 			<key>ypos</key>
 			<integer>220</integer>
 		</dict>
 		<key>562EF93F-5516-43DE-942D-2173B164CB51</key>
 		<dict>
 			<key>xpos</key>
-			<integer>2230</integer>
+			<integer>2590</integer>
 			<key>ypos</key>
 			<integer>480</integer>
 		</dict>
@@ -1220,7 +1220,7 @@ http://developer.pearson.com/apis/dictionaries</string>
 			<key>colorindex</key>
 			<integer>4</integer>
 			<key>xpos</key>
-			<integer>1120</integer>
+			<integer>1480</integer>
 			<key>ypos</key>
 			<integer>180</integer>
 		</dict>
@@ -1229,14 +1229,14 @@ http://developer.pearson.com/apis/dictionaries</string>
 			<key>colorindex</key>
 			<integer>1</integer>
 			<key>xpos</key>
-			<integer>2080</integer>
+			<integer>2440</integer>
 			<key>ypos</key>
 			<integer>310</integer>
 		</dict>
 		<key>6286D140-7178-4672-8FE8-3B2F093A25FE</key>
 		<dict>
 			<key>xpos</key>
-			<integer>2020</integer>
+			<integer>2380</integer>
 			<key>ypos</key>
 			<integer>430</integer>
 		</dict>
@@ -1247,7 +1247,7 @@ http://developer.pearson.com/apis/dictionaries</string>
 			<key>note</key>
 			<string>Save my choose</string>
 			<key>xpos</key>
-			<integer>590</integer>
+			<integer>950</integer>
 			<key>ypos</key>
 			<integer>280</integer>
 		</dict>
@@ -1256,14 +1256,14 @@ http://developer.pearson.com/apis/dictionaries</string>
 			<key>colorindex</key>
 			<integer>12</integer>
 			<key>xpos</key>
-			<integer>940</integer>
+			<integer>1300</integer>
 			<key>ypos</key>
 			<integer>20</integer>
 		</dict>
 		<key>71FC9594-41E7-410B-AB69-3E4F1C614C63</key>
 		<dict>
 			<key>xpos</key>
-			<integer>1350</integer>
+			<integer>1710</integer>
 			<key>ypos</key>
 			<integer>430</integer>
 		</dict>
@@ -1272,21 +1272,21 @@ http://developer.pearson.com/apis/dictionaries</string>
 			<key>colorindex</key>
 			<integer>4</integer>
 			<key>xpos</key>
-			<integer>1180</integer>
+			<integer>1540</integer>
 			<key>ypos</key>
 			<integer>140</integer>
 		</dict>
 		<key>90880EE7-0193-4DA0-83F2-C512EED9BFE9</key>
 		<dict>
 			<key>xpos</key>
-			<integer>1600</integer>
+			<integer>1960</integer>
 			<key>ypos</key>
 			<integer>150</integer>
 		</dict>
 		<key>982024D8-8896-42BB-9AC9-58CB39FD352D</key>
 		<dict>
 			<key>xpos</key>
-			<integer>2000</integer>
+			<integer>2360</integer>
 			<key>ypos</key>
 			<integer>240</integer>
 		</dict>
@@ -1295,7 +1295,7 @@ http://developer.pearson.com/apis/dictionaries</string>
 			<key>colorindex</key>
 			<integer>4</integer>
 			<key>xpos</key>
-			<integer>300</integer>
+			<integer>660</integer>
 			<key>ypos</key>
 			<integer>570</integer>
 		</dict>
@@ -1306,14 +1306,14 @@ http://developer.pearson.com/apis/dictionaries</string>
 			<key>note</key>
 			<string>Save my choose</string>
 			<key>xpos</key>
-			<integer>410</integer>
+			<integer>770</integer>
 			<key>ypos</key>
 			<integer>430</integer>
 		</dict>
 		<key>A4539244-76D0-4929-80B2-6619F0A105CA</key>
 		<dict>
 			<key>xpos</key>
-			<integer>410</integer>
+			<integer>770</integer>
 			<key>ypos</key>
 			<integer>700</integer>
 		</dict>
@@ -1324,14 +1324,14 @@ http://developer.pearson.com/apis/dictionaries</string>
 			<key>note</key>
 			<string>Save my choose</string>
 			<key>xpos</key>
-			<integer>590</integer>
+			<integer>950</integer>
 			<key>ypos</key>
 			<integer>20</integer>
 		</dict>
 		<key>B9A7762D-55F9-4BB3-A1D2-29C8F8114EC9</key>
 		<dict>
 			<key>xpos</key>
-			<integer>1600</integer>
+			<integer>1960</integer>
 			<key>ypos</key>
 			<integer>20</integer>
 		</dict>
@@ -1340,7 +1340,7 @@ http://developer.pearson.com/apis/dictionaries</string>
 			<key>colorindex</key>
 			<integer>4</integer>
 			<key>xpos</key>
-			<integer>2080</integer>
+			<integer>2440</integer>
 			<key>ypos</key>
 			<integer>180</integer>
 		</dict>
@@ -1351,7 +1351,7 @@ http://developer.pearson.com/apis/dictionaries</string>
 			<key>note</key>
 			<string>HEADER</string>
 			<key>xpos</key>
-			<integer>940</integer>
+			<integer>1300</integer>
 			<key>ypos</key>
 			<integer>150</integer>
 		</dict>
@@ -1361,14 +1361,14 @@ http://developer.pearson.com/apis/dictionaries</string>
 			<string>#1 Run intro.js
 It's scrapping from API</string>
 			<key>xpos</key>
-			<integer>120</integer>
+			<integer>480</integer>
 			<key>ypos</key>
 			<integer>20</integer>
 		</dict>
 		<key>C8029285-6BC0-4486-AE9B-5D45BFBF8DE1</key>
 		<dict>
 			<key>xpos</key>
-			<integer>1250</integer>
+			<integer>1610</integer>
 			<key>ypos</key>
 			<integer>220</integer>
 		</dict>
@@ -1377,7 +1377,7 @@ It's scrapping from API</string>
 			<key>colorindex</key>
 			<integer>6</integer>
 			<key>xpos</key>
-			<integer>1790</integer>
+			<integer>2150</integer>
 			<key>ypos</key>
 			<integer>280</integer>
 		</dict>
@@ -1386,28 +1386,28 @@ It's scrapping from API</string>
 			<key>colorindex</key>
 			<integer>1</integer>
 			<key>xpos</key>
-			<integer>2230</integer>
+			<integer>2590</integer>
 			<key>ypos</key>
 			<integer>280</integer>
 		</dict>
 		<key>E053EE3C-9AA3-4865-89D3-0AEADD89D99D</key>
 		<dict>
 			<key>xpos</key>
-			<integer>1600</integer>
+			<integer>1960</integer>
 			<key>ypos</key>
 			<integer>280</integer>
 		</dict>
 		<key>E2D15676-870B-4EE9-A16F-F144FBBE3412</key>
 		<dict>
 			<key>xpos</key>
-			<integer>410</integer>
+			<integer>770</integer>
 			<key>ypos</key>
 			<integer>570</integer>
 		</dict>
 		<key>E8842A06-DED1-489F-AB41-28A1425D0EE3</key>
 		<dict>
 			<key>xpos</key>
-			<integer>2150</integer>
+			<integer>2510</integer>
 			<key>ypos</key>
 			<integer>310</integer>
 		</dict>
@@ -1417,15 +1417,13 @@ It's scrapping from API</string>
 			<string>#1 Run intro.js
 It's scrapping from API</string>
 			<key>xpos</key>
-			<integer>120</integer>
+			<integer>480</integer>
 			<key>ypos</key>
 			<integer>280</integer>
 		</dict>
 	</dict>
 	<key>variables</key>
 	<dict>
-		<key>config_value</key>
-		<string></string>
 		<key>language</key>
 		<string>ru</string>
 		<key>nameOfDeck</key>
@@ -1440,7 +1438,7 @@ It's scrapping from API</string>
 		<string>language</string>
 	</array>
 	<key>version</key>
-	<string>1.0.5</string>
+	<string>1.0.3</string>
 	<key>webaddress</key>
 	<string>https://github.com/bikeNik/alfred-ldoce#readme</string>
 </dict>
