@@ -1,8 +1,10 @@
 const alfy = require('alfy')
 const WorkflowError = require('../utils/error')
-const ankiConnect = require('./anki-connect')
 const {capitalize} = require('../utils')
+const ankiConnect = require('./anki-connect')
+// const deleteDeck = require('./anki-delete-deck')
 // const {nameOfDecks} = require('../utils')
+
 module.exports = () => {
 	// module.exports = (pattern, autocomplete = () => undefined) => {
 	// resultDecks = nameOfDecks()
@@ -11,7 +13,6 @@ module.exports = () => {
 			let resultAll = await ankiConnect('deckNames', 5)
 			// console.log('HELLO FROM ANKI');
 			return resultAll
-
 		} catch (err) {
 			throw new WorkflowError(`AnkiConnect doesn,t work now`, {
 				autocomplete: '!set '
@@ -27,7 +28,8 @@ module.exports.render = async (pattern, autocomplete = () => undefined, ankiDeck
 	}
 	const out = await alfy.matches(pattern, ankiDecks)
 		.map(name => ({
-			title: name.slice(0, 1).toUpperCase() + name.slice(1),
+			title: name,
+			// title: name.slice(0, 1).toUpperCase() + name.slice(1),
 			autocomplete: autocomplete(name),
 			valid: false,
 			icon: {
@@ -38,7 +40,7 @@ module.exports.render = async (pattern, autocomplete = () => undefined, ankiDeck
 	if (out.length === 0) {
 		out.push({
 			// title: `'${alfy.input}'`,
-			title: `Set default Deck to '${capitalize(pattern)}'`,
+			title: `Create new Deck as '${capitalize(pattern)}'`,
 			subtitle: `Old value ⇒ ${alfy.config.get('default-deck')}`,
 			valid: true,
 			arg: JSON.stringify({

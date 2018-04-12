@@ -3,6 +3,8 @@ const WorkflowError = require('../utils/error')
 // const decksNames = require('../output/decks')
 const config = require('../config')
 const decks = require('../anki/anki-decks')
+const deleteDeck = require('../anki/anki-delete-deck')
+// const {deleteDeck} = require('../anki/anki-decks')
 const {capitalize, hasOwnProperty} = require('../utils')
 const arrayOfDecks = require('../input/anki-decks.json')
 
@@ -28,7 +30,7 @@ const outputVariables = pattern => {
 		// subtitle: '⇒ hello world',
 		subtitle: '⇒ ' + alfy.config.get(key),
 		valid: false,
-		autocomplete: `!set ${key} `
+		autocomplete: `!del ${key} `
 	})
 
 	const out = alfy.matches(pattern, Object.keys(config.defaults)).map(mapper)
@@ -60,7 +62,7 @@ module.exports = input => {
 	// Throw if variable is invalid
 	if (!hasOwnProperty(variables, variableName)) {
 		throw new WorkflowError(`Variable '${variableName}' does not exist`, {
-			autocomplete: '!set '
+			autocomplete: '!del '
 		})
 	}
 	const variable = variables[variableName]
@@ -71,42 +73,33 @@ module.exports = input => {
 			if (arrayOfDecks.indexOf(value) === -1) {
 				return variable.outputOptions.render(
 					value,
-					name => `!set ${variableName} ${name}`,
+					name => `!del ${variableName} ${name}`,
 					arrayOfDecks
 				)
 			}
 			// if (ankiDecks.indexOf(value) === -1) {
-			return [{
-				title: `Set ${variableName} to '${value}'`,
+			const out = [{
+				title: `Delelet'${value}'`,
 				subtitle: `Old value ⇒ ${alfy.config.get(variableName)}`,
 				valid: true,
-				arg: JSON.stringify({
-					alfredworkflow: {
-						variables: {
-							action: 'config',
-							/* eslint-disable camelcase */
-							config_variable: variableName,
-							config_value: value
-							// config_value: variable.prettify(value)
-							/* eslint-enable camelcase */
-						}
-					}
-				})
+				arg: deleteDeck(value)
 			}]
+			alfy.output(out)
+			// deleteDeck(value)
 			// }
 		})()
 	}
 }
 
 module.exports.meta = {
-	name: '!set',
-	usage: '!set to another deck',
+	name: '!del',
+	usage: '!delete any your deck',
 	// usage: '!set (variable) (value)',
 	// help: `Current Deck is "${alfy.config.get('default-deck').toUpperCase()}"`,
 	help: 'Sets a given config variable to the given value.',
-	autocomplete: '!set '
+	autocomplete: '!del '
 }
 
 module.exports.match = input => {
-	return input.indexOf('!set') === 0
+	return input.indexOf('!del') === 0
 }

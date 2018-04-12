@@ -2,6 +2,7 @@
 const alfy = require('alfy')
 const ankiConnect = require('./anki-connect')
 
+// const nameOfDeck = 'Scramble'
 const nameOfDeck = alfy.config.get('default-deck')
 
 // console.log(JSON.stringify(obj))
