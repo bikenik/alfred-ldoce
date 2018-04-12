@@ -2,6 +2,11 @@
 const alfy = require('alfy')
 const jsonfile = require('jsonfile')
 
+let logResult = {
+	error: [],
+	result: []
+}
+
 jsonfile.writeFile(
 	'./src/input/body.json',
 	alfy.config.get('allPhrases'),
@@ -9,6 +14,6 @@ jsonfile.writeFile(
 		spaces: 2
 	},
 	function (err) {
-		console.error(err)
+		logResult.error.push(err)
 	}
 )

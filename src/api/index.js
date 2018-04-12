@@ -2,25 +2,8 @@ const alfy = require('alfy')
 const WorkflowError = require('../utils/error')
 
 module.exports.fetching =
-	async () => {
+	async query => {
 		let quickLook = ''
-		let query
-		const myVar = process.argv[3]
-		// const myVar = 'headword'
-		// alfy.input = '!set default-deck '
-
-		if (myVar === 'headword') {
-			query = {
-				headword: `=${alfy.input}`,
-				limit: 50
-			}
-		}
-		if (myVar === 'search') {
-			query = {
-				search: `=${alfy.input}`,
-				limit: 50
-			}
-		}
 		// (quickLook, query, myVar) => {
 		await alfy
 			.fetch('http://api.pearson.com/v2/dictionaries/ldoce5/entries', {query})

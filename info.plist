@@ -303,21 +303,21 @@
 			</dict>
 			<dict>
 				<key>destinationuid</key>
-				<string>647C673E-2B7B-4625-8B85-0B787CB9DC3E</string>
-				<key>modifiers</key>
-				<integer>524288</integer>
-				<key>modifiersubtext</key>
-				<string>Show Phrasal Verbs</string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
 				<string>9EE7AD44-FA62-439A-8A9F-B784189E6A0D</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
 				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>647C673E-2B7B-4625-8B85-0B787CB9DC3E</string>
+				<key>modifiers</key>
+				<integer>524288</integer>
+				<key>modifiersubtext</key>
+				<string>Show Phrasal Verbs</string>
 				<key>vitoclose</key>
 				<false/>
 			</dict>
@@ -398,21 +398,21 @@
 			</dict>
 			<dict>
 				<key>destinationuid</key>
-				<string>647C673E-2B7B-4625-8B85-0B787CB9DC3E</string>
-				<key>modifiers</key>
-				<integer>524288</integer>
-				<key>modifiersubtext</key>
-				<string>Show Phrasal Verbs</string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
 				<string>9EE7AD44-FA62-439A-8A9F-B784189E6A0D</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
 				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>647C673E-2B7B-4625-8B85-0B787CB9DC3E</string>
+				<key>modifiers</key>
+				<integer>524288</integer>
+				<key>modifiersubtext</key>
+				<string>Show Phrasal Verbs</string>
 				<key>vitoclose</key>
 				<false/>
 			</dict>
@@ -495,7 +495,7 @@
 				<key>subtext</key>
 				<string></string>
 				<key>title</key>
-				<string>Search generic =&gt;</string>
+				<string>Search generic ...</string>
 				<key>type</key>
 				<integer>0</integer>
 				<key>withspace</key>
@@ -655,6 +655,29 @@
 			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
 			<string>51728C66-020A-4212-8894-999FFCC11559</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<true/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>./node_modules/.bin/run-node update-config.js</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>9EE7AD44-FA62-439A-8A9F-B784189E6A0D</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -958,7 +981,7 @@ rm $file.bk
 				<key>subtext</key>
 				<string></string>
 				<key>title</key>
-				<string>Search headwords =&gt;</string>
+				<string>Search headwords ...</string>
 				<key>type</key>
 				<integer>0</integer>
 				<key>withspace</key>
@@ -1046,29 +1069,6 @@ rm $file.bk
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>concurrently</key>
-				<true/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>./node_modules/.bin/run-node update-config.js</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>9EE7AD44-FA62-439A-8A9F-B784189E6A0D</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>argument</key>
 				<string>'{query}', {allvars}</string>
 				<key>cleardebuggertext</key>
@@ -1103,6 +1103,29 @@ rm $file.bk
 			<string>E2D15676-870B-4EE9-A16F-F144FBBE3412</string>
 			<key>version</key>
 			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>./node_modules/.bin/run-node src/anki/anki-delete-deck.js "$1"</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>78DCAB34-8188-4888-8ABA-23F63296A97D</string>
+			<key>version</key>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -1267,6 +1290,13 @@ http://developer.pearson.com/apis/dictionaries</string>
 			<key>ypos</key>
 			<integer>430</integer>
 		</dict>
+		<key>78DCAB34-8188-4888-8ABA-23F63296A97D</key>
+		<dict>
+			<key>xpos</key>
+			<integer>470</integer>
+			<key>ypos</key>
+			<integer>570</integer>
+		</dict>
 		<key>89420316-6E6B-40A0-B3D7-043988DE8C37</key>
 		<dict>
 			<key>colorindex</key>
@@ -1306,9 +1336,9 @@ http://developer.pearson.com/apis/dictionaries</string>
 			<key>note</key>
 			<string>Save my choose</string>
 			<key>xpos</key>
-			<integer>770</integer>
+			<integer>720</integer>
 			<key>ypos</key>
-			<integer>430</integer>
+			<integer>150</integer>
 		</dict>
 		<key>A4539244-76D0-4929-80B2-6619F0A105CA</key>
 		<dict>
@@ -1402,7 +1432,7 @@ It's scrapping from API</string>
 			<key>xpos</key>
 			<integer>770</integer>
 			<key>ypos</key>
-			<integer>570</integer>
+			<integer>540</integer>
 		</dict>
 		<key>E8842A06-DED1-489F-AB41-28A1425D0EE3</key>
 		<dict>
