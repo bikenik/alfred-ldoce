@@ -16,7 +16,8 @@ let query
 let introMessage = [{
 	subtitle: `Current deck is => ${alfy.config.get('default-deck')}`
 }]
-// const myVar = 'headword'
+// let myVar = 'headword'
+// alfy.input = 'groove'
 // alfy.input = '!set default-deck '
 
 if (myVar === 'headword') {
