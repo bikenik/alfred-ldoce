@@ -1,5 +1,5 @@
 const alfy = require('alfy')
-const WorkflowError = require('../utils/error')
+const apiError = require('../utils/error')
 
 module.exports.fetching =
 	async query => {
@@ -7,7 +7,7 @@ module.exports.fetching =
 		// (quickLook, query, myVar) => {
 		await alfy
 			.fetch('http://api.pearson.com/v2/dictionaries/ldoce5/entries', {query})
-			.then(WorkflowError.checkStatus)
+			.then(apiError.checkStatus)
 			.then(data => {
 				const items = data.results.map(x => {
 					let currentWord = alfy.input.replace(/\s/g, '-')

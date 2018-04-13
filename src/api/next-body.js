@@ -12,24 +12,26 @@ const warning = {
 	notFound: `Not Found The Audio or Example  🤔`,
 	notFoundCouse: `Current page of API should include the Audio with an example but it doesn't contain them.  Maybe a path to file is damaged.`
 }
-function Render(title, subtitle, sentence, path, arg) {
-	this.title = title
-	this.subtitle = subtitle
-	this.sentence = sentence
-	this.path = path
-	this.arg = arg
-	this.items = []
-	this.text = {
-		copy: subtitle,
-		largetype: `🔑 :${subtitle} \n\n🎯 ${sentence}`
+class Render {
+	constructor(title, subtitle, sentence, path, arg) {
+		this.title = title
+		this.subtitle = subtitle
+		this.sentence = sentence
+		this.path = path
+		this.arg = arg
+		this.items = []
+		this.text = {
+			copy: subtitle,
+			largetype: `🔑 :${subtitle} \n\n🎯 ${sentence}`
+		}
+		this.icon = {path: path}
+		this.autocomplete = title
 	}
-	this.icon = {path: path}
-	this.autocomplete = title
+	add(item) {
+		this.items.push(item)
+	}
 }
 
-Render.prototype.add = function (item) {
-	this.items.push(item)
-}
 const addToItems = new Render()
 
 alfy.fetch(url).then(data => {

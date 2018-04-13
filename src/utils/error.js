@@ -1,4 +1,4 @@
-class WorkflowError extends Error {
+module.exports = class WorkflowError extends Error {
 	constructor(message, data) {
 		// `data` is an object with the following optional props:
 		//   .tip - message to show so the user can fix the error
@@ -10,6 +10,7 @@ class WorkflowError extends Error {
 		Object.assign(this, data)
 	}
 }
+// module.exports = WorkflowError
 
 module.exports.checkStatus = response => {
 	if (response.status === 200) {
@@ -18,4 +19,3 @@ module.exports.checkStatus = response => {
 	return Promise.reject(new Error(response.status))
 }
 
-module.exports = WorkflowError
