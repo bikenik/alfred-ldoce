@@ -2,30 +2,30 @@
 /* eslint-disable no-unused-vars */
 'use strict'
 const alfy = require('alfy')
-const utils = require('../utils')
+const headers = require('../input/header.json')
 
-const url = 'http://api.pearson.com' + utils.wordOfURL
+const {wordOfURL} = process.env
+
+const url = 'http://api.pearson.com' + wordOfURL
 const warning = {
-	notFound: 'Not Found The Audio or Example  🤔',
-	notFoundCouse: `Cause maybe this section for verb only or not exist phrasal verb.`
+	notFound: 'Not found Phrasal Verbs  🤔',
+	notFoundCouse: `Press ⇧⌅ to turn back for "${headers[0].Headword.toUpperCase()}" (${headers[0].Part_of_speech})`
 }
 const items = []
 alfy.fetch(url).then(data => {
 	const $ = data.result
-
 	if ($.phrasal_verbs) {
-		for (let i = 0; i < $.phrasal_verbs.length; i++) {
-			if ($.phrasal_verbs[i].senses) {
-				for (let z = 0; z < $.phrasal_verbs[i].senses.length; z++) {
-					let sense = $.phrasal_verbs[i].senses[z]
+		$.phrasal_verbs.forEach(phrasalVerbs => {
+			if (phrasalVerbs.senses) {
+				phrasalVerbs.senses.forEach(sense => {
 					if (sense.examples) {
 						items.push({
-							title: $.phrasal_verbs[i].headword,
+							title: phrasalVerbs.headword,
 							subtitle: sense.definition[0],
 							arg: {
 								definition: [
 									`<span class="neutral span">[</span>${
-									$.phrasal_verbs[i].headword
+									phrasalVerbs.headword
 									}<span class="neutral span">] </span>${sense.definition}`
 								],
 								examples: sense.examples,
@@ -39,38 +39,38 @@ alfy.fetch(url).then(data => {
 						})
 					}
 					if (sense.gramatical_examples) {
-						for (let x = 0; x < sense.gramatical_examples.length; x++) {
-							if (sense.gramatical_examples[x].examples) {
+						sense.gramatical_examples.forEach(gramaticalExample => {
+							if (gramaticalExample.examples) {
 								items.push({
-									title: sense.gramatical_examples[x].pattern,
+									title: gramaticalExample.pattern,
 									subtitle: sense.definition[0],
 									arg: {
-										examples: sense.gramatical_examples[x].examples,
+										examples: gramaticalExample.examples,
 										definition: [
 											`<span class="neutral span">[</span>${
-											$.phrasal_verbs[i].headword
+											phrasalVerbs.headword
 											}<span class="neutral span">] </span>> ${sense.definition} [${
-											sense.gramatical_examples[x].pattern
+											gramaticalExample.pattern
 											}]`
 										],
 										sense: sense
 									},
 									text: {
-										copy: sense.gramatical_examples[x].examples[0].text,
-										largetype: `🔑 :${sense.definition[0]}\n\n🎯${sense.gramatical_examples[x].examples[0].text}`
+										copy: gramaticalExample.examples[0].text,
+										largetype: `🔑 :${sense.definition[0]}\n\n🎯${gramaticalExample.examples[0].text}`
 									},
 									valid: true,
 									icon: {path: './icons/gramatical.png'}
 								})
 							}
-						}
+						})
 					}
-				}
-				if ($.phrasal_verbs[i].variants) {
-					items[items.length - 1].arg.sense.variants = $.phrasal_verbs[i].variants
+				})
+				if (phrasalVerbs.variants) {
+					items[items.length - 1].arg.sense.variants = phrasalVerbs.variants
 				}
 			}
-		}
+		})
 	}
 
 	const elements = []
@@ -111,8 +111,13 @@ alfy.fetch(url).then(data => {
 			quicklookurl: `https://www.ldoceonline.com/dictionary/${data.result.headword.replace(
 				/\s/g,
 				'-'
-			)}`
-
+			)}`,
+			valid: false,
+			mods: {
+				shift: {
+					subtitle: 'Turn back'
+				}
+			}
 		})
 	}
 

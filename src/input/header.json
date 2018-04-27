@@ -1,12 +1,12 @@
 [
   {
-    "Headword": "requirement",
-    "Brit_audio": "/v2/dictionaries/assets/ldoce/gb_pron/brelasderequirement.mp3",
-    "Amer_audio": "/v2/dictionaries/assets/ldoce/us_pron/requirement.mp3",
+    "Headword": "example",
+    "Brit_audio": "/v2/dictionaries/assets/ldoce/gb_pron/example0205.mp3",
+    "Amer_audio": "/v2/dictionaries/assets/ldoce/us_pron/example.mp3",
     "Part_of_speech": "noun",
-    "Type_of_gramm": "countable usually plural",
+    "Type_of_gramm": "countable",
     "Inflections": {
-      "plural": "requirements"
+      "plural": "examples"
     }
   }
 ]

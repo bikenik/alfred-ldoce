@@ -6,41 +6,43 @@ const ankiConnect = require('./anki-connect')
 // const {nameOfDecks} = require('../utils')
 
 module.exports = () => {
-	// module.exports = (pattern, autocomplete = () => undefined) => {
-	// resultDecks = nameOfDecks()
 	const outresult = async function () {
 		try {
 			let resultAll = await ankiConnect('deckNames', 5)
-			// console.log('HELLO FROM ANKI');
 			return resultAll
 		} catch (err) {
-			throw new WorkflowError(`AnkiConnect doesn,t work now`, {
-				autocomplete: '!set '
+			throw new WorkflowError(`${err}`, {
+				title: 'Searching without AnkiConnect',
+				subtitle: 'Activate this item to open Anki. | ⌘L to see the stack trace',
+				variables: {
+					run: 'anki'
+				},
+				valid: true,
+				icon: {
+					path: './icons/not-connected.png'
+				}
 			})
 		}
 	}
 	return outresult()
 }
 
-module.exports.render = async (pattern, autocomplete = () => undefined, ankiDecks) => {
+module.exports.render = async (pattern, autocomplete = () => undefined, ankiDecks, cmdIcon) => {
 	if (!pattern) {
 		pattern = ''
 	}
 	const out = await alfy.matches(pattern, ankiDecks)
 		.map(name => ({
 			title: name,
-			// title: name.slice(0, 1).toUpperCase() + name.slice(1),
 			autocomplete: autocomplete(name),
 			valid: false,
 			icon: {
-				path: `./icons/deck.png`
+				path: cmdIcon
 			}
 		}))
-	// return out.length === 0 ? null : out
 	if (out.length === 0) {
 		out.push({
-			// title: `'${alfy.input}'`,
-			title: `Create new Deck as '${capitalize(pattern)}'`,
+			title: `a new deck will be created as '${capitalize(pattern)}'`,
 			subtitle: `Old value ⇒ ${alfy.config.get('default-deck')}`,
 			valid: true,
 			arg: JSON.stringify({

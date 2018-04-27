@@ -1,6 +1,5 @@
 const alfy = require('alfy')
 const WorkflowError = require('../utils/error')
-// const decksNames = require('../output/decks')
 const config = require('../config')
 const decks = require('../anki/anki-decks')
 const {capitalize, hasOwnProperty} = require('../utils')
@@ -10,7 +9,6 @@ const variables = {
 	'default-deck': {
 		default: 'English',
 		outputOptions: decks,
-		// isValid: input => nameOfDecks.indexOf(input.toLowerCase()) !== 1,
 		prettify: input => capitalize(input)
 	}
 }
@@ -68,14 +66,26 @@ module.exports = input => {
 
 	if (chunks.length >= 3) {
 		return (async () => {
+			if (arrayOfDecks === null) {
+				throw new WorkflowError(`Decks was not found, check your Anki profile`, {
+					autocomplete: '!set ',
+					variables: {
+						run: 'anki'
+					},
+					valid: true,
+					icon: {
+						path: './icons/not-connected.png'
+					}
+				})
+			}
 			if (arrayOfDecks.indexOf(value) === -1) {
 				return variable.outputOptions.render(
 					value,
 					name => `!set ${variableName} ${name}`,
-					arrayOfDecks
+					arrayOfDecks,
+					`./icons/deck.png`
 				)
 			}
-			// if (ankiDecks.indexOf(value) === -1) {
 			return [{
 				title: `Set ${variableName} to '${value}'`,
 				subtitle: `Old value ⇒ ${alfy.config.get(variableName)}`,
@@ -93,7 +103,6 @@ module.exports = input => {
 					}
 				})
 			}]
-			// }
 		})()
 	}
 }
@@ -101,9 +110,7 @@ module.exports = input => {
 module.exports.meta = {
 	name: '!set',
 	usage: '!set to another deck',
-	// usage: '!set (variable) (value)',
-	// help: `Current Deck is "${alfy.config.get('default-deck').toUpperCase()}"`,
-	help: 'Sets a given config variable to the given value.',
+	help: 'Create deck by the given value or new value.',
 	autocomplete: '!set '
 }
 

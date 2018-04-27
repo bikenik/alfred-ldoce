@@ -1,0 +1,267 @@
+[
+  {
+    "examples": [
+      {
+        "audio": [
+          {
+            "type": "example",
+            "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001734902.mp3"
+          }
+        ],
+        "text": "Can anyone give me an example of a transitive verb?"
+      }
+    ],
+    "definition": [
+      "a specific fact, idea, person, or thing that is used to explain or support a general idea, or to show what is typical of a larger group<span class=\"neutral span\"> [</span>example of<span class=\"neutral span\">]</span>"
+    ],
+    "sense": {
+      "definition": [
+        "a specific fact, idea, person, or thing that is used to explain or support a general idea, or to show what is typical of a larger group"
+      ],
+      "gramatical_examples": [
+        {
+          "examples": [
+            {
+              "audio": [
+                {
+                  "type": "example",
+                  "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001734902.mp3"
+                }
+              ],
+              "text": "Can anyone give me an example of a transitive verb?"
+            }
+          ],
+          "pattern": "example of"
+        }
+      ]
+    }
+  },
+  {
+    "definition": [
+      "for example<span class=\"neutral span\"> [</span>used before mentioning a specific thing, person, place etc in order to explain what you mean or to support an argument<span class=\"neutral span\">]</span>"
+    ],
+    "examples": [
+      {
+        "audio": [
+          {
+            "type": "example",
+            "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001225150.mp3"
+          }
+        ],
+        "text": "Many countries, for example Mexico and Japan, have a lot of earthquakes."
+      },
+      {
+        "audio": [
+          {
+            "type": "example",
+            "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001734919.mp3"
+          }
+        ],
+        "text": "Car prices can vary a lot. For example, in Belgium the VW Golf costs $1,000 less than in Britain."
+      }
+    ],
+    "sense": {
+      "definition": [
+        "used before mentioning a specific thing, person, place etc in order to explain what you mean or to support an argument"
+      ],
+      "examples": [
+        {
+          "audio": [
+            {
+              "type": "example",
+              "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001225150.mp3"
+            }
+          ],
+          "text": "Many countries, for example Mexico and Japan, have a lot of earthquakes."
+        },
+        {
+          "audio": [
+            {
+              "type": "example",
+              "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001734919.mp3"
+            }
+          ],
+          "text": "Car prices can vary a lot. For example, in Belgium the VW Golf costs $1,000 less than in Britain."
+        }
+      ],
+      "lexical_unit": "for example"
+    }
+  },
+  {
+    "definition": [
+      "someone whose behaviour is very good and should be copied by others, or this type of behaviour"
+    ],
+    "examples": [
+      {
+        "audio": [
+          {
+            "type": "example",
+            "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001734925.mp3"
+          }
+        ],
+        "text": "Parents should set an example for their children."
+      },
+      {
+        "audio": [
+          {
+            "type": "example",
+            "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001225186.mp3"
+          }
+        ],
+        "text": "I suggest you follow Rosie's example(=copy her behaviour) and start doing regular exercise."
+      },
+      {
+        "audio": [
+          {
+            "type": "example",
+            "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001734935.mp3"
+          }
+        ],
+        "text": "The team captain leads by example."
+      },
+      {
+        "audio": [
+          {
+            "type": "example",
+            "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001734939.mp3"
+          }
+        ],
+        "text": "She's a shining example(=a very good example) of what a mother should be."
+      }
+    ],
+    "sense": {
+      "definition": [
+        "someone whose behaviour is very good and should be copied by others, or this type of behaviour"
+      ],
+      "examples": [
+        {
+          "audio": [
+            {
+              "type": "example",
+              "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001734925.mp3"
+            }
+          ],
+          "text": "Parents should set an example for their children."
+        },
+        {
+          "audio": [
+            {
+              "type": "example",
+              "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001225186.mp3"
+            }
+          ],
+          "text": "I suggest you follow Rosie's example(=copy her behaviour) and start doing regular exercise."
+        },
+        {
+          "audio": [
+            {
+              "type": "example",
+              "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001734935.mp3"
+            }
+          ],
+          "text": "The team captain leads by example."
+        },
+        {
+          "audio": [
+            {
+              "type": "example",
+              "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001734939.mp3"
+            }
+          ],
+          "text": "She's a shining example(=a very good example) of what a mother should be."
+        }
+      ],
+      "gramatical_examples": [
+        {
+          "examples": [
+            {
+              "audio": [
+                {
+                  "type": "example",
+                  "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001734924.mp3"
+                }
+              ],
+              "text": "Her courage is an example to us all."
+            }
+          ],
+          "pattern": "example to"
+        }
+      ]
+    }
+  },
+  {
+    "examples": [
+      {
+        "audio": [
+          {
+            "type": "example",
+            "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001734924.mp3"
+          }
+        ],
+        "text": "Her courage is an example to us all."
+      }
+    ],
+    "definition": [
+      "someone whose behaviour is very good and should be copied by others, or this type of behaviour<span class=\"neutral span\"> [</span>example to<span class=\"neutral span\">]</span>"
+    ],
+    "sense": {
+      "definition": [
+        "someone whose behaviour is very good and should be copied by others, or this type of behaviour"
+      ],
+      "examples": [
+        {
+          "audio": [
+            {
+              "type": "example",
+              "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001734925.mp3"
+            }
+          ],
+          "text": "Parents should set an example for their children."
+        },
+        {
+          "audio": [
+            {
+              "type": "example",
+              "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001225186.mp3"
+            }
+          ],
+          "text": "I suggest you follow Rosie's example(=copy her behaviour) and start doing regular exercise."
+        },
+        {
+          "audio": [
+            {
+              "type": "example",
+              "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001734935.mp3"
+            }
+          ],
+          "text": "The team captain leads by example."
+        },
+        {
+          "audio": [
+            {
+              "type": "example",
+              "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001734939.mp3"
+            }
+          ],
+          "text": "She's a shining example(=a very good example) of what a mother should be."
+        }
+      ],
+      "gramatical_examples": [
+        {
+          "examples": [
+            {
+              "audio": [
+                {
+                  "type": "example",
+                  "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001734924.mp3"
+                }
+              ],
+              "text": "Her courage is an example to us all."
+            }
+          ],
+          "pattern": "example to"
+        }
+      ]
+    }
+  }
+]

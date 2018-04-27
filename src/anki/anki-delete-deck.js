@@ -1,12 +1,11 @@
 const ankiConnect = require('./anki-connect')
 
-// const currentDeck = 'New deck 2'
-module.exports = async currentDeck => {
+const deletDeck = async () => {
 	try {
 		let result = await ankiConnect(
 			'deleteDecks', 5,
 			{
-				decks: [currentDeck],
+				decks: [process.argv[2]],
 				cardsToo: true
 			}
 		)
@@ -16,3 +15,4 @@ module.exports = async currentDeck => {
 		// process.stdout.write(err)
 	}
 }
+deletDeck()

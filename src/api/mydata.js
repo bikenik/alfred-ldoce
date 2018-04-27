@@ -26,80 +26,80 @@ function removeDuplicates(arr) {
 }
 const mainData = removeDuplicates(mainDataExp)
 
-mainData.forEach(sense => {
+mainData.forEach(data => {
 	let options = ''
-	if (sense.signpost) {
-		options += `<span class="SIGNPOST">${sense.signpost}</span>`
+	if (data.sense.signpost) {
+		options += `<span class="SIGNPOST">${data.sense.signpost}</span>`
 	}
-	if (sense.gramatical_info) {
+	if (data.sense.gramatical_info) {
 		options += `<span class="GRAM"><span class="neutral span"> [</span>${
-			sense.gramatical_info.type
+			data.sense.gramatical_info.type
 			}<span class="neutral span">]</span></span>`
 	}
-	if (header[0].Type_of_gramm && !sense.gramatical_info) {
+	if (header[0].Type_of_gramm && !data.sense.gramatical_info) {
 		options += `<span class="GRAM"><span class="neutral span"> [</span>${
 			header[0].Type_of_gramm
 			}<span class="neutral span">]</span></span>`
 	}
 
-	if (sense.opposite) {
+	if (data.sense.opposite) {
 		options += `<span class="OPP"> <span class="synopp span">OPP</span> ${
-			sense.opposite
+			data.sense.opposite
 			}</span>`
 	}
-	if (sense.synonym) {
+	if (data.sense.synonym) {
 		options += `<span class="SYN"> <span class="synopp span">SYN</span> ${
-			sense.synonym
+			data.sense.synonym
 			}</span>`
 	}
 	let options2 = ''
-	if (sense.geography) {
-		options2 += `<span class="GEO"> ${sense.geography}</span>`
+	if (data.sense.geography) {
+		options2 += `<span class="GEO"> ${data.sense.geography}</span>`
 	}
 	if (header[0].Geography) {
 		options2 += `<span class="GEO"> ${header[0].Geography}</span>`
 	}
 
-	if (sense.register_label) {
-		options2 += `<span class="REGISTERLAB"> ${sense.register_label}</span>`
+	if (data.sense.register_label) {
+		options2 += `<span class="REGISTERLAB"> ${data.sense.register_label}</span>`
 	}
 	if (header[0].Register_label) {
 		options2 += `<span class="REGISTERLAB"> ${header[0].Register_label}</span>`
 	}
 
-	if (sense.variants) {
-		if (sense.variants[0].link_word && sense.variants[0].spelling_variant) {
+	if (data.sense.variants) {
+		if (data.sense.variants[0].link_word && data.sense.variants[0].spelling_variant) {
 			options2 += `<span class="neutral span">(</span><span class="LINKWORD">${
-				sense.variants[0].link_word
-				}</span><span class="ORTHVAR"> ${sense.variants[0].spelling_variant}</span><span class="neutral span">)</span>`
+				data.sense.variants[0].link_word
+				}</span><span class="ORTHVAR"> ${data.sense.variants[0].spelling_variant}</span><span class="neutral span">)</span>`
 		}
-		if (sense.variants[0].lexical_variant) {
+		if (data.sense.variants[0].lexical_variant) {
 			options2 += `<span class="LEXVAR"> ${
-				sense.variants[0].lexical_variant
+				data.sense.variants[0].lexical_variant
 				}</span>`
 		}
-		if (sense.variants[0].lang) {
+		if (data.sense.variants[0].lang) {
 			options2 += `<span class="geo span"> ${
-				sense.variants[0].lang
+				data.sense.variants[0].lang
 				}</span><span class="neutral span">)</span>`
 		}
 	}
-	if (sense.american_equivalent) {
-		options2 += `<br><b>${sense.american_equivalent}</b><span class="geo span"> American English</span>`
+	if (data.sense.american_equivalent) {
+		options2 += `<br><b>${data.sense.american_equivalent}</b><span class="geo span"> American English</span>`
 	}
 	if (options2 !== '') {
 		options += `<br>${options2}`
 	}
-	sense.definition[0] = `${options}<br>${sense.definition[0]}`
+	data.definition[0] = `${options}<br>${data.definition[0]}`
 
-	if (sense.related_words) {
-		sense.related_words.forEach((word, index) => {
+	if (data.sense.related_words) {
+		data.sense.related_words.forEach((word, index) => {
 			if (index > 0) {
-				sense.definition[0] += `
+				data.sense.definition[0] += `
         <span class="RELATEDWD"> ,<a class="defRef" title="${word}" href="https://www.ldoceonline.com/dictionary/${word}">${word}</a></span>
         `
 			} else {
-				sense.definition[0] += `
+				data.sense.definition[0] += `
       <span class="RELATEDWD"><span class="neutral span"> → </span>
       <a class="defRef" title="${word}" href="https://www.ldoceonline.com/dictionary/${word}">${word}</a></span>
       `
@@ -107,16 +107,16 @@ mainData.forEach(sense => {
 		})
 	}
 
-	body.lexicalUnit.push(sense.lexical_unit)
-	body.registerLabel.push(sense.register_label)
-	if (sense.definition) {
-		for (let y = 0; y < sense.definition.length; y++) {
-			body.definition.push(sense.definition[y])
+	body.lexicalUnit.push(data.sense.lexical_unit)
+	body.registerLabel.push(data.sense.register_label)
+	if (data.sense.definition) {
+		for (let y = 0; y < data.sense.definition.length; y++) {
+			body.definition.push(data.sense.definition[y])
 		}
 	}
 
-	if (sense.examples && sense.examples[0].audio && sense.headword === undefined) {
-		sense.examples.forEach(example => {
+	if (data.sense.examples && data.sense.examples[0].audio && data.sense.headword === undefined) {
+		data.sense.examples.forEach(example => {
 			// const element = $.examples[x]
 			body.definitionForTranslate.push(example.text)
 			for (let z = 0; z < example.audio.length; z++) {
@@ -124,9 +124,9 @@ mainData.forEach(sense => {
 			}
 		})
 	}
-	if (sense.examples && !sense.examples[0].audio && sense.headword === undefined) {
-		for (let x = 0; x < sense.examples.length; x++) {
-			body.definitionForTranslate.push(sense.examples[x].text)
+	if (data.sense.examples && !data.sense.examples[0].audio && data.sense.headword === undefined) {
+		for (let x = 0; x < data.sense.examples.length; x++) {
+			body.definitionForTranslate.push(data.sense.examples[x].text)
 		}
 	}
 })

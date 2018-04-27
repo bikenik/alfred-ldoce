@@ -10,7 +10,6 @@ module.exports = class WorkflowError extends Error {
 		Object.assign(this, data)
 	}
 }
-// module.exports = WorkflowError
 
 module.exports.checkStatus = response => {
 	if (response.status === 200) {
@@ -18,4 +17,3 @@ module.exports.checkStatus = response => {
 	}
 	return Promise.reject(new Error(response.status))
 }
-

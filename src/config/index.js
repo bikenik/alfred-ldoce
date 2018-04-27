@@ -2,8 +2,8 @@
 const os = require('os')
 
 const user = os.userInfo()
-// const {pathToAnkiMedia} = process.env
-const pathToAnkiMedia = '/Library/Application Support/Anki2/English/collection.media'
+const {pathToAnkiMedia} = process.env
+// const pathToAnkiMedia = '/Library/Application Support/Anki2/English/collection.media'
 // console.log(user)
 
 module.exports = {
@@ -12,7 +12,6 @@ module.exports = {
 	body: './src/input/body.json',
 	fields: {
 		headword: 'Headword',
-		// frequency: 'Frequency',
 		audio: 'Audio',
 		translation: 'Translation',
 		example: 'Example',
