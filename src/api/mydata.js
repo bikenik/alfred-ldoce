@@ -1,5 +1,5 @@
 /* eslint camelcase: ["error", {properties: "never"}] */
-/* eslint complexity: ["error", 22] */
+/* eslint complexity: ["error", 24] */
 const md5 = require('md5')
 const mainDataExp = require('../input/body.json')
 const header = require('../input/header.json')
@@ -68,10 +68,13 @@ mainData.forEach(data => {
 	}
 
 	if (data.sense.variants) {
-		if (data.sense.variants[0].link_word && data.sense.variants[0].spelling_variant) {
+		if (data.sense.variants[0].link_word) {
 			options2 += `<span class="neutral span">(</span><span class="LINKWORD">${
 				data.sense.variants[0].link_word
-				}</span><span class="ORTHVAR"> ${data.sense.variants[0].spelling_variant}</span><span class="neutral span">)</span>`
+				}</span><span class="neutral span">)</span>`
+		}
+		if (data.sense.variants[0].spelling_variant) {
+			options2 += `<span class="neutral span">(</span><span class="ORTHVAR"> ${data.sense.variants[0].spelling_variant}</span><span class="neutral span">)</span>`
 		}
 		if (data.sense.variants[0].lexical_variant) {
 			options2 += `<span class="LEXVAR"> ${
@@ -79,7 +82,7 @@ mainData.forEach(data => {
 				}</span>`
 		}
 		if (data.sense.variants[0].lang) {
-			options2 += `<span class="geo span"> ${
+			options2 += `<span class="neutral span">(</span><span class="geo span"> ${
 				data.sense.variants[0].lang
 				}</span><span class="neutral span">)</span>`
 		}
@@ -115,13 +118,16 @@ mainData.forEach(data => {
 		}
 	}
 
-	if (data.sense.examples && data.sense.examples[0].audio && data.sense.headword === undefined) {
-		data.sense.examples.forEach(example => {
-			// const element = $.examples[x]
+	if (data.examples && data.examples[0].audio) {
+		data.examples.forEach(example => {
+			body.audioExamples.push(example.audio[0].url)
 			body.definitionForTranslate.push(example.text)
-			for (let z = 0; z < example.audio.length; z++) {
-				body.audioExamples.push(example.audio[z].url)
-			}
+		})
+	}
+
+	if (!data.sense.examples && !data.sense.gramatical_examples && data.examples && !data.examples[0].audio && data.sense.headword === undefined) {
+		data.examples.forEach(example => {
+			body.definitionForTranslate.push(example.text)
 		})
 	}
 	if (data.sense.examples && !data.sense.examples[0].audio && data.sense.headword === undefined) {
@@ -130,7 +136,9 @@ mainData.forEach(data => {
 		}
 	}
 })
-
+body.definitionForTranslate.forEach((clearText, i) => {
+	body.definitionForTranslate[i] = clearText.replace(/([a-z])\(/, `$1 (`)
+})
 let HTMLoutput = ''
 mainData.forEach(data => {
 	if (data.definition) {

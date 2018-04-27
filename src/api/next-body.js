@@ -8,7 +8,12 @@ const alfy = require('alfy')
 
 const {wordOfURL} = process.env
 
-const url = 'http://api.pearson.com' + wordOfURL
+let url
+url = 'http://api.pearson.com' + wordOfURL
+if (wordOfURL === undefined) {
+	url = 'http://api.pearson.com' + alfy.config.get('wordOfURL')
+}
+
 const warning = {
 	notFound: `Not Found The Audio or Example  🤔`,
 	notFoundCouse: `Current page of API should include the Audio with an example but it doesn't contain them.  Maybe a path to file is damaged.`
@@ -65,7 +70,7 @@ alfy.fetch(url).then(data => {
 	}
 	if ($.senses) {
 		$.senses.forEach(sense => {
-			if (sense.examples !== undefined && sense.lexical_unit) {
+			if (sense.examples && sense.lexical_unit && !sense.synonym && !sense.opposite) {
 				addToItems.add(
 					new Render(
 						sense.signpost || sense.lexical_unit || $.headword,
@@ -103,29 +108,62 @@ alfy.fetch(url).then(data => {
 			}
 
 			if (sense.gramatical_examples) {
-				for (let i = 0; i < sense.gramatical_examples.length; i++) {
-					if (sense.gramatical_examples[i].examples) {
+				sense.gramatical_examples.forEach(gramaticalExample => {
+					if (gramaticalExample.examples && !sense.synonym && !sense.opposite) {
 						addToItems.add(
 							new Render(
-								sense.gramatical_examples[i].pattern ||
+								gramaticalExample.pattern ||
 								sense.signpost ||
 								sense.definition[0],
 								sense.definition[0],
-								sense.gramatical_examples[i].examples[0].text,
+								gramaticalExample.examples[0].text,
 								'./icons/gramatical.png',
 								{
-									examples: sense.gramatical_examples[i].examples,
+									examples: gramaticalExample.examples,
 									definition: [
 										`${sense.definition}<span class="neutral span"> [</span>${
-										sense.gramatical_examples[i].pattern
+										gramaticalExample.pattern
 										}<span class="neutral span">]</span>`
 									],
 									sense: sense
 								}
-								// valid = true,
 							))
 					}
-				}
+
+					if (sense.synonym || sense.opposite) {
+						let typeOfAddition = Object.keys(sense)[Object.keys(sense).length - 1]
+						if (typeOfAddition !== 'synonym' || typeOfAddition !== 'opposite') {
+							typeOfAddition = Object.keys(sense)[Object.keys(sense).length - 2]
+						}
+						let title = `${sense.signpost || $.headword || sense.definition[0]}\t 🔦 ${typeOfAddition}: ${sense.synonym || sense.opposite}`
+						addToItems.add(
+							new Render(
+								title,
+								sense.definition[0],
+								gramaticalExample.examples[0].text,
+								'./icons/gramatical.png',
+								{
+									examples: gramaticalExample.examples,
+									definition: [
+										`${sense.definition}<span class="neutral span"> [</span>${
+										gramaticalExample.pattern
+										}<span class="neutral span">]</span>`
+									],
+									sense: sense
+								},
+								false,
+								{
+									ctrl: {
+										valid: true,
+										variables: {
+											seeAlso: sense.synonym || sense.opposite
+										},
+										subtitle: 'SEE ALSO'
+									}
+								}
+							))
+					}
+				})
 			}
 
 			if (sense.collocation_examples) {
@@ -152,10 +190,13 @@ alfy.fetch(url).then(data => {
 					}
 				})
 			}
-			let existSyn = sense.examples && !sense.lexical_unit && sense.synonym
-			let existOpp = sense.examples && !sense.lexical_unit && sense.opposite
+			let existSyn = sense.examples && sense.synonym
+			let existOpp = sense.examples && sense.opposite
 			if (existSyn || existOpp) {
 				let typeOfAddition = Object.keys(sense)[Object.keys(sense).length - 1]
+				if (typeOfAddition !== 'synonym' || typeOfAddition !== 'opposite') {
+					typeOfAddition = Object.keys(sense)[Object.keys(sense).length - 2]
+				}
 				let title = `${sense.signpost || $.headword || sense.definition[0]}\t 🔦 ${typeOfAddition}: ${sense.synonym || sense.opposite}`
 				addToItems.add(
 					new Render(

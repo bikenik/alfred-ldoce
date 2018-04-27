@@ -2,8 +2,6 @@ const alfy = require('alfy')
 const WorkflowError = require('../utils/error')
 const {capitalize} = require('../utils')
 const ankiConnect = require('./anki-connect')
-// const deleteDeck = require('./anki-delete-deck')
-// const {nameOfDecks} = require('../utils')
 
 module.exports = () => {
 	const outresult = async function () {
@@ -13,11 +11,17 @@ module.exports = () => {
 		} catch (err) {
 			throw new WorkflowError(`${err}`, {
 				title: 'Searching without AnkiConnect',
-				subtitle: 'Activate this item to open Anki. | ⌘L to see the stack trace',
-				variables: {
-					run: 'anki'
+				subtitle: 'Press ⇧ to open Anki. | Go back to search ↵  | ⌘L to see the stack trace',
+				autocomplete: '',
+				mods: {
+					shift: {
+						variables: {
+							run: 'anki'
+						},
+						valid: true,
+						subtitle: 'Anki will be run'
+					}
 				},
-				valid: true,
 				icon: {
 					path: './icons/not-connected.png'
 				}

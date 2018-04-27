@@ -65,7 +65,7 @@ module.exports = input => {
 
 	if (chunks.length >= 3) {
 		return (async () => {
-			if (arrayOfDecks === null) {
+			if (!await decks()) {
 				throw new WorkflowError(`Decks was not found, check your Anki profile`, {
 					autocomplete: '!del ',
 					variables: {
