@@ -619,7 +619,7 @@
 	<key>createdby</key>
 	<string>bikeNik</string>
 	<key>description</key>
-	<string>dictionary</string>
+	<string>Quick look from Longman dictionary and create flash cards to Anki</string>
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
@@ -1746,6 +1746,8 @@ http://developer.pearson.com/apis/dictionaries</string>
 		</dict>
 		<key>7C66FB61-30FF-477A-B397-E60CB8EE2835</key>
 		<dict>
+			<key>note</key>
+			<string>Phrasal-verbs mode</string>
 			<key>xpos</key>
 			<integer>910</integer>
 			<key>ypos</key>
@@ -1945,6 +1947,8 @@ Generic text search across all entries (searchs all entry fields)</string>
 		</dict>
 		<key>F2887C67-0C90-4FC7-8FA2-CE0628F9128B</key>
 		<dict>
+			<key>note</key>
+			<string>regular mode</string>
 			<key>xpos</key>
 			<integer>910</integer>
 			<key>ypos</key>
@@ -1974,7 +1978,7 @@ Search for entries with the given headword</string>
 		<string>language</string>
 	</array>
 	<key>version</key>
-	<string>1.1.1</string>
+	<string>1.1.2</string>
 	<key>webaddress</key>
 	<string>https://github.com/bikeNik/alfred-ldoce#readme</string>
 </dict>

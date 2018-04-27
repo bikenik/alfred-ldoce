@@ -93,7 +93,8 @@ const option = async input => {
 			text: {
 				largetype: err.stack,
 				copy: err.stack
-			}
+			},
+			mods: err.mods ? err.mods : {mods: {}}
 		}])
 	}
 })()

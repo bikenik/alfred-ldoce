@@ -6,8 +6,8 @@
 const fs = require('fs')
 const alfy = require('alfy')
 const jsonfile = require('jsonfile')
-// const utils = require('../utils')
 const {wordOfURL} = process.env
+alfy.config.set('wordOfURL', wordOfURL)
 
 const url = 'http://api.pearson.com' + wordOfURL
 const fileHeader = './src/input/header.json'
