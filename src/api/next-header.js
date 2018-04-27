@@ -6,9 +6,10 @@
 const fs = require('fs')
 const alfy = require('alfy')
 const jsonfile = require('jsonfile')
-const utils = require('../utils')
+// const utils = require('../utils')
+const {wordOfURL} = process.env
 
-const url = 'http://api.pearson.com' + utils.wordOfURL
+const url = 'http://api.pearson.com' + wordOfURL
 const fileHeader = './src/input/header.json'
 const fileBody = './src/input/body.json'
 alfy.fetch(url).then(data => {
@@ -52,6 +53,8 @@ alfy.fetch(url).then(data => {
 	jsonfile.writeFile(fileHeader, header, {
 		spaces: 2
 	}, function (err) {
-		console.error(err)
+		if (err !== null) {
+			console.error(err)
+		}
 	})
 })

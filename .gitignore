@@ -64,7 +64,6 @@ typings/
 *.codekit3
 
 #temporary folder
-/src/input/
 
 #other
 .DS_Store

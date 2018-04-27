@@ -2,12 +2,10 @@
 const jsonfile = require('jsonfile')
 const alfredNotifier = require('alfred-notifier')
 const alfy = require('alfy')
-// const utils = require('./src/utils')
 const set = require('./src/cmd/set')
 const del = require('./src/cmd/del')
 const decks = require('./src/anki/anki-decks')
 const api = require('./src/api/index')
-// const deleteDeck = require('./src/anki/anki-delete-deck')
 
 alfredNotifier()
 
@@ -16,9 +14,6 @@ let query
 let introMessage = [{
 	subtitle: `Current deck is => ${alfy.config.get('default-deck')}`
 }]
-// let myVar = 'headword'
-// alfy.input = 'groove'
-// alfy.input = '!set default-deck '
 
 if (myVar === 'headword') {
 	query = {
@@ -35,9 +30,6 @@ if (myVar === 'search') {
 	introMessage[0].title = 'Search generic ...'
 }
 
-// alfy.input = '!set default-deck New deck 2'
-// alfy.input = '!set default-deck '
-// alfy.input = 'color'
 const fileAnkiDecks = './src/input/anki-decks.json'
 const commands = [set, del]
 const option = async input => {
@@ -60,27 +52,48 @@ const option = async input => {
 		}))
 	}
 
-	let logResult = {
-		error: [],
-		result: []
-	}
 	if (input === '') {
-		// await decks()
 		const ankiDecks = await decks()
 		jsonfile.writeFile(fileAnkiDecks, ankiDecks, {
 			spaces: 2
 		}, function (err) {
-			logResult.error.push(err)
+			if (err !== null) {
+				console.log(err)
+			}
 		})
 		return introMessage
 	}
 }
 
 (async () => {
-	let out = await option(alfy.input)
-	if (out || /!.*/.test(alfy.input)) {
-		alfy.output(out)
-	} else {
-		api.fetching(query)
+	try {
+		let out = await option(alfy.input)
+		if (out || /!.*/.test(alfy.input)) {
+			alfy.output(out)
+		} else {
+			api.fetching(query)
+		}
+	} catch (err) {
+		const messages = []
+
+		if (err.tip) {
+			messages.push(err.tip)
+		}
+
+		messages.push('Activate this item to try again.')
+		messages.push('⌘L to see the stack trace')
+
+		alfy.output([{
+			title: err.title ? err.title : `Error: ${err.message}`,
+			subtitle: err.subtitle ? err.subtitle : messages.join(' | '),
+			autocomplete: err.autocomplete ? err.autocomplete : '',
+			icon: err.icon ? err.icon : {path: alfy.icon.error},
+			valid: err.valid ? err.valid : false,
+			variables: err.variables ? err.variables : {variables: {}},
+			text: {
+				largetype: err.stack,
+				copy: err.stack
+			}
+		}])
 	}
 })()

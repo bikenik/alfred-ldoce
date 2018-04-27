@@ -10,15 +10,13 @@ const cheerio = require('cheerio')
 const translate = require('google-translate-api')
 const streamToPromise = require('stream-to-promise')
 const pMap = require('p-map')
-const chalk = require('chalk')
 const ankiAddCard = require('./anki/anki-add-card')
 const data = require('./api/mydata')
 const verbTable = require('./api/verb-table')
-// Config file
 const config = require('./config')
 
-const language = 'ru'
-// const {language} = process.env
+// const language = 'ru'
+const {language} = process.env
 let output
 
 main()
@@ -77,7 +75,6 @@ async function getData(card) {
 	let definitionForTranslate = data.body.definitionForTranslate
 	let header = ''
 	const headerReg = () => {
-		// let frequentHeader = $('.Head')
 		header = `${$('.Head')}`
 		const regex = /<span class="POS">.*?<\/span>|<span\sdata-src-mp3.*?<\/span>|<\/span>$/g
 		return header.replace(regex, '')
@@ -92,7 +89,6 @@ async function getData(card) {
 
 	// audio
 
-	// let audioAttrExp = []
 	const voices = [
 		{
 			name: 'Julie',

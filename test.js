@@ -18,9 +18,9 @@ test('bar', async t => {
 // 	t.true(items.length > 0)
 // })
 
-// test('main test', async t => {
+// test('main test', async () => {
 // 	const alfy = alfyTest()
-// 	const result = await alfy('qui')
+// 	const result = await alfy('')
 
 // 	t.deepEqual(result, [
 // 		{
@@ -28,3 +28,7 @@ test('bar', async t => {
 // 		}
 // 	])
 // })
+
+// let myVar = 'headword'
+// alfy.input = 'get'
+// alfy.input = '!set default-deck '

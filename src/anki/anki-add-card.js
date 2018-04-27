@@ -5,7 +5,6 @@ const ankiConnect = require('./anki-connect')
 // const nameOfDeck = 'Scramble'
 const nameOfDeck = alfy.config.get('default-deck')
 
-// console.log(JSON.stringify(obj))
 let logResult = {
 	error: [],
 	result: []
@@ -28,8 +27,6 @@ module.exports = async function (output) {
 					{
 						deck: nameOfDeck
 					})
-				// alfy.log(`got ID of deck: ${result1}`)
-				// logResult.result.push(result1)
 			} catch (err) {
 				// process.stdout.write(`!err: ${err}`)
 				logResult.error.push(err)

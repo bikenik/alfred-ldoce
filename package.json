@@ -25,7 +25,7 @@
 	"author": {
 		"name": "bikeNik",
 		"email": "bikenik@icloud.com",
-		"url": "github.com/bikenik"
+		"url": "bikenik.org"
 	},
 	"bugs": {
 		"url": "https://github.com/bikeNik/alfred-ldoce/issues"
@@ -35,11 +35,8 @@
 		"JSONStream": "^1.3.2",
 		"alfred-notifier": "^0.2.3",
 		"alfy": "^0.6.0",
-		"chalk": "^2.3.2",
 		"cheerio": "^1.0.0-rc.2",
-		"createscript": "^1.0.2",
 		"del": "^3.0.0",
-		"display-notification": "^2.0.0",
 		"google-translate-api": "^2.3.0",
 		"jsonfile": "^4.0.0",
 		"md5": "^2.2.1",
@@ -49,12 +46,11 @@
 		"request": "^2.85.0",
 		"request-promise": "^4.2.2",
 		"stream-to-promise": "^2.2.0",
-		"translate": "^1.0.1",
 		"xmlhttprequest": "^1.8.0"
 	},
 	"deprecated": false,
-	"description": "dictionary",
-	"main": "srs/index.js",
+	"description": "Quick look from Longman dictionary and create flash cards to Anki",
+	"main": "index.js",
 	"devDependencies": {
 		"alfy-test": "^0.3.0",
 		"ava": "^0.18.0",
@@ -66,14 +62,15 @@
 		"semicolon": false
 	},
 	"engines": {
-		"node": ">=4"
+		"node": ">=7.6"
 	},
 	"files": [
-		"config",
-		"icons",
-		"src",
 		"icon.png",
-		"info.plist"
+		"icons",
+		"index.js",
+		"info.plist",
+		"src",
+		"update-config.js"
 	],
 	"homepage": "https://github.com/bikeNik/alfred-ldoce#readme",
 	"keywords": [

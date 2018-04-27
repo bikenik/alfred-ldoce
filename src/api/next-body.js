@@ -1,31 +1,34 @@
+/* eslint max-params: ["error", 8] */
 /* eslint max-depth: ["error", 8] */
 /* eslint complexity: ["error", 30] */
-/* eslint max-params: ["error", 6] */
 /* eslint-disable no-unused-vars */
 /* eslint-env es6 */
 'use strict'
 const alfy = require('alfy')
-const utils = require('../utils')
 
-const url = 'http://api.pearson.com' + utils.wordOfURL
+const {wordOfURL} = process.env
+
+const url = 'http://api.pearson.com' + wordOfURL
 const warning = {
 	notFound: `Not Found The Audio or Example  🤔`,
 	notFoundCouse: `Current page of API should include the Audio with an example but it doesn't contain them.  Maybe a path to file is damaged.`
 }
 class Render {
-	constructor(title, subtitle, sentence, path, arg) {
+	constructor(title, subtitle, sentence, icon, arg, valid = true, mods) {
 		this.title = title
 		this.subtitle = subtitle
 		this.sentence = sentence
-		this.path = path
+		this.path = icon
 		this.arg = arg
 		this.items = []
 		this.text = {
 			copy: subtitle,
-			largetype: `🔑 :${subtitle} \n\n🎯 ${sentence}`
+			largetype: `${title}\n\n🔑 :${subtitle} \n\n🎯 ${sentence}`
 		}
-		this.icon = {path: path}
+		this.icon = {path: icon}
 		this.autocomplete = title
+		this.valid = valid
+		this.mods = mods
 	}
 	add(item) {
 		this.items.push(item)
@@ -53,7 +56,9 @@ alfy.fetch(url).then(data => {
 							],
 							examples: runOn.examples,
 							sense: runOn
-						}
+						},
+						null,
+						null
 					))
 			}
 		})
@@ -75,10 +80,12 @@ alfy.fetch(url).then(data => {
 							],
 							examples: sense.examples,
 							sense: sense
-						}
+						},
+						null,
+						null
 					))
 			}
-			if (sense.examples && !sense.lexical_unit) {
+			if (sense.examples && !sense.lexical_unit && !sense.synonym && !sense.opposite) {
 				addToItems.add(
 					new Render(
 						sense.signpost || $.headword || sense.definition[0],
@@ -89,7 +96,9 @@ alfy.fetch(url).then(data => {
 							definition: sense.definition,
 							examples: sense.examples,
 							sense: sense
-						}
+						},
+						null,
+						null
 					))
 			}
 
@@ -136,12 +145,40 @@ alfy.fetch(url).then(data => {
 										}<span class="neutral span">]</span>`
 									],
 									sense: sense
-								}
-								// valid: false,
-								// autocomplete = collExample.collocation,
+								},
+								null,
+								null
 							))
 					}
 				})
+			}
+			let existSyn = sense.examples && !sense.lexical_unit && sense.synonym
+			let existOpp = sense.examples && !sense.lexical_unit && sense.opposite
+			if (existSyn || existOpp) {
+				let typeOfAddition = Object.keys(sense)[Object.keys(sense).length - 1]
+				let title = `${sense.signpost || $.headword || sense.definition[0]}\t 🔦 ${typeOfAddition}: ${sense.synonym || sense.opposite}`
+				addToItems.add(
+					new Render(
+						title,
+						sense.definition[0],
+						sense.examples[0].text,
+						'./icons/flag.png',
+						{
+							definition: sense.definition,
+							examples: sense.examples,
+							sense: sense
+						},
+						false,
+						{
+							ctrl: {
+								valid: true,
+								variables: {
+									seeAlso: sense.synonym || sense.opposite
+								},
+								subtitle: 'SEE ALSO'
+							}
+						}
+					))
 			}
 			if (!addToItems.items[0] && sense.definition && $.examples) {
 				let examples = []
@@ -158,7 +195,9 @@ alfy.fetch(url).then(data => {
 							definition: sense.definition,
 							examples: examples,
 							sense: sense
-						}
+						},
+						null,
+						null
 					))
 			}
 			if (!addToItems.items[0] && sense.definition) {
@@ -167,28 +206,23 @@ alfy.fetch(url).then(data => {
 					subtitle: sense.definition[0],
 					text: {
 						copy: `🔑 ${sense.definition[0]}`,
-						largetype: `🔑 ${sense.definition[0]}\n\n🎲 It's not exist examples, so the card won't created.\nHint the Enter to go ldoce.com`
+						largetype: `🔑 ${sense.definition[0]}\n\n🎲 API not exist examples, so the card won't created.\nHint the Enter to go to ldoce.com`
 					},
 					icon: {
-						path: '/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/AlertStopIcon.icns'
+						path: './icons/warning.png'
 					},
 					arg: `https://www.ldoceonline.com/dictionary/${data.result.headword.replace(
 						/\s/g,
 						'-'
 					)}`
-
 				})
 			}
 		})
 	}
 
-	const elements = []
-	for (let i = 0; i < addToItems.items.length; i++) {
-		if (addToItems.items[i] !== undefined) {
-			elements.push(addToItems.items[i])
-		}
-	}
-	const variantsToSingleChoose = alfy.inputMatches(elements, 'title').map(x => ({
+	const items = addToItems.items.filter(item => addToItems.items)
+
+	const variantsToSingleChoose = alfy.inputMatches(items, 'title').map(x => ({
 		title: x.title,
 		subtitle: x.subtitle,
 		arg: JSON.stringify(x.arg, '', 2),
@@ -201,10 +235,8 @@ alfy.fetch(url).then(data => {
 			word: data.result.headword.toUpperCase()
 		},
 		autocomplete: x.title,
-		quicklookurl: `https://www.ldoceonline.com/dictionary/${data.result.headword.replace(
-			/\s/g,
-			'-'
-		)}`
+		quicklookurl: `https://www.ldoceonline.com/dictionary/${data.result.headword.replace(/\s/g, '-')}`,
+		mods: x.mods
 	}))
 
 	try {
@@ -217,23 +249,17 @@ alfy.fetch(url).then(data => {
 				copy: warning.notFound,
 				largetype: warning.notFoundCouse
 			},
-			arg: `https://www.ldoceonline.com/dictionary/${data.result.headword.replace(
-				/\s/g,
-				'-'
-			)}`,
+			arg: `https://www.ldoceonline.com/dictionary/${data.result.headword.replace(/\s/g, '-')}`,
 			icon: {
 				path: '/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/AlertStopIcon.icns'
 			},
-			quicklookurl: `https://www.ldoceonline.com/dictionary/${data.result.headword.replace(
-				/\s/g,
-				'-'
-			)}`
+			quicklookurl: `https://www.ldoceonline.com/dictionary/${data.result.headword.replace(/\s/g, '-')}`
 		})
 	}
 
 	alfy.output(variantsToSingleChoose)
 
-	const variantsAll = alfy.inputMatches(elements, 'title').map(x => ({
+	const variantsAll = alfy.inputMatches(items, 'title').map(x => ({
 		arg: x.arg,
 		variables: {word: `${data.result.headword}`}
 	}))

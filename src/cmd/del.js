@@ -1,10 +1,7 @@
 const alfy = require('alfy')
 const WorkflowError = require('../utils/error')
-// const decksNames = require('../output/decks')
 const config = require('../config')
 const decks = require('../anki/anki-decks')
-const deleteDeck = require('../anki/anki-delete-deck')
-// const {deleteDeck} = require('../anki/anki-decks')
 const {capitalize, hasOwnProperty} = require('../utils')
 const arrayOfDecks = require('../input/anki-decks.json')
 
@@ -12,7 +9,6 @@ const variables = {
 	'default-deck': {
 		default: 'English',
 		outputOptions: decks,
-		// isValid: input => nameOfDecks.indexOf(input.toLowerCase()) !== 1,
 		prettify: input => capitalize(input)
 	}
 }
@@ -27,7 +23,6 @@ const outputVariables = pattern => {
 
 	const mapper = key => ({
 		title: key,
-		// subtitle: '⇒ hello world',
 		subtitle: '⇒ ' + alfy.config.get(key),
 		valid: false,
 		autocomplete: `!del ${key} `
@@ -70,23 +65,44 @@ module.exports = input => {
 
 	if (chunks.length >= 3) {
 		return (async () => {
+			if (arrayOfDecks === null) {
+				throw new WorkflowError(`Decks was not found, check your Anki profile`, {
+					autocomplete: '!del ',
+					variables: {
+						run: 'anki'
+					},
+					valid: true,
+					icon: {
+						path: './icons/not-connected.png'
+					}
+				})
+			}
 			if (arrayOfDecks.indexOf(value) === -1) {
 				return variable.outputOptions.render(
 					value,
 					name => `!del ${variableName} ${name}`,
-					arrayOfDecks
+					arrayOfDecks,
+					`./icons/deck-red.png`
 				)
 			}
-			// if (ankiDecks.indexOf(value) === -1) {
-			const out = [{
-				title: `Delelet'${value}'`,
-				subtitle: `Old value ⇒ ${alfy.config.get(variableName)}`,
+			return [{
+				title: `The deck [${value}] will be deleted`,
+				subtitle: `All cards in this deck will be deleted. Are you sure?`,
 				valid: true,
-				arg: deleteDeck(value)
+				arg: JSON.stringify({
+					alfredworkflow: {
+						variables: {
+							action: 'del',
+							/* eslint-disable camelcase */
+							config_variable: variableName,
+							config_value: value
+						}
+					}
+				}),
+				icon: {
+					path: './icons/warning.png'
+				}
 			}]
-			alfy.output(out)
-			// deleteDeck(value)
-			// }
 		})()
 	}
 }
@@ -94,9 +110,7 @@ module.exports = input => {
 module.exports.meta = {
 	name: '!del',
 	usage: '!delete any your deck',
-	// usage: '!set (variable) (value)',
-	// help: `Current Deck is "${alfy.config.get('default-deck').toUpperCase()}"`,
-	help: 'Sets a given config variable to the given value.',
+	help: 'Delete deck by the given value.',
 	autocomplete: '!del '
 }
 

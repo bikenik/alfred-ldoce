@@ -4,24 +4,47 @@ const apiError = require('../utils/error')
 module.exports.fetching =
 	async query => {
 		let quickLook = ''
-		// (quickLook, query, myVar) => {
 		await alfy
 			.fetch('http://api.pearson.com/v2/dictionaries/ldoce5/entries', {query})
 			.then(apiError.checkStatus)
 			.then(data => {
 				const items = data.results.map(x => {
 					let currentWord = alfy.input.replace(/\s/g, '-')
-					return {
+					let result
+					result = {
 						title: x.headword,
 						subtitle: x.part_of_speech,
 						arg: x.url,
-						valid: true,
 						autocomplete: x.headword || '',
 						quicklookurl: `https://www.ldoceonline.com/dictionary/${currentWord}`,
 						variables: {
-							action: 'dic'
+							action: 'dic',
+							mode: 'regular'
 						}
 					}
+					if (x.part_of_speech === 'verb') {
+						result = {
+							title: x.headword,
+							arg: x.url,
+							subtitle: x.part_of_speech,
+							autocomplete: x.headword || '',
+							quicklookurl: `https://www.ldoceonline.com/dictionary/${currentWord}`,
+							variables: {
+								action: 'dic',
+								mode: 'regular'
+							},
+							mods: {
+								alt: {
+									variables: {
+										action: 'dic',
+										mode: 'phrasal-verb'
+									},
+									subtitle: 'Show Phrasal Verbs'
+								}
+							}
+						}
+					}
+					return result
 				})
 				alfy.output(items)
 			})
