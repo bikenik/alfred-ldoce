@@ -28,8 +28,8 @@ _Requires: [Node.js](https://nodejs.org) 4+, Alfred [Powerpack](https://www.alfr
   — Show list of headwords 
   - `⇥`, `↩` or `⌘+NUM` 
   - Show senses of selected headword 
-  - `⌥+↩` - Show phrasal verbs for selected headword if exist (for verbs only). If item not found, in Alfred, type **`ldl`** (last query) to go to the last query of current verb 
-  - `⇧` or `⌘+Y` 
+  - `⌥ + ↩` - Show phrasal verbs for selected headword if exist (for verbs only). If item not found, in Alfred, type **`ldl`** (last query) to go to the last query of current verb 
+  - `⇧` or `⌘ + Y` 
   - Show Quick Look preview from [ldoceonline.com/dictionary/query](https://www.ldoceonline.com)
 * `<query>` 
 — Search for previous matching `ldoce <query>`
@@ -37,6 +37,7 @@ _Requires: [Node.js](https://nodejs.org) 4+, Alfred [Powerpack](https://www.alfr
   * `⌘+L` — Show one of example sentences in Alfred's Large Type window
   * `⌘+↩` — create card from selected senses of word
   * `⌥+↩` - create card from all matching of current query
+* `<!set or !del>` — Choose, create or delete deck for Anki
 
 **Note:** OS X's "delete word" shortcut (`⌥+⌫`) is very handy for backing out of a current search result.
 
@@ -63,6 +64,11 @@ _Requires: [Node.js](https://nodejs.org) 4+, Alfred [Powerpack](https://www.alfr
 	- `language`: [Choose your language](https://cloud.google.com/translate/docs/languages) (it use google-translate-api). 
 	- `name_of_deck`: Change the name of pre-built deck if necessary. 
 	- `path_to_anki-media`: by default don't need to.
+
+### ToDo
+
+- [x] Update Readme
+- [ ] tests
 
 ## License
 
