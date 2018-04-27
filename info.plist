@@ -1964,20 +1964,17 @@ Search for entries with the given headword</string>
 	<key>variables</key>
 	<dict>
 		<key>language</key>
-		<string>ru</string>
-		<key>nameOfDeck</key>
-		<string>Ldoce-Test</string>
+		<string>de</string>
 		<key>pathToAnkiMedia</key>
 		<string>/Library/Application Support/Anki2/English/collection.media</string>
 	</dict>
 	<key>variablesdontexport</key>
 	<array>
-		<string>nameOfDeck</string>
 		<string>pathToAnkiMedia</string>
 		<string>language</string>
 	</array>
 	<key>version</key>
-	<string>1.0.5</string>
+	<string>1.1.1</string>
 	<key>webaddress</key>
 	<string>https://github.com/bikeNik/alfred-ldoce#readme</string>
 </dict>
