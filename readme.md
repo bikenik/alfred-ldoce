@@ -11,7 +11,7 @@
 ## Description
 
 The search, `ldoce <query>`, uses [Pearson's API](http://developer.pearson.com/apis/dictionaries) to hunt for headwords and senses that match `headeword/<query>`. 25 results are retrieved by default for headword search.
-It searches from 99% of Longman Dictionary of Contemporary English (5th edition). And creates Anki cards by your choices (if an article of the current word in this API not existing audio examples the Alfred will create audio examples from [Oddcast](http://www.oddcast.com/demos/tts/tts_example.php?clients). [uses random voices: Julie, Kate, James]
+This workflow searches from Longman Dictionary of Contemporary English (5th edition)[ldoce5 - API]. And creates Anki cards by your choices (if an article of the current word in this API not existing audio examples the Alfred will create audio examples from [Oddcast](http://www.oddcast.com/demos/tts/tts_example.php?clients). [uses random voices: Julie, Kate, James]
 
 ## Install
 
