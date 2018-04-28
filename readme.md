@@ -85,8 +85,8 @@ _Requires: [Node.js](https://nodejs.org) 7.6+, Alfred [Powerpack](https://www.al
 
 ### ToDo
 
-- [ ] Update Readme
-- [ ] tests
+- [x] Update Readme
+- [ ] Tests
 
 ## License
 
