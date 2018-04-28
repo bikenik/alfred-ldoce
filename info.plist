@@ -1251,7 +1251,7 @@ rm $file.bk
 				<key>text</key>
 				<string>⛔ {query}</string>
 				<key>title</key>
-				<string>NOT YET:</string>
+				<string>NOT YET: {var:word}</string>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.output.notification</string>

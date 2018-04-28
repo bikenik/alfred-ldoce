@@ -5,11 +5,16 @@
 #### Search by headword or across all entries
 ![Search by headword or across all entries](./media-readme/main-window.png)
 
-#### Use <kbd>⌘L</kbd> for more info by large text and copy it
-![Use [⌘L] for more info by large text and copy it](./media-readme/largeText.png)
-
 #### Create, choose and delete your decks in Anki
 ![Create, choose and delete your decks in Anki](./media-readme/mods.png)
+
+#### Use <kbd>⌘L</kbd> for more info by large text and copy it
+>![Use [⌘L] for more info by large text and copy it](./media-readme/largeText.png)
+
+#### Warnings, Notifications
+>  ![search wichout Anki](./media-readme/edit_mode.png)
+
+>  ![Notification](./media-readme/Notification-alfred-readme.png)
 
 #### Try [this](https://github.com/bikenik/alfred-ldoce/blob/master/Ldoce-Express.apkg) Anki theme (Scramble-sentences) to learning by created cards
 ![anki-scramble-theme](./media-readme/scramble-them-preview.gif)
