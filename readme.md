@@ -2,10 +2,13 @@
 
 > [Alfred 3](https://www.alfredapp.com) workflow to quick look of Longman dictionary and creating [Anki](https://apps.ankiweb.net) cards.
 
-![Search by headword and across all entries](./media-readme/main-window.png)
+#### Search by headword or across all entries
+![Search by headword or across all entries](./media-readme/main-window.png)
 
+#### Use <kbd>⌘L</kbd> for more info by large text and copy it
 ![Use [⌘L] for more info by large text and copy it](./media-readme/largeText.png)
 
+#### Create, choose and delete your decks in Anki
 ![Create, choose and delete your decks in Anki](./media-readme/mods.png)
 
 ## Description
@@ -26,26 +29,29 @@ _Requires: [Node.js](https://nodejs.org) 7.6+, Alfred [Powerpack](https://www.al
 ## Usage
 [video presentation](https://youtu.be/MD6wpJJIzHc)
 
-##### In Alfred, type `ldoce`, <kbd>Enter</kbd>, and your query.
+##### In Alfred, type <kbd>ldoce</kbd>, <kbd>Enter</kbd>, and your query.
 
-* `ldoce <query>` 
-  — Show list of headwords 
-  - `⇥`, `↩` or `⌘+NUM`
+* <kbd>`ldoce <query>`</kbd>
+  — Search for entries with the given headword 
+* <kbd>`ldoces <query>`</kbd>
+  — Generic text search across all entries (searchs all entry fields)
+  - <kbd>⇥</kbd>, <kbd>↩</kbd> or <kbd>⌘+NUM</kbd>
   — Show senses of selected headword 
-  - `⌥+↩` — Show phrasal verbs for selected headword if exist (for verbs only). If item not found, in Alfred, type **`ldl`** (last query) to go to the last query of current verb 
-  - `⇧` or `⌘+Y` 
+  - <kbd>⌥+↩</kbd> — Show phrasal verbs for selected headword if exist (for verbs only). If item not found, in Alfred, type **<kbd>ldl</kbd>** (last query) to go to the last query of current verb 
+  - <kbd>⇧</kbd> or <kbd>⌘+L</kbd> 
   — Show Quick Look preview from [ldoceonline.com/dictionary/query](https://www.ldoceonline.com)
-* `<query>` 
-— Search for previous matching `ldoce <query>`
-  * `⇥`, `↩` or `⌘+NUM` or click — select to choose sense for creating card
-  * `⌘+L` — Show one of example sentences in Alfred's Large Type window
-  * `⌘+↩` — create card from selected senses of word
-  * `⌥+↩` — create card from all matching of current query
-* `<!set> or <!del>` — Choose, create or delete deck for Anki
-* If you notice this sign [ 🔦 ] it means the current deffinition exist additional words for search. Hit ( ⌥+⌅ ) to show and search by this words.
+
+* <kbd>`<query>`</kbd> — Search for previous matching        <kbd>ldoce <query></kbd>
+
+  * <kbd>⇥</kbd>, <kbd>↩</kbd> or <kbd>⌘+NUM</kbd> or click — select to choose sense for creating card
+  * <kbd>⌘+L</kbd> — Show one of example sentences in Alfred's Large Type window
+  * <kbd>⌘+↩</kbd> — create card from selected senses of word
+  * <kbd>⌥+↩</kbd> — create card from all matching of current query
+* <kbd><!set></kbd> or <kbd><!del></kbd> — Choose, create or delete deck for Anki
+* If you notice this sign [ 🔦 ] it means the current deffinition exist additional words for search. Hit <kbd>⌥+⌅</kbd> to show and search by this words.
 
 
-**Note:** OS X's "delete word" shortcut ( `⌥+⌫` ) is very handy for backing out of a current search result.
+**Note:** OS X's "delete word" shortcut ( <kbd>⌥+⌫</kbd> ) is very handy for backing out of a current search result.
 
 ## notation conventions
 
