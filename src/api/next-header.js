@@ -6,6 +6,7 @@
 const fs = require('fs')
 const alfy = require('alfy')
 const jsonfile = require('jsonfile')
+
 const {wordOfURL} = process.env
 alfy.config.set('wordOfURL', wordOfURL)
 
