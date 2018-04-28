@@ -2,11 +2,11 @@
 
 > [Alfred 3](https://www.alfredapp.com) workflow to quick look of Longman dictionary and creating [Anki](https://apps.ankiweb.net) cards.
 
-![Search by headword and across all entries](https://monosnap.com/image/ngbiVZ1IZobke9IZ1ecR4J961bCA3F)
+![Search by headword and across all entries](https://monosnap.com/file/ngbiVZ1IZobke9IZ1ecR4J961bCA3F.png)
 
-![Use [⌘L] for more info by large text and copy it](https://monosnap.com/image/4R894pfVMx7JAG7IqNDyVPRz4LgTGf)
+![Use [⌘L] for more info by large text and copy it](https://monosnap.com/file/4R894pfVMx7JAG7IqNDyVPRz4LgTGf.png)
 
-![Create, choose and delete your decks in Anki](https://monosnap.com/image/hxuHf99XvyclX4hkoyglWXmS2TlSCv)
+![Create, choose and delete your decks in Anki](https://monosnap.com/file/hxuHf99XvyclX4hkoyglWXmS2TlSCv.png)
 
 ## Description
 
@@ -55,10 +55,10 @@ _Requires: [Node.js](https://nodejs.org) 7.6+, Alfred [Powerpack](https://www.al
 ![gramatical example](https://monosnap.com/file/HZt858KXy398FSU5YBGJZo3mhXgmuh.png)
 : Gramatical
 
-![phrasal verb](https://monosnap.com/image/HIFWoPf8z7WQItC8rgtwahg8tqDKHd)
+![phrasal verb](https://monosnap.com/file/HIFWoPf8z7WQItC8rgtwahg8tqDKHd.png)
 : Phrasal verbs
 
-![collocation](https://monosnap.com/image/dJx1MkrGza7KEUcJTXtKXrPFeMjyYm)
+![collocation](https://monosnap.com/file/dJx1MkrGza7KEUcJTXtKXrPFeMjyYm.png)
 : Collocation
 
 ![runon](https://monosnap.com/file/AcL3WjZvjmZBBCJyYYTs54zFqnmY3y.png)
