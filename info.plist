@@ -1968,7 +1968,7 @@ Search for entries with the given headword</string>
 	<key>variables</key>
 	<dict>
 		<key>language</key>
-		<string>ru</string>
+		<string>de</string>
 		<key>pathToAnkiMedia</key>
 		<string>/Library/Application Support/Anki2/English/collection.media</string>
 	</dict>
