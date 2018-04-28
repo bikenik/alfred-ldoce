@@ -131,9 +131,13 @@ alfy.fetch(url).then(data => {
 					}
 
 					if (sense.synonym || sense.opposite) {
-						let typeOfAddition = Object.keys(sense)[Object.keys(sense).length - 1]
-						if (typeOfAddition !== 'synonym' || typeOfAddition !== 'opposite') {
-							typeOfAddition = Object.keys(sense)[Object.keys(sense).length - 2]
+						let typeOfAddition
+						for (const key in sense) {
+							if (key === 'synonym') {
+								typeOfAddition = key
+							} else if (key === 'opposite') {
+								typeOfAddition = key
+							}
 						}
 						let title = `${sense.signpost || $.headword || sense.definition[0]}\t 🔦 ${typeOfAddition}: ${sense.synonym || sense.opposite}`
 						addToItems.add(
@@ -193,9 +197,13 @@ alfy.fetch(url).then(data => {
 			let existSyn = sense.examples && sense.synonym
 			let existOpp = sense.examples && sense.opposite
 			if (existSyn || existOpp) {
-				let typeOfAddition = Object.keys(sense)[Object.keys(sense).length - 1]
-				if (typeOfAddition !== 'synonym' || typeOfAddition !== 'opposite') {
-					typeOfAddition = Object.keys(sense)[Object.keys(sense).length - 2]
+				let typeOfAddition
+				for (const key in sense) {
+					if (key === 'synonym') {
+						typeOfAddition = key
+					} else if (key === 'opposite') {
+						typeOfAddition = key
+					}
 				}
 				let title = `${sense.signpost || $.headword || sense.definition[0]}\t 🔦 ${typeOfAddition}: ${sense.synonym || sense.opposite}`
 				addToItems.add(
