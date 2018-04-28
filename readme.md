@@ -11,6 +11,8 @@
 #### Create, choose and delete your decks in Anki
 ![Create, choose and delete your decks in Anki](./media-readme/mods.png)
 
+#### Try [this](https://github.com/bikenik/alfred-ldoce/blob/master/Ldoce-Express.apkg) Anki theme (Scramble-sentences) to learning by created cards
+![anki-scramble-theme](./media-readme/preview_1.gif)
 ## Description
 
 The search, `ldoce <query>`, uses [Pearson's API](http://developer.pearson.com/apis/dictionaries) to hunt for headwords and senses that match `headeword/<query>`. 25 results are retrieved by default for headword search.
@@ -35,23 +37,23 @@ _Requires: [Node.js](https://nodejs.org) 7.6+, Alfred [Powerpack](https://www.al
   — Search for entries with the given headword 
 * <kbd>`ldoces <query>`</kbd>
   — Generic text search across all entries (searchs all entry fields)
-  - <kbd>⇥</kbd>, <kbd>↩</kbd> or <kbd>⌘+NUM</kbd>
+  - <kbd>⇥</kbd>, <kbd>↩</kbd> or <kbd>⌘ + NUM</kbd>
   — Show senses of selected headword 
-  - <kbd>⌥+↩</kbd> — Show phrasal verbs for selected headword if exist (for verbs only). If item not found, in Alfred, type **<kbd>ldl</kbd>** (last query) to go to the last query of current verb 
-  - <kbd>⇧</kbd> or <kbd>⌘+L</kbd> 
+  - <kbd>⌥ + ↩</kbd> — Show phrasal verbs for selected headword if exist (for verbs only). If item not found, in Alfred, type **<kbd>ldl</kbd>** (last query) to go to the last query of current verb 
+  - <kbd>⇧</kbd> or <kbd>⌘ + L</kbd>
   — Show Quick Look preview from [ldoceonline.com/dictionary/query](https://www.ldoceonline.com)
 
 * <kbd>`<query>`</kbd> — Search for previous matching        <kbd>ldoce <query></kbd>
 
-  * <kbd>⇥</kbd>, <kbd>↩</kbd> or <kbd>⌘+NUM</kbd> or click — select to choose sense for creating card
-  * <kbd>⌘+L</kbd> — Show one of example sentences in Alfred's Large Type window
-  * <kbd>⌘+↩</kbd> — create card from selected senses of word
-  * <kbd>⌥+↩</kbd> — create card from all matching of current query
+  * <kbd>⇥</kbd>, <kbd>↩</kbd> or <kbd>⌘ + NUM</kbd> or click — select to choose sense for creating card
+  * <kbd>⌘ + L</kbd> — Show one of example sentences in Alfred's Large Type window
+  * <kbd>⌘ + ↩</kbd> — create card from selected senses of word
+  * <kbd>⌥ + ↩</kbd> — create card from all matching of current query
 * <kbd><!set></kbd> or <kbd><!del></kbd> — Choose, create or delete deck for Anki
-* If you notice this sign [ 🔦 ] it means the current deffinition exist additional words for search. Hit <kbd>⌥+⌅</kbd> to show and search by this words.
+* If you notice this sign [ 🔦 ] it means the current deffinition exist additional words for search. Hit <kbd>⌥ + ↵</kbd> to show and search by this words.
 
 
-**Note:** OS X's "delete word" shortcut ( <kbd>⌥+⌫</kbd> ) is very handy for backing out of a current search result.
+**Note:** OS X's "delete word" shortcut ( <kbd>⌥ + ⌫</kbd> ) is very handy for backing out of a current search result.
 
 ## notation conventions
 
@@ -72,9 +74,9 @@ _Requires: [Node.js](https://nodejs.org) 7.6+, Alfred [Powerpack](https://www.al
 
 ## Configuration
 
-* There is three options: 
+* There is two options: 
 	- `language`: [Choose your language](https://cloud.google.com/translate/docs/languages) (it use google-translate-api). 
-	- `path_to_anki-media`: by default don't need to.
+	- `path_to_anki-media`: by default don't need to change.
 
 ### ToDo
 
