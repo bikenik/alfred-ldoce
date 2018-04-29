@@ -2,6 +2,8 @@
 const jsonfile = require('jsonfile')
 const alfredNotifier = require('alfred-notifier')
 const alfy = require('alfy')
+const WorkflowError = require('./src/utils/error')
+const {errorAction} = require('./src/utils/error')
 const set = require('./src/cmd/set')
 const del = require('./src/cmd/del')
 const decks = require('./src/anki/anki-decks')
@@ -54,6 +56,9 @@ const option = async input => {
 
 	if (input === '') {
 		const ankiDecks = await decks()
+		if (ankiDecks === null) {
+			throw new WorkflowError(`Decks was not found, check your Anki profile`, errorAction('profile'))
+		}
 		jsonfile.writeFile(fileAnkiDecks, ankiDecks, {
 			spaces: 2
 		}, function (err) {
