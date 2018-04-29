@@ -4,12 +4,20 @@
 /* eslint-disable no-unused-vars */
 /* eslint-env es6 */
 'use strict'
+const fs = require('fs')
 const alfy = require('alfy')
 
+const fileBody = './src/input/body.json'
 const {wordOfURL} = process.env
 
-let url
-url = 'http://api.pearson.com' + wordOfURL
+try {
+	fs.unlinkSync(fileBody) // delete file
+	console.log('successfully deleted: fileBody')
+} catch (err) {
+	// handle the error
+}
+
+let url = 'http://api.pearson.com' + wordOfURL
 if (wordOfURL === undefined) {
 	url = 'http://api.pearson.com' + alfy.config.get('wordOfURL')
 }
@@ -44,6 +52,10 @@ const addToItems = new Render()
 
 alfy.fetch(url).then(data => {
 	const $ = data.result
+
+	/* ************************
+	Run-ons
+	************************ */
 	if ($.run_ons) {
 		$.run_ons.forEach(runOn => {
 			if (runOn.examples) {
@@ -68,6 +80,10 @@ alfy.fetch(url).then(data => {
 			}
 		})
 	}
+
+	/* ************************
+	Regular senses
+	************************ */
 	if ($.senses) {
 		$.senses.forEach(sense => {
 			if (sense.examples && sense.lexical_unit && !sense.synonym && !sense.opposite) {
@@ -107,6 +123,9 @@ alfy.fetch(url).then(data => {
 					))
 			}
 
+			/* ************************
+			Grammatiacal examples
+			************************ */
 			if (sense.gramatical_examples) {
 				sense.gramatical_examples.forEach(gramaticalExample => {
 					if (gramaticalExample.examples && !sense.synonym && !sense.opposite) {
@@ -130,6 +149,7 @@ alfy.fetch(url).then(data => {
 							))
 					}
 
+					// show words: 'SEE ALSO' (syonym & opposite)
 					if (sense.synonym || sense.opposite) {
 						let typeOfAddition
 						for (const key in sense) {
@@ -139,7 +159,7 @@ alfy.fetch(url).then(data => {
 								typeOfAddition = key
 							}
 						}
-						let title = `${sense.signpost || $.headword || sense.definition[0]}\t 🔦 ${typeOfAddition}: ${sense.synonym || sense.opposite}`
+						let title = `${gramaticalExample.pattern || sense.signpost || $.headword || sense.definition[0]}\t 🔦 ${typeOfAddition}: ${sense.synonym || sense.opposite}`
 						addToItems.add(
 							new Render(
 								title,
@@ -170,6 +190,9 @@ alfy.fetch(url).then(data => {
 				})
 			}
 
+			/* ************************
+			Collocation examples
+			************************ */
 			if (sense.collocation_examples) {
 				sense.collocation_examples.forEach(collExample => {
 					if (collExample.example.text !== undefined) {
@@ -194,6 +217,8 @@ alfy.fetch(url).then(data => {
 					}
 				})
 			}
+
+			// show words: 'SEE ALSO' (syonym & opposite)
 			let existSyn = sense.examples && sense.synonym
 			let existOpp = sense.examples && sense.opposite
 			if (existSyn || existOpp) {
@@ -249,6 +274,10 @@ alfy.fetch(url).then(data => {
 						null
 					))
 			}
+
+			/* ************************
+			Conditions for case without examples
+			************************ */
 			if (!addToItems.items[0] && sense.definition) {
 				addToItems.items.push({
 					title: $.headword,

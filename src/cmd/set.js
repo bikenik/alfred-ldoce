@@ -1,5 +1,6 @@
 const alfy = require('alfy')
 const WorkflowError = require('../utils/error')
+const {errorAction} = require('../utils/error')
 const config = require('../config')
 const decks = require('../anki/anki-decks')
 const {capitalize, hasOwnProperty} = require('../utils')
@@ -66,18 +67,8 @@ module.exports = input => {
 
 	if (chunks.length >= 3) {
 		return (async () => {
-			if (!await decks()) {
-				// if (arrayOfDecks === null) {
-				throw new WorkflowError(`Decks was not found, check your Anki profile`, {
-					autocomplete: '!set ',
-					variables: {
-						run: 'anki'
-					},
-					valid: true,
-					icon: {
-						path: './icons/not-connected.png'
-					}
-				})
+			if (await decks() === null) {
+				throw new WorkflowError(`Decks was not found, check your Anki profile`, errorAction('!set decks'))
 			}
 			if (arrayOfDecks.indexOf(value) === -1) {
 				return variable.outputOptions.render(

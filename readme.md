@@ -44,7 +44,7 @@ _Requires: [Node.js](https://nodejs.org) 7.6+, Alfred [Powerpack](https://www.al
   — Generic text search across all entries (searchs all entry fields)
   - <kbd>⇥</kbd>, <kbd>↩</kbd> or <kbd>⌘ + NUM</kbd>
   — Show senses of selected headword 
-  - <kbd>⌥ + ↩</kbd> — Show phrasal verbs for selected headword if exist (for verbs only). If item not found, in Alfred, type **<kbd>ldl</kbd>** (last query) to go to the last query of current verb 
+  - <kbd>⌥ + ↩</kbd> — Show phrasal verbs for selected headword if exist (for verbs only). 
   - <kbd>⇧</kbd> or <kbd>⌘ + L</kbd>
   — Show Quick Look preview from [ldoceonline.com/dictionary/query](https://www.ldoceonline.com)
 
@@ -54,6 +54,7 @@ _Requires: [Node.js](https://nodejs.org) 7.6+, Alfred [Powerpack](https://www.al
   * <kbd>⌘ + L</kbd> — Show one of example sentences in Alfred's Large Type window
   * <kbd>⌘ + ↩</kbd> — create card from selected senses of word
   * <kbd>⌥ + ↩</kbd> — create card from all matching of current query
+* <kbd>ldl</kbd> or <kbd>ldp</kbd> (last query or last query for phrasal verb) go to the definition of the word of the last query
 * <kbd><!set></kbd> or <kbd><!del></kbd> — Choose, create or delete deck for Anki
 * If you notice this sign [ 🔦 ] it means the current deffinition exist additional words for search. Hit <kbd>⌥ + ↵</kbd> to show and search by this words.
 

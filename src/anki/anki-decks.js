@@ -1,5 +1,6 @@
 const alfy = require('alfy')
 const WorkflowError = require('../utils/error')
+const {errorAction} = require('../utils/error')
 const {capitalize} = require('../utils')
 const ankiConnect = require('./anki-connect')
 
@@ -9,23 +10,7 @@ module.exports = () => {
 			let resultAll = await ankiConnect('deckNames', 5)
 			return resultAll
 		} catch (err) {
-			throw new WorkflowError(`${err}`, {
-				title: 'Searching without AnkiConnect',
-				subtitle: 'Press ⇧ to open Anki. | Go back to search ↵  | ⌘L to see the stack trace',
-				autocomplete: '',
-				mods: {
-					shift: {
-						variables: {
-							run: 'anki'
-						},
-						valid: true,
-						subtitle: 'Anki will be run'
-					}
-				},
-				icon: {
-					path: './icons/not-connected.png'
-				}
-			})
+			throw new WorkflowError(`${err}`, errorAction('main'))
 		}
 	}
 	return outresult()

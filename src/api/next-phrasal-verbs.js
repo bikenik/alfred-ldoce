@@ -1,15 +1,27 @@
 /* eslint max-depth: ["error", 8] */
 /* eslint-disable no-unused-vars */
 'use strict'
+const fs = require('fs')
 const alfy = require('alfy')
 const headers = require('../input/header.json')
 
+const fileBody = './src/input/body.json'
 const {wordOfURL} = process.env
 
-const url = 'http://api.pearson.com' + wordOfURL
+try {
+	fs.unlinkSync(fileBody) // delete file
+	console.log('successfully deleted: fileBody')
+} catch (err) {
+	// handle the error
+}
+
+let url = 'http://api.pearson.com' + wordOfURL
+if (wordOfURL === undefined) {
+	url = 'http://api.pearson.com' + alfy.config.get('wordOfURL')
+}
 const warning = {
 	notFound: 'Not found Phrasal Verbs  🤔',
-	notFoundCouse: `Press ⇧⌅ to turn back for "${headers[0].Headword.toUpperCase()}" (${headers[0].Part_of_speech})`
+	notFoundCouse: `Press ⇧↵ to turn back for "${headers[0].Headword.toUpperCase()}" (${headers[0].Part_of_speech})`
 }
 const items = []
 alfy.fetch(url).then(data => {
