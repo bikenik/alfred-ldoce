@@ -14,7 +14,7 @@ alfredNotifier()
 const myVar = process.argv[3]
 let query
 let introMessage = [{
-	subtitle: `Current deck is => ${alfy.config.get('default-deck')}`
+	subtitle: `Current deck is ⇒ ${alfy.config.get('default-deck')}`
 }]
 
 if (myVar === 'headword') {
@@ -43,7 +43,7 @@ const option = async input => {
 
 	// No matches, show all commands
 	if (/!.*/.test(input)) {
-		return commands.map(command => ({
+		const options = commands.map(command => ({
 			title: command.meta.name,
 			subtitle: `${command.meta.help} | Usage: ${command.meta.usage}`,
 			autocomplete: command.meta.autocomplete,
@@ -52,6 +52,7 @@ const option = async input => {
 			},
 			valid: false
 		}))
+		return alfy.inputMatches(options, 'title')
 	}
 
 	if (input === '') {
