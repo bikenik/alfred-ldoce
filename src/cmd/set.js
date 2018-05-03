@@ -3,14 +3,13 @@ const WorkflowError = require('../utils/error')
 const {errorAction} = require('../utils/error')
 const config = require('../config')
 const decks = require('../anki/anki-decks')
-const {capitalize, hasOwnProperty} = require('../utils')
+const {hasOwnProperty} = require('../utils')
 const arrayOfDecks = require('../input/anki-decks.json')
 
 const variables = {
 	'default-deck': {
 		default: 'English',
-		outputOptions: decks,
-		prettify: input => capitalize(input)
+		outputOptions: decks
 	}
 }
 
@@ -20,24 +19,24 @@ const outputVariables = pattern => {
 		pattern = ''
 	}
 
-	const vars = Object.keys(config.defaults)
+	const vars = Object.keys(config.decks.defaults)
 
 	const mapper = key => ({
-		title: key,
-		// subtitle: '⇒ hello world',
-		subtitle: '⇒ ' + alfy.config.get(key),
+		title: `${key} ⇒ ${
+			alfy.config.get(key) === undefined ? config.decks.defaults['default-deck'] : alfy.config.get(key)
+			}`,
+		subtitle: `↵ pick out another ...`,
 		valid: false,
 		autocomplete: `!set ${key} `
 	})
 
-	const out = alfy.matches(pattern, Object.keys(config.defaults)).map(mapper)
+	const out = alfy.matches(pattern, Object.keys(config.decks.defaults)).map(mapper)
 
 	return out.length === 0 ? vars.map(mapper) : out
 }
 
 module.exports = input => {
 	// !set command value
-	// Value can include spaces
 
 	if (typeof input !== 'string') {
 		throw new TypeError('input should be a string')
@@ -72,7 +71,7 @@ module.exports = input => {
 			}
 			if (arrayOfDecks.indexOf(value) === -1) {
 				return variable.outputOptions.render(
-					value,
+					value.replace(/\s/, '-'),
 					name => `!set ${variableName} ${name}`,
 					arrayOfDecks,
 					`./icons/deck.png`
@@ -89,7 +88,6 @@ module.exports = input => {
 							/* eslint-disable camelcase */
 							config_variable: variableName,
 							config_value: value
-							// config_value: variable.prettify(value)
 							/* eslint-enable camelcase */
 						}
 					}

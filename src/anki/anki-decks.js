@@ -41,7 +41,6 @@ module.exports.render = async (pattern, autocomplete = () => undefined, ankiDeck
 						/* eslint-disable camelcase */
 						config_variable: 'default-deck',
 						config_value: capitalize(pattern)
-						// config_value: variable.prettify(value)
 						/* eslint-enable camelcase */
 					}
 				}

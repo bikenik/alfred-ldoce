@@ -5,7 +5,7 @@
 	<key>bundleid</key>
 	<string>com.bikenik.ldoce</string>
 	<key>category</key>
-	<string>Internet</string>
+	<string>Languages</string>
 	<key>connections</key>
 	<dict>
 		<key>0745B6D3-4D66-4B9B-A94B-228AD6D7A1D7</key>
@@ -169,6 +169,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>60E52D47-21B3-4BA3-B86E-D7DF8C702322</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>897FCC90-25E2-4E87-A63A-8624BF299943</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>60F69ACD-78BA-4639-AAE9-2AA03E2576DB</key>
 		<array>
 			<dict>
@@ -268,7 +281,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>AC440464-967B-43C7-B892-55E4C4692574</string>
+				<string>60E52D47-21B3-4BA3-B86E-D7DF8C702322</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -374,19 +387,6 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>7C66FB61-30FF-477A-B397-E60CB8EE2835</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>AC440464-967B-43C7-B892-55E4C4692574</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>897FCC90-25E2-4E87-A63A-8624BF299943</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -907,25 +907,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>inputstring</key>
-				<string>{query}</string>
-				<key>matchcasesensitive</key>
-				<false/>
-				<key>matchmode</key>
-				<integer>1</integer>
-				<key>matchstring</key>
-				<string>"https</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.filter</string>
-			<key>uid</key>
-			<string>89420316-6E6B-40A0-B3D7-043988DE8C37</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>concurrently</key>
 				<true/>
 				<key>escaping</key>
@@ -980,6 +961,25 @@
 			<string>alfred.workflow.output.notification</string>
 			<key>uid</key>
 			<string>26B27E48-DB9A-41C9-A2E3-7913ADB29CFF</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>inputstring</key>
+				<string>{query}</string>
+				<key>matchcasesensitive</key>
+				<false/>
+				<key>matchmode</key>
+				<integer>1</integer>
+				<key>matchstring</key>
+				<string>"https</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.filter</string>
+			<key>uid</key>
+			<string>89420316-6E6B-40A0-B3D7-043988DE8C37</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -1365,27 +1365,6 @@ rm $file.bk
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>lastpathcomponent</key>
-				<false/>
-				<key>onlyshowifquerypopulated</key>
-				<true/>
-				<key>removeextension</key>
-				<false/>
-				<key>text</key>
-				<string>⛔ See logs</string>
-				<key>title</key>
-				<string>Something wrong:</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.notification</string>
-			<key>uid</key>
-			<string>B90BF452-8B85-47C8-8592-75A47440C42A</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>browser</key>
 				<string></string>
 				<key>spaces</key>
@@ -1449,6 +1428,27 @@ rm $file.bk
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<true/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
+				<string>⛔ See logs</string>
+				<key>title</key>
+				<string>Something wrong:</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>B90BF452-8B85-47C8-8592-75A47440C42A</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>inputstring</key>
 				<string>{query}</string>
 				<key>matchcasesensitive</key>
@@ -1473,7 +1473,8 @@ rm $file.bk
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>./node_modules/.bin/run-node src/anki/anki-delete-deck.js $1</string>
+				<string>myVar="{var:config_value}"
+./node_modules/.bin/run-node src/anki/anki-delete-deck.js $1</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -1510,34 +1511,17 @@ rm $file.bk
 			<integer>1</integer>
 		</dict>
 		<dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.junction</string>
-			<key>uid</key>
-			<string>549A41A0-E4D8-4ADC-88C3-28DA0EE53797</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
 			<key>config</key>
 			<dict>
-				<key>json</key>
-				<string>{
-  "alfredworkflow" : {
-    "arg" : "{var:config_value}",
-    "config" : {
-      "title" : "",
-      "runningsubtext" : "",
-      "subtext" : ""
-    },
-    "variables" : {
-    }
-  }
-}</string>
+				<key>argument</key>
+				<string>{var:config_value}</string>
+				<key>variables</key>
+				<dict/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.utility.json</string>
+			<string>alfred.workflow.utility.argument</string>
 			<key>uid</key>
-			<string>AC440464-967B-43C7-B892-55E4C4692574</string>
+			<string>60E52D47-21B3-4BA3-B86E-D7DF8C702322</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -1577,11 +1561,19 @@ rm $file.bk
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
+		<dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.junction</string>
+			<key>uid</key>
+			<string>549A41A0-E4D8-4ADC-88C3-28DA0EE53797</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string>1. Choose your language [https://cloud.google.com/translate/docs/languages]
 2. And check path to Anki collection.media folder
-
+3. Chekt your path to Anki.app
 
 This workflow uses API of Pearson
 http://developer.pearson.com/apis/dictionaries</string>
@@ -1648,7 +1640,7 @@ http://developer.pearson.com/apis/dictionaries</string>
 		<key>510938E6-70FA-421E-93A2-12BBE2D70153</key>
 		<dict>
 			<key>xpos</key>
-			<integer>710</integer>
+			<integer>700</integer>
 			<key>ypos</key>
 			<integer>940</integer>
 		</dict>
@@ -1668,14 +1660,14 @@ http://developer.pearson.com/apis/dictionaries</string>
 			<key>colorindex</key>
 			<integer>4</integer>
 			<key>xpos</key>
-			<integer>1290</integer>
+			<integer>1300</integer>
 			<key>ypos</key>
-			<integer>420</integer>
+			<integer>440</integer>
 		</dict>
 		<key>52595184-53DF-43A2-964E-16E6BDBDFBDA</key>
 		<dict>
 			<key>xpos</key>
-			<integer>630</integer>
+			<integer>570</integer>
 			<key>ypos</key>
 			<integer>970</integer>
 		</dict>
@@ -1686,7 +1678,7 @@ http://developer.pearson.com/apis/dictionaries</string>
 			<key>xpos</key>
 			<integer>460</integer>
 			<key>ypos</key>
-			<integer>810</integer>
+			<integer>970</integer>
 		</dict>
 		<key>58B5DB44-5113-4BD6-BD77-6F1D41BBAA56</key>
 		<dict>
@@ -1696,6 +1688,13 @@ http://developer.pearson.com/apis/dictionaries</string>
 			<integer>1230</integer>
 			<key>ypos</key>
 			<integer>380</integer>
+		</dict>
+		<key>60E52D47-21B3-4BA3-B86E-D7DF8C702322</key>
+		<dict>
+			<key>xpos</key>
+			<integer>570</integer>
+			<key>ypos</key>
+			<integer>810</integer>
 		</dict>
 		<key>60F69ACD-78BA-4639-AAE9-2AA03E2576DB</key>
 		<dict>
@@ -1769,16 +1768,16 @@ http://developer.pearson.com/apis/dictionaries</string>
 			<key>colorindex</key>
 			<integer>4</integer>
 			<key>xpos</key>
-			<integer>1290</integer>
+			<integer>1300</integer>
 			<key>ypos</key>
-			<integer>340</integer>
+			<integer>380</integer>
 		</dict>
 		<key>897FCC90-25E2-4E87-A63A-8624BF299943</key>
 		<dict>
 			<key>note</key>
 			<string>Delete deck</string>
 			<key>xpos</key>
-			<integer>710</integer>
+			<integer>700</integer>
 			<key>ypos</key>
 			<integer>780</integer>
 		</dict>
@@ -1806,16 +1805,9 @@ http://developer.pearson.com/apis/dictionaries</string>
 		<key>9D7A18E7-69F1-4629-86B9-94935FACC9C4</key>
 		<dict>
 			<key>xpos</key>
-			<integer>790</integer>
+			<integer>780</integer>
 			<key>ypos</key>
 			<integer>250</integer>
-		</dict>
-		<key>AC440464-967B-43C7-B892-55E4C4692574</key>
-		<dict>
-			<key>xpos</key>
-			<integer>630</integer>
-			<key>ypos</key>
-			<integer>810</integer>
 		</dict>
 		<key>AD9FB9E3-E480-45AC-84F3-AF8D929511AA</key>
 		<dict>
@@ -1829,7 +1821,7 @@ http://developer.pearson.com/apis/dictionaries</string>
 			<key>note</key>
 			<string>Update config</string>
 			<key>xpos</key>
-			<integer>710</integer>
+			<integer>700</integer>
 			<key>ypos</key>
 			<integer>630</integer>
 		</dict>
@@ -1840,7 +1832,7 @@ http://developer.pearson.com/apis/dictionaries</string>
 			<key>xpos</key>
 			<integer>2510</integer>
 			<key>ypos</key>
-			<integer>620</integer>
+			<integer>630</integer>
 		</dict>
 		<key>B9A7762D-55F9-4BB3-A1D2-29C8F8114EC9</key>
 		<dict>
@@ -1865,7 +1857,7 @@ http://developer.pearson.com/apis/dictionaries</string>
 			<key>xpos</key>
 			<integer>2360</integer>
 			<key>ypos</key>
-			<integer>650</integer>
+			<integer>660</integer>
 		</dict>
 		<key>C3D1B1BF-2B44-4B53-B10F-BEBD378BC34E</key>
 		<dict>
@@ -1874,7 +1866,7 @@ http://developer.pearson.com/apis/dictionaries</string>
 			<key>note</key>
 			<string>HEADER</string>
 			<key>xpos</key>
-			<integer>710</integer>
+			<integer>700</integer>
 			<key>ypos</key>
 			<integer>480</integer>
 		</dict>
@@ -1891,9 +1883,9 @@ Generic text search across all entries (searchs all entry fields)</string>
 		<key>C8029285-6BC0-4486-AE9B-5D45BFBF8DE1</key>
 		<dict>
 			<key>xpos</key>
-			<integer>1360</integer>
+			<integer>1370</integer>
 			<key>ypos</key>
-			<integer>420</integer>
+			<integer>440</integer>
 		</dict>
 		<key>C9E870D0-C52A-4202-B505-A9A066A8ABA1</key>
 		<dict>
@@ -1978,7 +1970,7 @@ Search for entries with the given headword</string>
 		<string>language</string>
 	</array>
 	<key>version</key>
-	<string>1.1.4</string>
+	<string>1.1.5</string>
 	<key>webaddress</key>
 	<string>https://github.com/bikeNik/alfred-ldoce#readme</string>
 </dict>

@@ -3,8 +3,6 @@ const os = require('os')
 
 const user = os.userInfo()
 const {pathToAnkiMedia} = process.env
-// const pathToAnkiMedia = '/Library/Application Support/Anki2/English/collection.media'
-// console.log(user)
 
 module.exports = {
 	concurrency: 10,
@@ -22,7 +20,12 @@ module.exports = {
 	get mediaDir() {
 		return user.homedir + pathToAnkiMedia
 	},
-	defaults: {
-		'default-deck': 'default'
+	decks: {
+		defaults: {
+			'default-deck': 'Default'
+		},
+		delete: {
+			'delete-deck': 'choose ...'
+		}
 	}
 }
