@@ -1,17 +1,17 @@
 const alfy = require('alfy')
-const apiError = require('../utils/error')
+const WorkflowError = require('../utils/error')
+const {checkStatus, errorAction} = require('../utils/error')
 
 module.exports.fetching =
 	async query => {
 		let quickLook = ''
 		await alfy
 			.fetch('http://api.pearson.com/v2/dictionaries/ldoce5/entries', {query})
-			.then(apiError.checkStatus)
+			.then(checkStatus)
 			.then(data => {
 				const items = data.results.map(x => {
 					let currentWord = alfy.input.replace(/\s/g, '-')
-					let result
-					result = {
+					let result = {
 						title: x.headword,
 						subtitle: x.part_of_speech,
 						arg: x.url,
@@ -46,31 +46,45 @@ module.exports.fetching =
 					}
 					return result
 				})
-				alfy.output(items)
+				if (items.length > 0) {
+					alfy.output(items)
+				} else {
+					/* ****************************************
+					Search by suggestions (Yandex SpellerCheck)
+					******************************************* */
+					alfy.fetch(`https://speller.yandex.net/services/spellservice.json/checkText?text${query.headword || query.search}`)
+						.then(data => {
+							if (data.length > 0) {
+								const items = data[0].s.map(x => {
+									let result = {
+										title: x,
+										subtitle: `Perhaps you mean: ${x}`,
+										autocomplete: x,
+										valid: false,
+										icon: {
+											path: './icons/speller.png'
+										}
+									}
+									return result
+								})
+								alfy.output(items)
+							} else {
+								const items = [{
+									title: `Not correctly English word`,
+									subtitle: 'Press ↵ to search',
+									valid: false,
+									autocomplete: ''
+								}]
+								alfy.output(items)
+							}
+						})
+						.catch(err => {
+							throw new WorkflowError(`${err}`, errorAction('main'))
+						})
+				}
 			})
 			.catch(err => {
-				const messages = []
-
-				if (err.tip) {
-					messages.push(err.tip)
-				}
-
-				messages.push('Activate this item to try again.')
-				messages.push('⌘L to see the stack trace')
-
-				alfy.output([{
-					title: `Error: ${err.message}`,
-					subtitle: messages.join(' | '),
-					autocomplete: err.autocomplete ? err.autocomplete : '',
-					icon: {
-						path: alfy.icon.error
-					},
-					valid: false,
-					text: {
-						largetype: err.stack,
-						copy: err.stack
-					}
-				}])
+				throw new WorkflowError(`${err}`, errorAction('main'))
 			})
 		module.exports.quicklookurl = {
 			quickLook: quickLook
