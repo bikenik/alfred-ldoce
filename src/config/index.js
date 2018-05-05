@@ -1,8 +1,9 @@
 /* eslint camelcase: ["error", {properties: "never"}] */
+/* eslint-disable camelcase */
 const os = require('os')
 
 const user = os.userInfo()
-const {pathToAnkiMedia} = process.env
+const {path_to_ankiMedia} = process.env
 
 module.exports = {
 	concurrency: 10,
@@ -18,7 +19,7 @@ module.exports = {
 		tag: 'Tag'
 	},
 	get mediaDir() {
-		return user.homedir + pathToAnkiMedia
+		return user.homedir + path_to_ankiMedia
 	},
 	decks: {
 		defaults: {

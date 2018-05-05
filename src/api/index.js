@@ -50,9 +50,9 @@ module.exports.fetching =
 					alfy.output(items)
 				} else {
 					/* ****************************************
-					Search by suggestions (Yandex SpellerCheck)
+					Search by suggestions (Yandex Speller)
 					******************************************* */
-					alfy.fetch(`https://speller.yandex.net/services/spellservice.json/checkText?text${query.headword || query.search}`)
+					alfy.fetch(`https://speller.yandex.net/services/spellservice.json/checkText?text=${query.headword || query.search}&lang=en`)
 						.then(data => {
 							if (data.length > 0) {
 								const items = data[0].s.map(x => {
@@ -70,10 +70,20 @@ module.exports.fetching =
 								alfy.output(items)
 							} else {
 								const items = [{
-									title: `Not correctly English word`,
-									subtitle: 'Press ↵ to search',
+									title: `Not found this word in Ldoce5`,
+									subtitle: 'Press ↵ to search | Press ⇧↵ to go to ldoceonline.com',
 									valid: false,
-									autocomplete: ''
+									autocomplete: '',
+									mods: {
+										shift: {
+											subtitle: 'go longman.com',
+											valid: true,
+											arg: `https://www.ldoceonline.com/dictionary/${
+												query.headword.replace(/\s/g, '-') ||
+												query.search.replace(/\s/g, '-')
+												}`
+										}
+									}
 								}]
 								alfy.output(items)
 							}

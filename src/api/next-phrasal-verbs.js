@@ -31,6 +31,7 @@ alfy.fetch(url).then(data => {
 			if (phrasalVerbs.senses) {
 				phrasalVerbs.senses.forEach(sense => {
 					if (sense.examples) {
+						let largetype = `${phrasalVerbs.headword}\n\n🔑 :${sense.definition[0]}\n\n🎯 ${sense.examples[0].text}`
 						items.push({
 							title: phrasalVerbs.headword,
 							subtitle: sense.definition[0],
@@ -44,8 +45,8 @@ alfy.fetch(url).then(data => {
 								sense: sense
 							},
 							text: {
-								copy: sense.definition[0],
-								largetype: `🔑 :${sense.definition[0]}\n\n🎯 ${sense.examples[0].text}`
+								copy: largetype,
+								largetype: largetype
 							},
 							icon: {path: './icons/phrasal_verbs.png'}
 						})
@@ -53,6 +54,7 @@ alfy.fetch(url).then(data => {
 					if (sense.gramatical_examples) {
 						sense.gramatical_examples.forEach(gramaticalExample => {
 							if (gramaticalExample.examples) {
+								let largetype = `${gramaticalExample.pattern}\n\n🔑 :${sense.definition[0]}\n\n🎯${gramaticalExample.examples[0].text}`
 								items.push({
 									title: gramaticalExample.pattern,
 									subtitle: sense.definition[0],
@@ -68,8 +70,8 @@ alfy.fetch(url).then(data => {
 										sense: sense
 									},
 									text: {
-										copy: gramaticalExample.examples[0].text,
-										largetype: `🔑 :${sense.definition[0]}\n\n🎯${gramaticalExample.examples[0].text}`
+										copy: largetype,
+										largetype: largetype
 									},
 									valid: true,
 									icon: {path: './icons/gramatical.png'}

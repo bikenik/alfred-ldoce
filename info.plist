@@ -10,6 +10,19 @@
 	<dict>
 		<key>0745B6D3-4D66-4B9B-A94B-228AD6D7A1D7</key>
 		<array/>
+		<key>1691105E-FA4A-4467-B14B-A716C54F4DB7</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>8C27A014-C83A-4F12-BE52-E6251746251E</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>26B27E48-DB9A-41C9-A2E3-7913ADB29CFF</key>
 		<array/>
 		<key>39C7F7E9-20C4-4AF8-A97C-62051597917B</key>
@@ -125,6 +138,29 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>510938E6-70FA-421E-93A2-12BBE2D70153</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>53AB78A4-85DF-4FCD-BD8C-32D35C936A48</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>1691105E-FA4A-4467-B14B-A716C54F4DB7</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>B567E724-D9AB-420D-BBF0-8D09826EBD77</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -316,6 +352,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>8C27A014-C83A-4F12-BE52-E6251746251E</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>4704E873-5CD1-4BA7-B78F-A3AEFE84028E</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>90880EE7-0193-4DA0-83F2-C512EED9BFE9</key>
 		<array>
 			<dict>
@@ -413,6 +462,19 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>E2D15676-870B-4EE9-A16F-F144FBBE3412</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>B567E724-D9AB-420D-BBF0-8D09826EBD77</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>3D89E405-E312-413E-AA36-86E91A3BB52A</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -576,7 +638,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>3D89E405-E312-413E-AA36-86E91A3BB52A</string>
+				<string>53AB78A4-85DF-4FCD-BD8C-32D35C936A48</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -626,6 +688,25 @@
 	<string>ldoce-Express</string>
 	<key>objects</key>
 	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>{query}</string>
+				<key>utf8</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>4704E873-5CD1-4BA7-B78F-A3AEFE84028E</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
@@ -715,6 +796,69 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>inputstring</key>
+				<string>{query}</string>
+				<key>matchcasesensitive</key>
+				<false/>
+				<key>matchmode</key>
+				<integer>2</integer>
+				<key>matchstring</key>
+				<string>https</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.filter</string>
+			<key>uid</key>
+			<string>1691105E-FA4A-4467-B14B-A716C54F4DB7</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>matchmode</key>
+				<integer>1</integer>
+				<key>matchstring</key>
+				<string>^"|"$</string>
+				<key>replacestring</key>
+				<string></string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.replace</string>
+			<key>uid</key>
+			<string>8C27A014-C83A-4F12-BE52-E6251746251E</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.junction</string>
+			<key>uid</key>
+			<string>53AB78A4-85DF-4FCD-BD8C-32D35C936A48</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>inputstring</key>
+				<string>{query}</string>
+				<key>matchcasesensitive</key>
+				<false/>
+				<key>matchmode</key>
+				<integer>1</integer>
+				<key>matchstring</key>
+				<string>"https</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.filter</string>
+			<key>uid</key>
+			<string>B567E724-D9AB-420D-BBF0-8D09826EBD77</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
 				<key>alfredfiltersresultsmatchmode</key>
@@ -730,9 +874,9 @@
 				<key>queuedelaycustom</key>
 				<integer>3</integer>
 				<key>queuedelayimmediatelyinitially</key>
-				<false/>
+				<true/>
 				<key>queuedelaymode</key>
-				<integer>1</integer>
+				<integer>0</integer>
 				<key>queuemode</key>
 				<integer>1</integer>
 				<key>runningsubtext</key>
@@ -777,9 +921,9 @@
 				<key>queuedelaycustom</key>
 				<integer>3</integer>
 				<key>queuedelayimmediatelyinitially</key>
-				<false/>
+				<true/>
 				<key>queuedelaymode</key>
-				<integer>1</integer>
+				<integer>2</integer>
 				<key>queuemode</key>
 				<integer>1</integer>
 				<key>runningsubtext</key>
@@ -793,7 +937,7 @@
 				<key>subtext</key>
 				<string></string>
 				<key>title</key>
-				<string>search</string>
+				<string>into the word article</string>
 				<key>type</key>
 				<integer>5</integer>
 				<key>withspace</key>
@@ -1108,11 +1252,11 @@
 				<key>keyword</key>
 				<string>ldoce</string>
 				<key>queuedelaycustom</key>
-				<integer>3</integer>
+				<integer>7</integer>
 				<key>queuedelayimmediatelyinitially</key>
-				<false/>
+				<true/>
 				<key>queuedelaymode</key>
-				<integer>1</integer>
+				<integer>2</integer>
 				<key>queuemode</key>
 				<integer>1</integer>
 				<key>runningsubtext</key>
@@ -1157,11 +1301,11 @@
 				<key>queuedelaycustom</key>
 				<integer>3</integer>
 				<key>queuedelayimmediatelyinitially</key>
-				<false/>
+				<true/>
 				<key>queuedelaymode</key>
-				<integer>1</integer>
+				<integer>0</integer>
 				<key>queuemode</key>
-				<integer>1</integer>
+				<integer>2</integer>
 				<key>runningsubtext</key>
 				<string>Searching...</string>
 				<key>script</key>
@@ -1590,6 +1734,15 @@ http://developer.pearson.com/apis/dictionaries</string>
 			<key>ypos</key>
 			<integer>220</integer>
 		</dict>
+		<key>1691105E-FA4A-4467-B14B-A716C54F4DB7</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>4</integer>
+			<key>xpos</key>
+			<integer>570</integer>
+			<key>ypos</key>
+			<integer>130</integer>
+		</dict>
 		<key>26B27E48-DB9A-41C9-A2E3-7913ADB29CFF</key>
 		<dict>
 			<key>colorindex</key>
@@ -1618,6 +1771,13 @@ http://developer.pearson.com/apis/dictionaries</string>
 			<integer>700</integer>
 			<key>ypos</key>
 			<integer>250</integer>
+		</dict>
+		<key>4704E873-5CD1-4BA7-B78F-A3AEFE84028E</key>
+		<dict>
+			<key>xpos</key>
+			<integer>700</integer>
+			<key>ypos</key>
+			<integer>100</integer>
 		</dict>
 		<key>4BE519FC-203E-44DF-8789-DD4E6FF5BB62</key>
 		<dict>
@@ -1670,6 +1830,15 @@ http://developer.pearson.com/apis/dictionaries</string>
 			<integer>570</integer>
 			<key>ypos</key>
 			<integer>970</integer>
+		</dict>
+		<key>53AB78A4-85DF-4FCD-BD8C-32D35C936A48</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>4</integer>
+			<key>xpos</key>
+			<integer>460</integer>
+			<key>ypos</key>
+			<integer>210</integer>
 		</dict>
 		<key>549A41A0-E4D8-4ADC-88C3-28DA0EE53797</key>
 		<dict>
@@ -1781,6 +1950,13 @@ http://developer.pearson.com/apis/dictionaries</string>
 			<key>ypos</key>
 			<integer>780</integer>
 		</dict>
+		<key>8C27A014-C83A-4F12-BE52-E6251746251E</key>
+		<dict>
+			<key>xpos</key>
+			<integer>640</integer>
+			<key>ypos</key>
+			<integer>130</integer>
+		</dict>
 		<key>90880EE7-0193-4DA0-83F2-C512EED9BFE9</key>
 		<dict>
 			<key>xpos</key>
@@ -1824,6 +2000,15 @@ http://developer.pearson.com/apis/dictionaries</string>
 			<integer>700</integer>
 			<key>ypos</key>
 			<integer>630</integer>
+		</dict>
+		<key>B567E724-D9AB-420D-BBF0-8D09826EBD77</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>4</integer>
+			<key>xpos</key>
+			<integer>570</integer>
+			<key>ypos</key>
+			<integer>210</integer>
 		</dict>
 		<key>B90BF452-8B85-47C8-8592-75A47440C42A</key>
 		<dict>
@@ -1961,16 +2146,19 @@ Search for entries with the given headword</string>
 	<dict>
 		<key>language</key>
 		<string>de</string>
-		<key>pathToAnkiMedia</key>
+		<key>note_type</key>
+		<string>Ldoce-Express</string>
+		<key>path_to_ankiMedia</key>
 		<string>/Library/Application Support/Anki2/English/collection.media</string>
 	</dict>
 	<key>variablesdontexport</key>
 	<array>
-		<string>pathToAnkiMedia</string>
+		<string>note_type</string>
+		<string>path_to_ankiMedia</string>
 		<string>language</string>
 	</array>
 	<key>version</key>
-	<string>1.1.7</string>
+	<string>1.1.8</string>
 	<key>webaddress</key>
 	<string>https://github.com/bikeNik/alfred-ldoce#readme</string>
 </dict>
