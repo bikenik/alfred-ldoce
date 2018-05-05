@@ -1,9 +1,11 @@
 /* eslint-disable no-unused-vars */
+/* eslint-disable camelcase */
 const alfy = require('alfy')
 const ankiConnect = require('./anki-connect')
 
 // const nameOfDeck = 'Scramble'
 const nameOfDeck = alfy.config.get('default-deck')
+const {note_type} = process.env
 
 let logResult = {
 	error: [],
@@ -37,7 +39,7 @@ module.exports = async function (output) {
 					{
 						note: {
 							deckName: nameOfDeck,
-							modelName: 'Ldoce-Express',
+							modelName: note_type,
 							fields: output[i],
 							tags: [output[i].Tag]
 						}

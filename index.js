@@ -19,14 +19,14 @@ let introMessage = [{
 
 if (myVar === 'headword') {
 	query = {
-		headword: `=${alfy.input}`,
+		headword: `${alfy.input}`,
 		limit: 50
 	}
 	introMessage[0].title = 'Search headwords ...'
 }
 if (myVar === 'search') {
 	query = {
-		search: `=${alfy.input}`,
+		search: `${alfy.input}`,
 		limit: 50
 	}
 	introMessage[0].title = 'Search generic ...'

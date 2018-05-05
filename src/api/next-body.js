@@ -28,6 +28,13 @@ const warning = {
 }
 class Render {
 	constructor(title, subtitle, sentence, icon, arg, valid = true, mods) {
+		const clearSentences = sentence => sentence ? sentence.replace(/\s(\.|\?|!)/g, `$1`) : sentence
+		sentence = clearSentences(sentence)
+		if (arg) {
+			arg.examples.forEach(sentence => {
+				sentence.text = clearSentences(sentence.text)
+			})
+		}
 		this.title = title
 		this.subtitle = subtitle
 		this.sentence = sentence
@@ -35,7 +42,7 @@ class Render {
 		this.arg = arg
 		this.items = []
 		this.text = {
-			copy: subtitle,
+			copy: `${title}\n\n🔑 :${subtitle} \n\n🎯 ${sentence}`,
 			largetype: `${title}\n\n🔑 :${subtitle} \n\n🎯 ${sentence}`
 		}
 		this.icon = {path: icon}
