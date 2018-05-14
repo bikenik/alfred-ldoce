@@ -1,6 +1,6 @@
 /* eslint max-params: ["error", 8] */
 /* eslint max-depth: ["error", 8] */
-/* eslint complexity: ["error", 30] */
+/* eslint complexity: ["error", 33] */
 /* eslint-disable no-unused-vars */
 /* eslint-env es6 */
 'use strict'
@@ -11,10 +11,9 @@ const fileBody = './src/input/body.json'
 const {wordOfURL} = process.env
 
 try {
-	fs.unlinkSync(fileBody) // delete file
+	fs.unlinkSync(fileBody)
 	console.log('successfully deleted: fileBody')
 } catch (err) {
-	// handle the error
 }
 
 let url = 'http://api.pearson.com' + wordOfURL
@@ -50,13 +49,14 @@ class Render {
 		this.valid = valid
 		this.mods = mods
 	}
+
 	add(item) {
 		this.items.push(item)
 	}
 }
 
 const addToItems = new Render()
-
+/* eslint-disable promise/prefer-await-to-then */
 alfy.fetch(url).then(data => {
 	const $ = data.result
 
@@ -73,11 +73,7 @@ alfy.fetch(url).then(data => {
 						runOn.examples[0].text,
 						'./icons/runon.png',
 						{
-							definition: [
-								`${runOn.derived_form}<span class="neutral span"> [</span>${
-								runOn.part_of_speech
-								}<span class="neutral span">]</span>`
-							],
+							definition: [`${runOn.derived_form}<span class="neutral span"> [</span>${runOn.part_of_speech}<span class="neutral span">]</span>`],
 							examples: runOn.examples,
 							sense: runOn
 						},
@@ -101,13 +97,9 @@ alfy.fetch(url).then(data => {
 						sense.examples[0].text,
 						'./icons/flag.png',
 						{
-							definition: [
-								`${sense.lexical_unit}<span class="neutral span"> [</span>${
-								sense.definition
-								}<span class="neutral span">]</span>`
-							],
+							definition: [`${sense.lexical_unit}<span class="neutral span"> [</span>${sense.definition}<span class="neutral span">]</span>`],
 							examples: sense.examples,
-							sense: sense
+							sense
 						},
 						null,
 						null
@@ -123,7 +115,7 @@ alfy.fetch(url).then(data => {
 						{
 							definition: sense.definition,
 							examples: sense.examples,
-							sense: sense
+							sense
 						},
 						null,
 						null
@@ -146,17 +138,13 @@ alfy.fetch(url).then(data => {
 								'./icons/gramatical.png',
 								{
 									examples: gramaticalExample.examples,
-									definition: [
-										`${sense.definition}<span class="neutral span"> [</span>${
-										gramaticalExample.pattern
-										}<span class="neutral span">]</span>`
-									],
-									sense: sense
+									definition: [`${sense.definition}<span class="neutral span"> [</span>${gramaticalExample.pattern}<span class="neutral span">]</span>`],
+									sense
 								}
 							))
 					}
 
-					// show words: 'SEE ALSO' (syonym & opposite)
+					// Show words: 'SEE ALSO' (syonym & opposite)
 					if (sense.synonym || sense.opposite) {
 						let typeOfAddition
 						for (const key in sense) {
@@ -166,7 +154,7 @@ alfy.fetch(url).then(data => {
 								typeOfAddition = key
 							}
 						}
-						let title = `${gramaticalExample.pattern || sense.signpost || $.headword || sense.definition[0]}\t 🔦 ${typeOfAddition}: ${sense.synonym || sense.opposite}`
+						const title = `${gramaticalExample.pattern || sense.signpost || $.headword || sense.definition[0]}\t 🔦 ${typeOfAddition}: ${sense.synonym || sense.opposite}`
 						addToItems.add(
 							new Render(
 								title,
@@ -175,12 +163,8 @@ alfy.fetch(url).then(data => {
 								'./icons/gramatical.png',
 								{
 									examples: gramaticalExample.examples,
-									definition: [
-										`${sense.definition}<span class="neutral span"> [</span>${
-										gramaticalExample.pattern
-										}<span class="neutral span">]</span>`
-									],
-									sense: sense
+									definition: [`${sense.definition}<span class="neutral span"> [</span>${gramaticalExample.pattern}<span class="neutral span">]</span>`],
+									sense
 								},
 								false,
 								{
@@ -211,12 +195,8 @@ alfy.fetch(url).then(data => {
 								'./icons/collocation.png',
 								{
 									examples: [collExample.example],
-									definition: [
-										`${sense.definition}<span class="neutral span"> [</span>${
-										collExample.collocation
-										}<span class="neutral span">]</span>`
-									],
-									sense: sense
+									definition: [`${sense.definition}<span class="neutral span"> [</span>${collExample.collocation}<span class="neutral span">]</span>`],
+									sense
 								},
 								null,
 								null
@@ -225,9 +205,9 @@ alfy.fetch(url).then(data => {
 				})
 			}
 
-			// show words: 'SEE ALSO' (syonym & opposite)
-			let existSyn = sense.examples && sense.synonym
-			let existOpp = sense.examples && sense.opposite
+			// Show words: 'SEE ALSO' (syonym & opposite)
+			const existSyn = sense.examples && sense.synonym
+			const existOpp = sense.examples && sense.opposite
 			if (existSyn || existOpp) {
 				let typeOfAddition
 				for (const key in sense) {
@@ -237,7 +217,7 @@ alfy.fetch(url).then(data => {
 						typeOfAddition = key
 					}
 				}
-				let title = `${sense.signpost || $.headword || sense.definition[0]}\t 🔦 ${typeOfAddition}: ${sense.synonym || sense.opposite}`
+				const title = `${sense.signpost || $.headword || sense.definition[0]}\t 🔦 ${typeOfAddition}: ${sense.synonym || sense.opposite}`
 				addToItems.add(
 					new Render(
 						title,
@@ -247,7 +227,7 @@ alfy.fetch(url).then(data => {
 						{
 							definition: sense.definition,
 							examples: sense.examples,
-							sense: sense
+							sense
 						},
 						false,
 						{
@@ -262,7 +242,7 @@ alfy.fetch(url).then(data => {
 					))
 			}
 			if (!addToItems.items[0] && sense.definition && $.examples) {
-				let examples = []
+				const examples = []
 				for (let i = 0; i < $.examples.length && i < 3; i++) {
 					examples.push($.examples[i])
 				}
@@ -274,8 +254,8 @@ alfy.fetch(url).then(data => {
 						'./icons/flag.png',
 						{
 							definition: sense.definition,
-							examples: examples,
-							sense: sense
+							examples,
+							sense
 						},
 						null,
 						null
@@ -317,7 +297,8 @@ alfy.fetch(url).then(data => {
 			largetype: x.text.largetype
 		},
 		variables: {
-			word: data.result.headword.toUpperCase()
+			word: data.result.headword.toUpperCase(),
+			currentSense: x.text.largetype
 		},
 		autocomplete: x.title,
 		quicklookurl: `https://www.ldoceonline.com/dictionary/${data.result.headword.replace(/\s/g, '-')}`,
@@ -325,7 +306,7 @@ alfy.fetch(url).then(data => {
 	}))
 
 	try {
-		let test = addToItems.items[0].title
+		const test = addToItems.items[0].title
 	} catch (err) {
 		variantsToSingleChoose.push({
 			title: warning.notFound,
@@ -349,9 +330,11 @@ alfy.fetch(url).then(data => {
 		variables: {word: `${data.result.headword}`}
 	}))
 
-	let variantsAllExp = []
+	const variantsAllExp = []
 	for (let i = 0; i < variantsAll.length; i++) {
 		variantsAllExp.push(variantsAll[i].arg)
 	}
 	alfy.config.set('allPhrases', variantsAllExp)
-})
+}
+	/* eslint-enable promise/prefer-await-to-then */
+)

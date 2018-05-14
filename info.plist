@@ -10,6 +10,19 @@
 	<dict>
 		<key>0745B6D3-4D66-4B9B-A94B-228AD6D7A1D7</key>
 		<array/>
+		<key>0D89C552-D0A3-4AC4-8914-9858F66DD59C</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>4AADEA3D-1BBA-4D82-8CD0-578FE6188A3A</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>1691105E-FA4A-4467-B14B-A716C54F4DB7</key>
 		<array>
 			<dict>
@@ -90,6 +103,16 @@
 				<integer>1048576</integer>
 				<key>modifiersubtext</key>
 				<string>Create from selected items</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>0D89C552-D0A3-4AC4-8914-9858F66DD59C</string>
+				<key>modifiers</key>
+				<integer>131072</integer>
+				<key>modifiersubtext</key>
+				<string>out this to something</string>
 				<key>vitoclose</key>
 				<false/>
 			</dict>
@@ -270,6 +293,16 @@
 				<integer>1048576</integer>
 				<key>modifiersubtext</key>
 				<string>Create from selected items</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>0D89C552-D0A3-4AC4-8914-9858F66DD59C</string>
+				<key>modifiers</key>
+				<integer>131072</integer>
+				<key>modifiersubtext</key>
+				<string>out this to something</string>
 				<key>vitoclose</key>
 				<false/>
 			</dict>
@@ -906,11 +939,11 @@
 				<key>keyword</key>
 				<string>ldl</string>
 				<key>queuedelaycustom</key>
-				<integer>9</integer>
+				<integer>3</integer>
 				<key>queuedelayimmediatelyinitially</key>
 				<false/>
 				<key>queuedelaymode</key>
-				<integer>2</integer>
+				<integer>1</integer>
 				<key>queuemode</key>
 				<integer>1</integer>
 				<key>runningsubtext</key>
@@ -1288,11 +1321,11 @@
 				<key>queuedelaycustom</key>
 				<integer>3</integer>
 				<key>queuedelayimmediatelyinitially</key>
-				<true/>
+				<false/>
 				<key>queuedelaymode</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>queuemode</key>
-				<integer>2</integer>
+				<integer>1</integer>
 				<key>runningsubtext</key>
 				<string>Searching...</string>
 				<key>script</key>
@@ -1644,6 +1677,46 @@ rm $file.bk
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>externaltriggerid</key>
+				<string>ctrans</string>
+				<key>passinputasargument</key>
+				<true/>
+				<key>passvariables</key>
+				<true/>
+				<key>workflowbundleid</key>
+				<string>com.nikerino.polyglot</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.callexternaltrigger</string>
+			<key>uid</key>
+			<string>4AADEA3D-1BBA-4D82-8CD0-578FE6188A3A</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>json</key>
+				<string>{
+  "alfredworkflow" : {
+    "arg" : "{var:currentSense}",
+    "config" : {
+    },
+    "variables" : {
+    }
+  }
+}</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.json</string>
+			<key>uid</key>
+			<string>0D89C552-D0A3-4AC4-8914-9858F66DD59C</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>argument</key>
 				<string>{var:config_value}</string>
 				<key>variables</key>
@@ -1713,6 +1786,13 @@ http://developer.pearson.com/apis/dictionaries</string>
 			<key>ypos</key>
 			<integer>220</integer>
 		</dict>
+		<key>0D89C552-D0A3-4AC4-8914-9858F66DD59C</key>
+		<dict>
+			<key>xpos</key>
+			<integer>1230</integer>
+			<key>ypos</key>
+			<integer>810</integer>
+		</dict>
 		<key>1691105E-FA4A-4467-B14B-A716C54F4DB7</key>
 		<dict>
 			<key>colorindex</key>
@@ -1757,6 +1837,13 @@ http://developer.pearson.com/apis/dictionaries</string>
 			<integer>700</integer>
 			<key>ypos</key>
 			<integer>100</integer>
+		</dict>
+		<key>4AADEA3D-1BBA-4D82-8CD0-578FE6188A3A</key>
+		<dict>
+			<key>xpos</key>
+			<integer>1360</integer>
+			<key>ypos</key>
+			<integer>780</integer>
 		</dict>
 		<key>4BE519FC-203E-44DF-8789-DD4E6FF5BB62</key>
 		<dict>

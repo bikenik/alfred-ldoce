@@ -40,9 +40,9 @@ module.exports.errorAction = reason => {
 	}
 
 	return {
-		title: title,
-		subtitle: subtitle,
-		autocomplete: autocomplete,
+		title,
+		subtitle,
+		autocomplete,
 		mods: {
 			shift: {
 				variables: {

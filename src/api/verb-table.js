@@ -303,4 +303,4 @@ header.forEach(elem => {
 		}
 	}
 })
-module.exports = {verbTable: verbTable}
+module.exports = {verbTable}

@@ -3,22 +3,21 @@
 const alfy = require('alfy')
 const ankiConnect = require('./anki-connect')
 
-// const nameOfDeck = 'Scramble'
 const nameOfDeck = alfy.config.get('default-deck')
 const {note_type} = process.env
 
-let logResult = {
+const logResult = {
 	error: [],
 	result: []
 }
 
 module.exports = async function (output) {
+	/* eslint-disable no-await-in-loop */
 	for (let i = 0; i < output.length; i++) {
 		if (output[i].Homnum) {
 			output[i].Homnum = output[i].Homnum.toString()
 			output[i].Headword = `${output[i].Headword}<span class="HOMNUM-title">${
-				output[i].Homnum
-				}
+				output[i].Homnum}
     </span>`
 		}
 		delete output[i].Inflections // Can't understood the reason of error without delete
@@ -30,7 +29,6 @@ module.exports = async function (output) {
 						deck: nameOfDeck
 					})
 			} catch (err) {
-				// process.stdout.write(`!err: ${err}`)
 				logResult.error.push(err)
 			}
 			try {
@@ -44,14 +42,13 @@ module.exports = async function (output) {
 							tags: [output[i].Tag]
 						}
 					})
-				// process.stdout.write(`got ID of note:: ${result2}`)
 				logResult.result.push(`\n${nameOfDeck}: ${result2}`)
 			} catch (err) {
-				// process.stdout.write(`!err: ${err}`)
 				logResult.error.push(err)
 			}
 		}
 	}
+	/* eslint-enable no-await-in-loop */
 	if (logResult.error.length > 0) {
 		logResult.error.forEach(error => {
 			process.stdout.write(`!err: ${error}`)

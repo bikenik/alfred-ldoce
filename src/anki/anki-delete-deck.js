@@ -2,7 +2,7 @@ const ankiConnect = require('./anki-connect')
 
 const deletDeck = async () => {
 	try {
-		let result = await ankiConnect(
+		const result = await ankiConnect(
 			'deleteDecks', 5,
 			{
 				decks: [process.argv[2]],
@@ -10,9 +10,9 @@ const deletDeck = async () => {
 			}
 		)
 		return result
-		// process.stdout.write(result)
+		// "process.stdout.write(result)"
 	} catch (err) {
-		// process.stdout.write(err)
+		// "process.stdout.write(err)"
 	}
 }
 deletDeck()
