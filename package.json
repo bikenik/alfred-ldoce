@@ -34,7 +34,7 @@
 	"dependencies": {
 		"JSONStream": "^1.3.2",
 		"alfred-notifier": "^0.2.3",
-		"alfy": "^0.6.0",
+		"alfy": "0.7.0",
 		"cheerio": "^1.0.0-rc.2",
 		"del": "^3.0.0",
 		"google-translate-api": "^2.3.0",
@@ -53,13 +53,22 @@
 	"main": "index.js",
 	"devDependencies": {
 		"alfy-test": "^0.3.0",
-		"ava": "^0.18.0",
+		"ava": "0.25.0",
 		"eslint": "^4.19.1",
-		"xo": "^0.17.0"
+		"xo": "^0.21.0"
 	},
 	"xo": {
 		"space": false,
-		"semicolon": false
+		"semicolon": false,
+		"capitalized-comments": [
+			"error",
+			"always",
+			{
+				"block": {
+					"ignorePattern": "blockignore"
+				}
+			}
+		]
 	},
 	"engines": {
 		"node": ">=7.6"
