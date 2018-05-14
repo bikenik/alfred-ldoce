@@ -23,8 +23,7 @@ const outputVariables = pattern => {
 
 	const mapper = key => ({
 		title: `${key} ⇒ ${
-			alfy.config.get(key) === undefined ? config.decks.defaults['default-deck'] : alfy.config.get(key)
-			}`,
+			alfy.config.get(key) === undefined ? config.decks.defaults['default-deck'] : alfy.config.get(key)}`,
 		subtitle: `↵ pick out another ...`,
 		valid: false,
 		autocomplete: `!set ${key} `

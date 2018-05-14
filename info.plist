@@ -169,19 +169,6 @@
 				<false/>
 			</dict>
 		</array>
-		<key>549A41A0-E4D8-4ADC-88C3-28DA0EE53797</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>52595184-53DF-43A2-964E-16E6BDBDFBDA</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
 		<key>58B5DB44-5113-4BD6-BD77-6F1D41BBAA56</key>
 		<array>
 			<dict>
@@ -558,7 +545,7 @@
 			</dict>
 			<dict>
 				<key>destinationuid</key>
-				<string>549A41A0-E4D8-4ADC-88C3-28DA0EE53797</string>
+				<string>52595184-53DF-43A2-964E-16E6BDBDFBDA</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -668,7 +655,7 @@
 			</dict>
 			<dict>
 				<key>destinationuid</key>
-				<string>549A41A0-E4D8-4ADC-88C3-28DA0EE53797</string>
+				<string>52595184-53DF-43A2-964E-16E6BDBDFBDA</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -774,6 +761,25 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>inputstring</key>
+				<string>{query}</string>
+				<key>matchcasesensitive</key>
+				<false/>
+				<key>matchmode</key>
+				<integer>2</integer>
+				<key>matchstring</key>
+				<string>https</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.filter</string>
+			<key>uid</key>
+			<string>1691105E-FA4A-4467-B14B-A716C54F4DB7</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>json</key>
 				<string>{
   "alfredworkflow" : {
@@ -790,25 +796,6 @@
 			<string>alfred.workflow.utility.json</string>
 			<key>uid</key>
 			<string>4D81C34B-432B-4BE9-8C1A-69EB50F80C1D</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>inputstring</key>
-				<string>{query}</string>
-				<key>matchcasesensitive</key>
-				<false/>
-				<key>matchmode</key>
-				<integer>2</integer>
-				<key>matchstring</key>
-				<string>https</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.filter</string>
-			<key>uid</key>
-			<string>1691105E-FA4A-4467-B14B-A716C54F4DB7</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -919,9 +906,9 @@
 				<key>keyword</key>
 				<string>ldl</string>
 				<key>queuedelaycustom</key>
-				<integer>3</integer>
+				<integer>9</integer>
 				<key>queuedelayimmediatelyinitially</key>
-				<true/>
+				<false/>
 				<key>queuedelaymode</key>
 				<integer>2</integer>
 				<key>queuemode</key>
@@ -1252,11 +1239,11 @@
 				<key>keyword</key>
 				<string>ldoce</string>
 				<key>queuedelaycustom</key>
-				<integer>7</integer>
+				<integer>3</integer>
 				<key>queuedelayimmediatelyinitially</key>
 				<true/>
 				<key>queuedelaymode</key>
-				<integer>2</integer>
+				<integer>0</integer>
 				<key>queuemode</key>
 				<integer>1</integer>
 				<key>runningsubtext</key>
@@ -1268,7 +1255,7 @@
 				<key>scriptfile</key>
 				<string></string>
 				<key>subtext</key>
-				<string></string>
+				<string>subtext</string>
 				<key>title</key>
 				<string>Search headwords ...</string>
 				<key>type</key>
@@ -1674,7 +1661,7 @@ rm $file.bk
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/Anki.app</string>
+					<string>/Applications/Anki 2.1/Anki.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
@@ -1702,14 +1689,6 @@ rm $file.bk
 			<string>alfred.workflow.utility.filter</string>
 			<key>uid</key>
 			<string>52595184-53DF-43A2-964E-16E6BDBDFBDA</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.junction</string>
-			<key>uid</key>
-			<string>549A41A0-E4D8-4ADC-88C3-28DA0EE53797</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -1793,7 +1772,7 @@ http://developer.pearson.com/apis/dictionaries</string>
 		<key>4D81C34B-432B-4BE9-8C1A-69EB50F80C1D</key>
 		<dict>
 			<key>xpos</key>
-			<integer>1290</integer>
+			<integer>1300</integer>
 			<key>ypos</key>
 			<integer>130</integer>
 		</dict>
@@ -1827,7 +1806,7 @@ http://developer.pearson.com/apis/dictionaries</string>
 		<key>52595184-53DF-43A2-964E-16E6BDBDFBDA</key>
 		<dict>
 			<key>xpos</key>
-			<integer>570</integer>
+			<integer>460</integer>
 			<key>ypos</key>
 			<integer>970</integer>
 		</dict>
@@ -1839,15 +1818,6 @@ http://developer.pearson.com/apis/dictionaries</string>
 			<integer>460</integer>
 			<key>ypos</key>
 			<integer>210</integer>
-		</dict>
-		<key>549A41A0-E4D8-4ADC-88C3-28DA0EE53797</key>
-		<dict>
-			<key>colorindex</key>
-			<integer>4</integer>
-			<key>xpos</key>
-			<integer>460</integer>
-			<key>ypos</key>
-			<integer>970</integer>
 		</dict>
 		<key>58B5DB44-5113-4BD6-BD77-6F1D41BBAA56</key>
 		<dict>
@@ -2145,7 +2115,7 @@ Search for entries with the given headword</string>
 	<key>variables</key>
 	<dict>
 		<key>language</key>
-		<string>de</string>
+		<string>ru</string>
 		<key>note_type</key>
 		<string>Ldoce-Express</string>
 		<key>path_to_ankiMedia</key>

@@ -31,7 +31,7 @@ module.exports.render = async (pattern, autocomplete = () => undefined, ankiDeck
 		}))
 	if (out.length === 0) {
 		out.push({
-			title: `a new deck will be created as '${capitalize(pattern)}'`,
+			title: `Create new Deck as '${capitalize(pattern)}'`,
 			subtitle: `Old value ⇒ ${alfy.config.get('default-deck')}`,
 			valid: true,
 			arg: JSON.stringify({
