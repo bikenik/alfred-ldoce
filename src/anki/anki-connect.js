@@ -5,7 +5,7 @@ module.exports = function (action, version, params) {
 	return new Promise((resolve, reject) => {
 		const xhr = new XMLHttpRequest()
 		xhr.addEventListener('error', () =>
-			reject('failed to connect to AnkiConnect')
+			reject(new Error('failed to connect to AnkiConnect'))
 		)
 		xhr.addEventListener('load', () => {
 			try {
@@ -16,7 +16,7 @@ module.exports = function (action, version, params) {
 				if (Object.prototype.hasOwnProperty.call(response, 'result')) {
 					resolve(response.result)
 				}
-				reject('failed to get results from AnkiConnect')
+				reject(new Error('failed to get results from AnkiConnect'))
 			} catch (err) {
 				reject(err)
 			}

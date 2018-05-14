@@ -13,8 +13,9 @@ alfy.config.set('wordOfURL', wordOfURL)
 const url = 'http://api.pearson.com' + wordOfURL
 const fileHeader = './src/input/header.json'
 const fileBody = './src/input/body.json'
+/* eslint-disable promise/prefer-await-to-then */
 alfy.fetch(url).then(data => {
-	let header = [
+	const header = [
 		{
 			Headword: data.result.headword,
 			Brit_audio: data.result.audio[0].url,
@@ -39,23 +40,26 @@ alfy.fetch(url).then(data => {
 		header[0].Homnum = data.result.homnum
 	}
 	if (data.result.inflections) {
+		/* eslint-disable prefer-destructuring */
 		header[0].Inflections = data.result.inflections[0]
+		/* eslint-enable prefer-destructuring */
 	}
 	if (data.result.geography) {
 		header[0].Geography = data.result.geography
 	}
 
 	try {
-		fs.unlinkSync(fileBody) // delete file
+		fs.unlinkSync(fileBody)
 		console.log('successfully deleted: fileBody')
 	} catch (err) {
-		// handle the error
 	}
 	jsonfile.writeFile(fileHeader, header, {
 		spaces: 2
-	}, function (err) {
+	}, err => {
 		if (err !== null) {
 			console.error(err)
 		}
 	})
-})
+}
+	/* eslint-disable promise/prefer-await-to-then */
+)

@@ -9,10 +9,9 @@ const fileBody = './src/input/body.json'
 const {wordOfURL} = process.env
 
 try {
-	fs.unlinkSync(fileBody) // delete file
+	fs.unlinkSync(fileBody)
 	console.log('successfully deleted: fileBody')
 } catch (err) {
-	// handle the error
 }
 
 let url = 'http://api.pearson.com' + wordOfURL
@@ -24,6 +23,7 @@ const warning = {
 	notFoundCouse: `Press ⇧↵ to turn back for "${headers[0].Headword.toUpperCase()}" (${headers[0].Part_of_speech})`
 }
 const items = []
+/* eslint-disable promise/prefer-await-to-then */
 alfy.fetch(url).then(data => {
 	const $ = data.result
 	if ($.phrasal_verbs) {
@@ -31,22 +31,18 @@ alfy.fetch(url).then(data => {
 			if (phrasalVerbs.senses) {
 				phrasalVerbs.senses.forEach(sense => {
 					if (sense.examples) {
-						let largetype = `${phrasalVerbs.headword}\n\n🔑 :${sense.definition[0]}\n\n🎯 ${sense.examples[0].text}`
+						const largetype = `${phrasalVerbs.headword}\n\n🔑 :${sense.definition[0]}\n\n🎯 ${sense.examples[0].text}`
 						items.push({
 							title: phrasalVerbs.headword,
 							subtitle: sense.definition[0],
 							arg: {
-								definition: [
-									`<span class="neutral span">[</span>${
-									phrasalVerbs.headword
-									}<span class="neutral span">] </span>${sense.definition}`
-								],
+								definition: [`<span class="neutral span">[</span>${phrasalVerbs.headword}<span class="neutral span">] </span>${sense.definition}`],
 								examples: sense.examples,
-								sense: sense
+								sense
 							},
 							text: {
 								copy: largetype,
-								largetype: largetype
+								largetype
 							},
 							icon: {path: './icons/phrasal_verbs.png'}
 						})
@@ -54,24 +50,18 @@ alfy.fetch(url).then(data => {
 					if (sense.gramatical_examples) {
 						sense.gramatical_examples.forEach(gramaticalExample => {
 							if (gramaticalExample.examples) {
-								let largetype = `${gramaticalExample.pattern}\n\n🔑 :${sense.definition[0]}\n\n🎯${gramaticalExample.examples[0].text}`
+								const largetype = `${gramaticalExample.pattern}\n\n🔑 :${sense.definition[0]}\n\n🎯${gramaticalExample.examples[0].text}`
 								items.push({
 									title: gramaticalExample.pattern,
 									subtitle: sense.definition[0],
 									arg: {
 										examples: gramaticalExample.examples,
-										definition: [
-											`<span class="neutral span">[</span>${
-											phrasalVerbs.headword
-											}<span class="neutral span">] </span>> ${sense.definition} [${
-											gramaticalExample.pattern
-											}]`
-										],
-										sense: sense
+										definition: [`<span class="neutral span">[</span>${phrasalVerbs.headword}<span class="neutral span">] </span>> ${sense.definition} [${gramaticalExample.pattern}]`],
+										sense
 									},
 									text: {
 										copy: largetype,
-										largetype: largetype
+										largetype
 									},
 									valid: true,
 									icon: {path: './icons/gramatical.png'}
@@ -88,7 +78,6 @@ alfy.fetch(url).then(data => {
 	}
 
 	const elements = []
-	// elements.push(header)
 	for (let i = 0; i < items.length; i++) {
 		if (items[i] !== undefined) {
 			elements.push(items[i])
@@ -104,13 +93,14 @@ alfy.fetch(url).then(data => {
 			largetype: x.text.largetype
 		},
 		variables: {
-			word: data.result.headword.toUpperCase()
+			word: data.result.headword.toUpperCase(),
+			currentSense: x.text.largetype
 		},
 		autocomplete: x.title
 	}))
 
 	try {
-		let test = items[0].title
+		const test = items[0].title
 	} catch (err) {
 		variantsToSingleChoose.push({
 			title: warning.notFound,
@@ -142,9 +132,11 @@ alfy.fetch(url).then(data => {
 		variables: {word: `${data.result.headword}`}
 	}))
 
-	let variantsAllExp = []
+	const variantsAllExp = []
 	for (let i = 0; i < variantsAll.length; i++) {
 		variantsAllExp.push(variantsAll[i].arg)
 	}
 	alfy.config.set('allPhrases', variantsAllExp)
-})
+}
+	/* eslint-enable promise/prefer-await-to-then */
+)

@@ -7,13 +7,14 @@ const {errorAction} = require('./src/utils/error')
 const set = require('./src/cmd/set')
 const del = require('./src/cmd/del')
 const decks = require('./src/anki/anki-decks')
-const api = require('./src/api/index')
+const api = require('./src/api')
 
 alfredNotifier()
-
+/* eslint-disable prefer-destructuring */
 const myVar = process.argv[3]
+/* eslint-enable prefer-destructuring */
 let query
-let introMessage = [{
+const introMessage = [{
 	subtitle: `Current deck is ⇒ ${alfy.config.get('default-deck')}`
 }]
 
@@ -62,7 +63,7 @@ const option = async input => {
 		}
 		jsonfile.writeFile(fileAnkiDecks, ankiDecks, {
 			spaces: 2
-		}, function (err) {
+		}, err => {
 			if (err !== null) {
 				console.log(err)
 			}
@@ -73,7 +74,7 @@ const option = async input => {
 
 (async () => {
 	try {
-		let out = await option(alfy.input)
+		const out = await option(alfy.input)
 		if (out || /!.*/.test(alfy.input)) {
 			alfy.output(out)
 		} else {

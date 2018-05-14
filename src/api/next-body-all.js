@@ -8,7 +8,7 @@ jsonfile.writeFile(
 	{
 		spaces: 2
 	},
-	function (err) {
+	err => {
 		if (err !== null) {
 			console.error(err)
 		}

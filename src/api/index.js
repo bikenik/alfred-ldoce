@@ -4,14 +4,15 @@ const {checkStatus, errorAction} = require('../utils/error')
 
 module.exports.fetching =
 	async query => {
-		let quickLook = ''
+		const quickLook = ''
 		await alfy
 			.fetch('http://api.pearson.com/v2/dictionaries/ldoce5/entries', {query})
 			.then(checkStatus)
 			.then(data => {
+				let result
 				const items = data.results.map(x => {
-					let currentWord = alfy.input.replace(/\s/g, '-')
-					let result = {
+					const currentWord = alfy.input.replace(/\s/g, '-')
+					result = {
 						title: x.headword,
 						subtitle: x.part_of_speech,
 						arg: x.url,
@@ -54,9 +55,10 @@ module.exports.fetching =
 					******************************************* */
 					alfy.fetch(`https://speller.yandex.net/services/spellservice.json/checkText?text=${query.headword || query.search}&lang=en`)
 						.then(data => {
+							let result
 							if (data.length > 0) {
 								const items = data[0].s.map(x => {
-									let result = {
+									result = {
 										title: x,
 										subtitle: `Perhaps you mean: ${x}`,
 										autocomplete: x,
@@ -80,8 +82,7 @@ module.exports.fetching =
 											valid: true,
 											arg: `https://www.ldoceonline.com/dictionary/${
 												query.headword.replace(/\s/g, '-') ||
-												query.search.replace(/\s/g, '-')
-												}`
+												query.search.replace(/\s/g, '-')}`
 										}
 									}
 								}]
@@ -96,7 +97,5 @@ module.exports.fetching =
 			.catch(err => {
 				throw new WorkflowError(`${err}`, errorAction('main'))
 			})
-		module.exports.quicklookurl = {
-			quickLook: quickLook
-		}
+		module.exports.quicklookurl = {quickLook}
 	}
