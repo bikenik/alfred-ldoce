@@ -2175,7 +2175,7 @@ fi</string>
 	<string>1. Choose your language [https://cloud.google.com/translate/docs/languages]
 2. And check path to Anki collection.media folder
 3. Check your path to Anki.app in "Launch Apps / Files" module
-4. Try some call External from this workflow
+4. Try some call External from this workflow (fn + ↩)
 
 This workflow uses API of Pearson
 http://developer.pearson.com/apis/dictionaries</string>
@@ -2470,7 +2470,7 @@ to translate for instanse or another workflow..</string>
 		<key>7C60BE1A-F366-47F0-95C5-B690F27A959B</key>
 		<dict>
 			<key>colorindex</key>
-			<integer>4</integer>
+			<integer>5</integer>
 			<key>xpos</key>
 			<integer>2590</integer>
 			<key>ypos</key>
@@ -2628,7 +2628,7 @@ to translate for instanse or another workflow..</string>
 		<key>BD558F86-653D-4420-8306-B1E37CF96667</key>
 		<dict>
 			<key>colorindex</key>
-			<integer>4</integer>
+			<integer>5</integer>
 			<key>xpos</key>
 			<integer>2520</integer>
 			<key>ypos</key>
@@ -2763,7 +2763,7 @@ Search for entries with the given headword</string>
 		<string>language</string>
 	</array>
 	<key>version</key>
-	<string>1.1.8</string>
+	<string>1.2.1</string>
 	<key>webaddress</key>
 	<string>https://github.com/bikeNik/alfred-ldoce#readme</string>
 </dict>
