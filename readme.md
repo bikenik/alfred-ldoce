@@ -51,13 +51,13 @@ _Requires: [Node.js](https://nodejs.org) 7.6+, Alfred [Powerpack](https://www.al
 * <kbd>`<query>`</kbd> — Search for previous matching        <kbd>ldoce <query></kbd>
 
   * <kbd>⇥</kbd>, <kbd>↩</kbd> or <kbd>⌘ + NUM</kbd> or click — select to choose sense for creating card
-  * <kbd>⌘ + L</kbd> — Show one of example sentences in Alfred's Large Type window
+  * <kbd>⌘ + L</kbd> — Show one of vocabulary entries in Alfred's "Large Type" window
   * <kbd>⌘ + ↩</kbd> — create card from selected senses of word
   * <kbd>⌥ + ↩</kbd> — create card from all matching of current query
   * <kbd>fn + ↩</kbd> — export current vocabulary entries to other workfows "Call External"
-* <kbd>ldl</kbd> or <kbd>ldp</kbd> (last query or last query for phrasal verb) go to the definition of the word of the last query
+* <kbd>`<ldl>`</kbd> or <kbd>`<ldp>`</kbd> (last query or last query for phrasal verb) go to the definition of the word of the last query
+* If you notice this sign 🔦 it means the current deffinition exist additional words for search. Hit <kbd>⌃ + ↵</kbd> (SEE ALSO) to show and search by this words.
 * <kbd><!set></kbd> or <kbd><!del></kbd> — Choose, create or delete deck for Anki
-* If you notice this sign [ 🔦 ] it means the current deffinition exist additional words for search. Hit <kbd>⌥ + ↵</kbd> to show and search by this words.
 
 
 **Note:** OS X's "delete word" shortcut ( <kbd>⌥ + ⌫</kbd> ) is very handy for backing out of a current search result.
