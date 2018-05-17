@@ -1,6 +1,5 @@
 'use strict'
 const jsonfile = require('jsonfile')
-const alfredNotifier = require('alfred-notifier')
 const alfy = require('alfy')
 const WorkflowError = require('./src/utils/error')
 const {errorAction} = require('./src/utils/error')
@@ -9,7 +8,6 @@ const del = require('./src/cmd/del')
 const decks = require('./src/anki/anki-decks')
 const api = require('./src/api')
 
-alfredNotifier()
 /* eslint-disable prefer-destructuring */
 const myVar = process.argv[3]
 /* eslint-enable prefer-destructuring */
