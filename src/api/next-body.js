@@ -58,28 +58,30 @@ const addToItems = new Render()
 /* eslint-disable promise/prefer-await-to-then */
 alfy.fetch(url).then(data => {
 	const $ = data.result
+	const commonExamples = $.examples ? $.examples.slice(1, 3) : null
 	const quicklookurl = `https://www.ldoceonline.com/dictionary/${data.result.headword.replace(/\s/g, '-')}`
+	const notFound = `\t...\n\n🎲 API not exist examples, so the card won't created.\nHint the Enter to go to ldoce.com`
+	const notDefinition = '_'
+
 	/* ************************
 	Run-ons
 	************************ */
 	if ($.run_ons) {
 		$.run_ons.forEach(runOn => {
-			if (runOn.examples) {
-				addToItems.add(
-					new Render(
-						runOn.derived_form,
-						runOn.part_of_speech || runOn.examples[0].text,
-						runOn.examples[0].text,
-						'./icons/runon.png',
-						{
-							definition: [`${runOn.derived_form}<span class="neutral span"> [</span>${runOn.part_of_speech}<span class="neutral span">]</span>`],
-							examples: runOn.examples,
-							sense: runOn
-						},
-						null,
-						null
-					))
-			}
+			addToItems.add(
+				new Render(
+					runOn.derived_form,
+					runOn.part_of_speech || runOn.examples[0].text,
+					runOn.examples ? runOn.examples[0].text : notFound,
+					runOn.examples ? './icons/runon.png' : './icons/red/runon.png',
+					runOn.examples ? {
+						definition: [`${runOn.derived_form}<span class="neutral span"> [</span>${runOn.part_of_speech}<span class="neutral span">]</span>`],
+						examples: runOn.examples,
+						sense: runOn
+					} : quicklookurl,
+					null,
+					null
+				))
 		})
 	}
 
@@ -87,22 +89,25 @@ alfy.fetch(url).then(data => {
 	Regular senses
 	************************ */
 	if ($.senses) {
+		const exampleExist = {
+			check: $.senses.map(x => x.gramatical_examples || x.examples)
+		}
+		exampleExist.result = exampleExist.check.filter(x => x).length > 0
 		$.senses.forEach(sense => {
 			const checkForEmpty = sense.examples || sense.definition
-			const notFound = `\t...\n\n🎲 API not exist examples, so the card won't created.\nHint the Enter to go to ldoce.com`
-			const notDefinition = '_'
 			const booleanTitle = sense.signpost || sense.lexical_unit || $.headword
 
 			if (booleanTitle && checkForEmpty && !sense.synonym && !sense.opposite && !sense.gramatical_examples) {
+				const examples = sense.examples || exampleExist.result ? sense.examples : commonExamples
 				addToItems.add(
 					new Render(
 						sense.signpost || sense.lexical_unit || $.headword,
 						sense.definition ? sense.definition[0] : notDefinition,
-						sense.examples ? sense.examples[0].text : notFound,
-						sense.examples ? './icons/flag.png' : './icons/red/flag.png',
-						sense.examples ? {
+						examples ? examples[0].text : notFound,
+						examples ? './icons/flag.png' : './icons/red/flag.png',
+						examples ? {
 							definition: [`${sense.lexical_unit ? sense.lexical_unit : ''}<span class="neutral span"> [</span>${sense.definition}<span class="neutral span">]</span>`],
-							examples: sense.examples || null,
+							examples: examples || null,
 							sense
 						} : quicklookurl,
 						null,

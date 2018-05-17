@@ -12,9 +12,10 @@ module.exports.fetching =
 				let result
 				const items = data.results.map(x => {
 					const currentWord = alfy.input.replace(/\s/g, '-')
+					const definition = x.senses ? x.senses.map(x => x.definition && x.definition.map(y => y)).join(' | ') : null
 					result = {
 						title: x.headword,
-						subtitle: x.part_of_speech,
+						subtitle: x.part_of_speech || definition,
 						arg: x.url,
 						autocomplete: x.headword || '',
 						quicklookurl: `https://www.ldoceonline.com/dictionary/${currentWord}`,
