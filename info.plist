@@ -23,19 +23,6 @@
 		</array>
 		<key>0745B6D3-4D66-4B9B-A94B-228AD6D7A1D7</key>
 		<array/>
-		<key>076E43B9-1062-4DAD-A0A6-43624399231A</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>33B98F13-213C-406A-8C89-45818A87E3B5</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
 		<key>0D89C552-D0A3-4AC4-8914-9858F66DD59C</key>
 		<array>
 			<dict>
@@ -209,7 +196,7 @@
 			</dict>
 			<dict>
 				<key>destinationuid</key>
-				<string>076E43B9-1062-4DAD-A0A6-43624399231A</string>
+				<string>33B98F13-213C-406A-8C89-45818A87E3B5</string>
 				<key>modifiers</key>
 				<integer>1048576</integer>
 				<key>modifiersubtext</key>
@@ -412,7 +399,7 @@
 			</dict>
 			<dict>
 				<key>destinationuid</key>
-				<string>076E43B9-1062-4DAD-A0A6-43624399231A</string>
+				<string>33B98F13-213C-406A-8C89-45818A87E3B5</string>
 				<key>modifiers</key>
 				<integer>1048576</integer>
 				<key>modifiersubtext</key>
@@ -431,6 +418,8 @@
 				<false/>
 			</dict>
 		</array>
+		<key>71FC9594-41E7-410B-AB69-3E4F1C614C63</key>
+		<array/>
 		<key>74E341E1-9036-4A05-8F57-42C791DFC96F</key>
 		<array>
 			<dict>
@@ -1327,9 +1316,9 @@
 				<key>matchcasesensitive</key>
 				<false/>
 				<key>matchmode</key>
-				<integer>1</integer>
+				<integer>2</integer>
 				<key>matchstring</key>
-				<string>"https</string>
+				<string>^\{</string>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.utility.filter</string>
@@ -1438,7 +1427,7 @@
 				<key>matchmode</key>
 				<integer>2</integer>
 				<key>matchstring</key>
-				<string>https</string>
+				<string>^"http</string>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.utility.filter</string>
@@ -1735,14 +1724,6 @@ fi</string>
 			<integer>1</integer>
 		</dict>
 		<dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.junction</string>
-			<key>uid</key>
-			<string>076E43B9-1062-4DAD-A0A6-43624399231A</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
 			<key>config</key>
 			<dict>
 				<key>matchmode</key>
@@ -1775,6 +1756,21 @@ fi</string>
 			<string>alfred.workflow.utility.filter</string>
 			<key>uid</key>
 			<string>3F50006B-F564-485E-8F16-2E9D6EF638A3</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>soundname</key>
+				<string>Basso</string>
+				<key>systemsound</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.playsound</string>
+			<key>uid</key>
+			<string>004EB058-9606-4AA6-87D6-F01ACE72AFD6</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -1870,6 +1866,25 @@ fi</string>
 				<key>matchcasesensitive</key>
 				<false/>
 				<key>matchmode</key>
+				<integer>0</integer>
+				<key>matchstring</key>
+				<string>false</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.filter</string>
+			<key>uid</key>
+			<string>D860D9C9-6E9B-40D7-9827-3A4D2ABDA632</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>inputstring</key>
+				<string>{query}</string>
+				<key>matchcasesensitive</key>
+				<false/>
+				<key>matchmode</key>
 				<integer>2</integer>
 				<key>matchstring</key>
 				<string>\}$</string>
@@ -1878,21 +1893,6 @@ fi</string>
 			<string>alfred.workflow.utility.filter</string>
 			<key>uid</key>
 			<string>C0EDA4EC-389B-4BBB-BE35-A933AE8E5EB4</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>soundname</key>
-				<string>Basso</string>
-				<key>systemsound</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.playsound</string>
-			<key>uid</key>
-			<string>004EB058-9606-4AA6-87D6-F01ACE72AFD6</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -1999,25 +1999,6 @@ fi</string>
 			<string>897FCC90-25E2-4E87-A63A-8624BF299943</string>
 			<key>version</key>
 			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>inputstring</key>
-				<string>{query}</string>
-				<key>matchcasesensitive</key>
-				<false/>
-				<key>matchmode</key>
-				<integer>0</integer>
-				<key>matchstring</key>
-				<string>false</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.filter</string>
-			<key>uid</key>
-			<string>D860D9C9-6E9B-40D7-9827-3A4D2ABDA632</string>
-			<key>version</key>
-			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -2188,7 +2169,7 @@ http://developer.pearson.com/apis/dictionaries</string>
 			<key>xpos</key>
 			<integer>1980</integer>
 			<key>ypos</key>
-			<integer>760</integer>
+			<integer>610</integer>
 		</dict>
 		<key>0745B6D3-4D66-4B9B-A94B-228AD6D7A1D7</key>
 		<dict>
@@ -2201,17 +2182,10 @@ http://developer.pearson.com/apis/dictionaries</string>
 			<key>ypos</key>
 			<integer>220</integer>
 		</dict>
-		<key>076E43B9-1062-4DAD-A0A6-43624399231A</key>
+		<key>0D89C552-D0A3-4AC4-8914-9858F66DD59C</key>
 		<dict>
 			<key>colorindex</key>
 			<integer>3</integer>
-			<key>xpos</key>
-			<integer>1560</integer>
-			<key>ypos</key>
-			<integer>510</integer>
-		</dict>
-		<key>0D89C552-D0A3-4AC4-8914-9858F66DD59C</key>
-		<dict>
 			<key>xpos</key>
 			<integer>1230</integer>
 			<key>ypos</key>
@@ -2305,10 +2279,12 @@ http://developer.pearson.com/apis/dictionaries</string>
 			<key>xpos</key>
 			<integer>2190</integer>
 			<key>ypos</key>
-			<integer>760</integer>
+			<integer>660</integer>
 		</dict>
 		<key>4704E873-5CD1-4BA7-B78F-A3AEFE84028E</key>
 		<dict>
+			<key>colorindex</key>
+			<integer>10</integer>
 			<key>xpos</key>
 			<integer>700</integer>
 			<key>ypos</key>
@@ -2322,7 +2298,7 @@ http://developer.pearson.com/apis/dictionaries</string>
 			<string>output of word's sence to something else 
 to translate for instanse or another workflow..</string>
 			<key>xpos</key>
-			<integer>1360</integer>
+			<integer>1480</integer>
 			<key>ypos</key>
 			<integer>780</integer>
 		</dict>
@@ -2451,8 +2427,10 @@ to translate for instanse or another workflow..</string>
 		</dict>
 		<key>71FC9594-41E7-410B-AB69-3E4F1C614C63</key>
 		<dict>
+			<key>colorindex</key>
+			<integer>10</integer>
 			<key>xpos</key>
-			<integer>1360</integer>
+			<integer>1480</integer>
 			<key>ypos</key>
 			<integer>630</integer>
 		</dict>
@@ -2545,8 +2523,10 @@ to translate for instanse or another workflow..</string>
 		</dict>
 		<key>90880EE7-0193-4DA0-83F2-C512EED9BFE9</key>
 		<dict>
+			<key>colorindex</key>
+			<integer>4</integer>
 			<key>xpos</key>
-			<integer>1790</integer>
+			<integer>1980</integer>
 			<key>ypos</key>
 			<integer>350</integer>
 		</dict>
@@ -2620,8 +2600,10 @@ to translate for instanse or another workflow..</string>
 		</dict>
 		<key>B9A7762D-55F9-4BB3-A1D2-29C8F8114EC9</key>
 		<dict>
+			<key>colorindex</key>
+			<integer>4</integer>
 			<key>xpos</key>
-			<integer>1790</integer>
+			<integer>1980</integer>
 			<key>ypos</key>
 			<integer>220</integer>
 		</dict>
@@ -2675,6 +2657,8 @@ Generic text search across all entries (searchs all entry fields)</string>
 		</dict>
 		<key>C957AC19-85DE-4C75-B67F-D5613E16FE8A</key>
 		<dict>
+			<key>colorindex</key>
+			<integer>4</integer>
 			<key>xpos</key>
 			<integer>1980</integer>
 			<key>ypos</key>
@@ -2698,14 +2682,14 @@ Generic text search across all entries (searchs all entry fields)</string>
 			<key>xpos</key>
 			<integer>1820</integer>
 			<key>ypos</key>
-			<integer>790</integer>
+			<integer>640</integer>
 		</dict>
 		<key>DD53D4AC-1480-4E09-8C8E-071D5667B1FF</key>
 		<dict>
 			<key>colorindex</key>
 			<integer>2</integer>
 			<key>xpos</key>
-			<integer>1550</integer>
+			<integer>1640</integer>
 			<key>ypos</key>
 			<integer>60</integer>
 		</dict>
@@ -2763,7 +2747,7 @@ Search for entries with the given headword</string>
 		<string>language</string>
 	</array>
 	<key>version</key>
-	<string>1.2.1</string>
+	<string>1.2.2</string>
 	<key>webaddress</key>
 	<string>https://github.com/bikeNik/alfred-ldoce#readme</string>
 </dict>
