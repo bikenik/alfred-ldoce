@@ -32,10 +32,6 @@ end if
 const myVar = process.argv[3]
 /* eslint-enable prefer-destructuring */
 
-// const myVar = 'search'
-// alfy.input = '!refresh refresh-decks '
-// alfy.input = 'quan'
-
 let query
 const introMessage = [{
 	subtitle: `Current deck is ⇒ ${alfy.config.get('default-deck')}`
