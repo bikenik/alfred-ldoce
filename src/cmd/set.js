@@ -1,9 +1,9 @@
 const alfy = require('alfy')
 const WorkflowError = require('../utils/error')
 const {errorAction} = require('../utils/error')
+const {hasOwnProperty} = require('../utils')
 const config = require('../config')
 const decks = require('../anki/anki-decks')
-const {hasOwnProperty} = require('../utils')
 const arrayOfDecks = require('../input/anki-decks.json')
 
 const variables = {
@@ -70,7 +70,7 @@ module.exports = input => {
 			}
 			if (arrayOfDecks.indexOf(value) === -1) {
 				return variable.outputOptions.render(
-					value.replace(/\s/, '-'),
+					value.replace(/([a-zA-Z])\s([a-zA-Z])/, `$1-$2`),
 					name => `!set ${variableName} ${name}`,
 					arrayOfDecks,
 					`./icons/deck.png`

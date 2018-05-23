@@ -18,8 +18,6 @@ const config = require('./config')
 const {language} = process.env
 let output
 
-main()
-
 async function main() {
 	setupDirStructure()
 	const inputCollection = jsonfile.readFileSync(config.input)
@@ -217,3 +215,5 @@ function removeDuplicates(myArr, prop) {
 		return arr.map(mapObj => mapObj[prop]).indexOf(obj[prop]) === pos
 	})
 }
+
+main()

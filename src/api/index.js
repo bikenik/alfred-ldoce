@@ -82,8 +82,8 @@ module.exports.fetching =
 											subtitle: 'go longman.com',
 											valid: true,
 											arg: `https://www.ldoceonline.com/dictionary/${
-												query.headword.replace(/\s/g, '-') ||
-												query.search.replace(/\s/g, '-')}`
+												query.headword ? query.headword.replace(/\s/g, '-') : false ||
+													query.search.replace(/\s/g, '-')}`
 										}
 									}
 								}]

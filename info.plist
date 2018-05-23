@@ -1075,7 +1075,7 @@
 				<key>scriptfile</key>
 				<string></string>
 				<key>subtext</key>
-				<string></string>
+				<string>Generic text search across all entries</string>
 				<key>title</key>
 				<string>Search generic ...</string>
 				<key>type</key>
@@ -1122,9 +1122,9 @@
 				<key>scriptfile</key>
 				<string>index.js</string>
 				<key>subtext</key>
-				<string></string>
+				<string>...</string>
 				<key>title</key>
-				<string>into the word article</string>
+				<string>second query of regular word</string>
 				<key>type</key>
 				<integer>5</integer>
 				<key>withspace</key>
@@ -1262,6 +1262,19 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>triggerid</key>
+				<string>phrasal</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.external</string>
+			<key>uid</key>
+			<string>54F9432D-3A75-4A39-8BF8-D4F6D7863325</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>lastpathcomponent</key>
 				<false/>
 				<key>onlyshowifquerypopulated</key>
@@ -1292,19 +1305,6 @@
 			<string>alfred.workflow.output.playsound</string>
 			<key>uid</key>
 			<string>90880EE7-0193-4DA0-83F2-C512EED9BFE9</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>triggerid</key>
-				<string>phrasal</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.trigger.external</string>
-			<key>uid</key>
-			<string>54F9432D-3A75-4A39-8BF8-D4F6D7863325</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -1517,9 +1517,9 @@ fi
 				<key>scriptfile</key>
 				<string>index.js</string>
 				<key>subtext</key>
-				<string></string>
+				<string>...</string>
 				<key>title</key>
-				<string>search</string>
+				<string>second query of phrasal verb</string>
 				<key>type</key>
 				<integer>5</integer>
 				<key>withspace</key>
@@ -1622,13 +1622,15 @@ fi</string>
 				<key>runningsubtext</key>
 				<string>Searching Anki Decks ... | Hint ↩︎</string>
 				<key>script</key>
-				<string>./node_modules/.bin/run-node index.js "$1" "headword"</string>
+				<string>./node_modules/.bin/run-node index.js "$1" "headword"
+
+</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
 				<string></string>
 				<key>subtext</key>
-				<string>subtext</string>
+				<string>Search for entries with the given headword</string>
 				<key>title</key>
 				<string>Search headwords ...</string>
 				<key>type</key>
@@ -1762,21 +1764,6 @@ fi</string>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>soundname</key>
-				<string>Basso</string>
-				<key>systemsound</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.playsound</string>
-			<key>uid</key>
-			<string>004EB058-9606-4AA6-87D6-F01ACE72AFD6</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>lastpathcomponent</key>
 				<false/>
 				<key>onlyshowifquerypopulated</key>
@@ -1817,6 +1804,21 @@ fi</string>
 			<string>B36947FB-5A22-45DC-8114-F82FF947FA52</string>
 			<key>version</key>
 			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>soundname</key>
+				<string>Basso</string>
+				<key>systemsound</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.playsound</string>
+			<key>uid</key>
+			<string>004EB058-9606-4AA6-87D6-F01ACE72AFD6</string>
+			<key>version</key>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -1866,25 +1868,6 @@ fi</string>
 				<key>matchcasesensitive</key>
 				<false/>
 				<key>matchmode</key>
-				<integer>0</integer>
-				<key>matchstring</key>
-				<string>false</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.filter</string>
-			<key>uid</key>
-			<string>D860D9C9-6E9B-40D7-9827-3A4D2ABDA632</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>inputstring</key>
-				<string>{query}</string>
-				<key>matchcasesensitive</key>
-				<false/>
-				<key>matchmode</key>
 				<integer>2</integer>
 				<key>matchstring</key>
 				<string>\}$</string>
@@ -1914,6 +1897,25 @@ fi</string>
 			<string>alfred.workflow.output.notification</string>
 			<key>uid</key>
 			<string>4135B0F8-633C-4F62-9E60-1EEEC1AC5E87</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>inputstring</key>
+				<string>{query}</string>
+				<key>matchcasesensitive</key>
+				<false/>
+				<key>matchmode</key>
+				<integer>0</integer>
+				<key>matchstring</key>
+				<string>false</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.filter</string>
+			<key>uid</key>
+			<string>D860D9C9-6E9B-40D7-9827-3A4D2ABDA632</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -2169,7 +2171,7 @@ http://developer.pearson.com/apis/dictionaries</string>
 			<key>xpos</key>
 			<integer>1980</integer>
 			<key>ypos</key>
-			<integer>610</integer>
+			<integer>630</integer>
 		</dict>
 		<key>0745B6D3-4D66-4B9B-A94B-228AD6D7A1D7</key>
 		<dict>
@@ -2239,7 +2241,7 @@ http://developer.pearson.com/apis/dictionaries</string>
 		<key>33B98F13-213C-406A-8C89-45818A87E3B5</key>
 		<dict>
 			<key>xpos</key>
-			<integer>1640</integer>
+			<integer>1480</integer>
 			<key>ypos</key>
 			<integer>480</integer>
 		</dict>
@@ -2248,7 +2250,7 @@ http://developer.pearson.com/apis/dictionaries</string>
 			<key>colorindex</key>
 			<integer>12</integer>
 			<key>xpos</key>
-			<integer>1360</integer>
+			<integer>1350</integer>
 			<key>ypos</key>
 			<integer>60</integer>
 		</dict>
@@ -2374,7 +2376,7 @@ to translate for instanse or another workflow..</string>
 			<key>xpos</key>
 			<integer>890</integer>
 			<key>ypos</key>
-			<integer>360</integer>
+			<integer>350</integer>
 		</dict>
 		<key>58B5DB44-5113-4BD6-BD77-6F1D41BBAA56</key>
 		<dict>
@@ -2461,7 +2463,7 @@ to translate for instanse or another workflow..</string>
 			<key>note</key>
 			<string>Phrasal-verbs mode</string>
 			<key>xpos</key>
-			<integer>910</integer>
+			<integer>890</integer>
 			<key>ypos</key>
 			<integer>510</integer>
 		</dict>
@@ -2651,7 +2653,7 @@ Generic text search across all entries (searchs all entry fields)</string>
 			<key>colorindex</key>
 			<integer>3</integer>
 			<key>xpos</key>
-			<integer>1370</integer>
+			<integer>1360</integer>
 			<key>ypos</key>
 			<integer>450</integer>
 		</dict>
@@ -2682,14 +2684,14 @@ Generic text search across all entries (searchs all entry fields)</string>
 			<key>xpos</key>
 			<integer>1820</integer>
 			<key>ypos</key>
-			<integer>640</integer>
+			<integer>660</integer>
 		</dict>
 		<key>DD53D4AC-1480-4E09-8C8E-071D5667B1FF</key>
 		<dict>
 			<key>colorindex</key>
 			<integer>2</integer>
 			<key>xpos</key>
-			<integer>1640</integer>
+			<integer>1480</integer>
 			<key>ypos</key>
 			<integer>60</integer>
 		</dict>
@@ -2716,7 +2718,7 @@ Generic text search across all entries (searchs all entry fields)</string>
 			<key>note</key>
 			<string>regular mode</string>
 			<key>xpos</key>
-			<integer>910</integer>
+			<integer>890</integer>
 			<key>ypos</key>
 			<integer>250</integer>
 		</dict>
@@ -2747,7 +2749,7 @@ Search for entries with the given headword</string>
 		<string>language</string>
 	</array>
 	<key>version</key>
-	<string>1.2.2</string>
+	<string>1.2.3</string>
 	<key>webaddress</key>
 	<string>https://github.com/bikeNik/alfred-ldoce#readme</string>
 </dict>

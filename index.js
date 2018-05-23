@@ -1,16 +1,41 @@
 'use strict'
 const jsonfile = require('jsonfile')
 const alfy = require('alfy')
+const runApplescript = require('run-applescript')
 const WorkflowError = require('./src/utils/error')
 const {errorAction} = require('./src/utils/error')
 const set = require('./src/cmd/set')
 const del = require('./src/cmd/del')
 const decks = require('./src/anki/anki-decks')
-const api = require('./src/api')
+const api = require('./src/api');
+
+(async () => {
+	const result = await runApplescript(`
+on is_running(appName)
+	tell application "System Events" to (name of processes) contains appName
+end is_running
+
+set ankiRunning to is_running("Anki")
+if ankiRunning then
+	tell application "System Events"
+		tell its process "Anki"
+			-- set visible to false
+			set visible to true
+		end tell
+	end tell
+end if
+`)
+	return result
+})()
 
 /* eslint-disable prefer-destructuring */
 const myVar = process.argv[3]
 /* eslint-enable prefer-destructuring */
+
+// const myVar = 'search'
+// alfy.input = '!refresh refresh-decks '
+// alfy.input = 'quan'
+
 let query
 const introMessage = [{
 	subtitle: `Current deck is ⇒ ${alfy.config.get('default-deck')}`

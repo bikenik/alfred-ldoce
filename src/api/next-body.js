@@ -97,7 +97,7 @@ alfy.fetch(url).then(data => {
 			const checkForEmpty = sense.examples || sense.definition
 			const booleanTitle = sense.signpost || sense.lexical_unit || $.headword
 
-			if (booleanTitle && checkForEmpty && !sense.synonym && !sense.opposite && !sense.gramatical_examples) {
+			if (booleanTitle && checkForEmpty && !sense.synonym && !sense.opposite && sense.examples) {
 				const examples = sense.examples || exampleExist.result ? sense.examples : commonExamples
 				addToItems.add(
 					new Render(
@@ -123,9 +123,8 @@ alfy.fetch(url).then(data => {
 					if (gramaticalExample.examples && !sense.synonym && !sense.opposite) {
 						addToItems.add(
 							new Render(
-								gramaticalExample.pattern ||
-								sense.signpost ||
-								sense.definition[0],
+								sense.signpost ? `${sense.signpost} ⇒ ${gramaticalExample.pattern || sense.definition[0]}` : gramaticalExample.pattern ||
+									sense.definition[0],
 								sense.definition[0],
 								gramaticalExample.examples[0].text,
 								'./icons/gramatical.png',
@@ -180,7 +179,7 @@ alfy.fetch(url).then(data => {
 					if (collExample.example.text !== undefined) {
 						addToItems.add(
 							new Render(
-								collExample.collocation || sense.definition[0],
+								sense.signpost ? `${sense.signpost} ⇒ ${collExample.collocation || sense.definition[0]}` : collExample.collocation || sense.definition[0],
 								sense.definition[0],
 								collExample.example.text,
 								'./icons/collocation.png',

@@ -1,9 +1,9 @@
 const alfy = require('alfy')
 const WorkflowError = require('../utils/error')
 const {errorAction} = require('../utils/error')
+const {hasOwnProperty} = require('../utils')
 const config = require('../config')
 const decks = require('../anki/anki-decks')
-const {hasOwnProperty} = require('../utils')
 const arrayOfDecks = require('../input/anki-decks.json')
 
 const variables = {
@@ -34,7 +34,7 @@ const outputVariables = pattern => {
 }
 
 module.exports = input => {
-	// !set command value
+	// !del command value
 
 	if (typeof input !== 'string') {
 		throw new TypeError('input should be a string')
