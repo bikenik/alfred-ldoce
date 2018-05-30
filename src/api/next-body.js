@@ -96,8 +96,9 @@ alfy.fetch(url).then(data => {
 		$.senses.forEach(sense => {
 			const checkForEmpty = sense.examples || sense.definition
 			const booleanTitle = sense.signpost || sense.lexical_unit || $.headword
+			const booleanExamles = sense.examples || !sense.gramatical_examples
 
-			if (booleanTitle && checkForEmpty && !sense.synonym && !sense.opposite && sense.examples) {
+			if (booleanTitle && checkForEmpty && !sense.synonym && !sense.opposite && booleanExamles) {
 				const examples = sense.examples || exampleExist.result ? sense.examples : commonExamples
 				addToItems.add(
 					new Render(
