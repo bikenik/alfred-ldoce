@@ -85,7 +85,7 @@ module.exports = input => {
 							action: 'del',
 							/* eslint-disable camelcase */
 							config_variable: variableName,
-							config_value: value.replace(/\s/, '_')
+							config_value: value
 						}
 					}
 				}),

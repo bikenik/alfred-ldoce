@@ -7,9 +7,9 @@ const {errorAction} = require('./src/utils/error')
 const set = require('./src/cmd/set')
 const del = require('./src/cmd/del')
 const decks = require('./src/anki/anki-decks')
-const api = require('./src/api');
+const api = require('./src/api')
 
-(async () => {
+const refresh = async () => {
 	const result = await runApplescript(`
 on is_running(appName)
 	tell application "System Events" to (name of processes) contains appName
@@ -26,8 +26,8 @@ if ankiRunning then
 end if
 `)
 	return result
-})()
-
+}
+refresh()
 /* eslint-disable prefer-destructuring */
 const myVar = process.argv[3]
 /* eslint-enable prefer-destructuring */

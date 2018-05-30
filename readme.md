@@ -89,6 +89,8 @@ _Requires: [Node.js](https://nodejs.org) 7.6+, Alfred [Powerpack](https://www.al
 ### ToDo
 
 - [x] Update Readme
+- [ ] Add Frequency by "Ldoce 9000"
+- [ ] Add more info (like "due", "new" and count of cards) through the AnkiConnect
 - [ ] Tests
 
 ## License

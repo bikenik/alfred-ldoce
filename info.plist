@@ -326,19 +326,6 @@
 				<false/>
 			</dict>
 		</array>
-		<key>60E52D47-21B3-4BA3-B86E-D7DF8C702322</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>897FCC90-25E2-4E87-A63A-8624BF299943</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
 		<key>60F69ACD-78BA-4639-AAE9-2AA03E2576DB</key>
 		<array>
 			<dict>
@@ -463,7 +450,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>60E52D47-21B3-4BA3-B86E-D7DF8C702322</string>
+				<string>897FCC90-25E2-4E87-A63A-8624BF299943</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -943,7 +930,7 @@
 				<key>scriptfile</key>
 				<string>index.js</string>
 				<key>subtext</key>
-				<string>LAST</string>
+				<string>see also</string>
 				<key>title</key>
 				<string>search</string>
 				<key>type</key>
@@ -1948,7 +1935,7 @@ fi</string>
 				<key>removeextension</key>
 				<false/>
 				<key>text</key>
-				<string>{var:config_value}</string>
+				<string>{query}</string>
 				<key>title</key>
 				<string>Delete deck</string>
 			</dict>
@@ -1986,8 +1973,7 @@ fi</string>
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>myVar="{var:config_value}"
-./node_modules/.bin/run-node src/anki/anki-delete-deck.js $1</string>
+				<string>./node_modules/.bin/run-node src/anki/anki-delete-deck.js</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -2061,21 +2047,6 @@ fi</string>
 			<string>alfred.workflow.utility.json</string>
 			<key>uid</key>
 			<string>0D89C552-D0A3-4AC4-8914-9858F66DD59C</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argument</key>
-				<string>{var:config_value}</string>
-				<key>variables</key>
-				<dict/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.argument</string>
-			<key>uid</key>
-			<string>60E52D47-21B3-4BA3-B86E-D7DF8C702322</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -2249,6 +2220,9 @@ http://developer.pearson.com/apis/dictionaries</string>
 		<dict>
 			<key>colorindex</key>
 			<integer>12</integer>
+			<key>note</key>
+			<string>...
+🔦 SEE ALSO</string>
 			<key>xpos</key>
 			<integer>1350</integer>
 			<key>ypos</key>
@@ -2386,15 +2360,6 @@ to translate for instanse or another workflow..</string>
 			<integer>1230</integer>
 			<key>ypos</key>
 			<integer>380</integer>
-		</dict>
-		<key>60E52D47-21B3-4BA3-B86E-D7DF8C702322</key>
-		<dict>
-			<key>colorindex</key>
-			<integer>3</integer>
-			<key>xpos</key>
-			<integer>570</integer>
-			<key>ypos</key>
-			<integer>810</integer>
 		</dict>
 		<key>60F69ACD-78BA-4639-AAE9-2AA03E2576DB</key>
 		<dict>
@@ -2749,7 +2714,7 @@ Search for entries with the given headword</string>
 		<string>language</string>
 	</array>
 	<key>version</key>
-	<string>1.2.3</string>
+	<string>1.2.4</string>
 	<key>webaddress</key>
 	<string>https://github.com/bikeNik/alfred-ldoce#readme</string>
 </dict>
