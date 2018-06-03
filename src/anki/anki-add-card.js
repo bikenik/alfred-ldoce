@@ -24,7 +24,7 @@ module.exports = async function (output) {
 		if (output[i].Definition !== 'notfound' && output[i].Definition !== '') {
 			try {
 				const result1 = await ankiConnect(
-					'createDeck', 5,
+					'createDeck', 6,
 					{
 						deck: nameOfDeck
 					})
@@ -33,7 +33,7 @@ module.exports = async function (output) {
 			}
 			try {
 				const result2 = await ankiConnect(
-					'addNote', 5,
+					'addNote', 6,
 					{
 						note: {
 							deckName: nameOfDeck,

@@ -5,7 +5,7 @@ const {config_value} = process.env
 const deletDeck = async () => {
 	try {
 		const result = await ankiConnect(
-			'deleteDecks', 5,
+			'deleteDecks', 6,
 			{
 				decks: [config_value],
 				cardsToo: true

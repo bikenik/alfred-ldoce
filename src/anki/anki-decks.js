@@ -7,7 +7,7 @@ const ankiConnect = require('./anki-connect')
 module.exports = () => {
 	const outresult = async function () {
 		try {
-			const resultAll = await ankiConnect('deckNames', 5)
+			const resultAll = await ankiConnect('deckNames', 6)
 			return resultAll
 		} catch (err) {
 			throw new WorkflowError(`${err}`, errorAction('main'))
