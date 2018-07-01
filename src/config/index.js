@@ -27,6 +27,9 @@ module.exports = {
 		},
 		delete: {
 			'delete-deck': 'choose ...'
+		},
+		refresh: {
+			'refreshing...': 'refreshings ...'
 		}
 	}
 }

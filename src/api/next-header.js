@@ -28,7 +28,7 @@ alfy.fetch(url).then(data => {
 		header[0].Part_of_speech = data.result.run_ons[0].part_of_speech
 	}
 	if (data.result.images) {
-		header[0].Image = data.result.images[0].url
+		header[0].Image = data.result.images.filter(image => /\.jpg$/.test(image.url)).length > 0 ? data.result.images.filter(image => /\.jpg$/.test(image.url))[0].url : data.result.images[0].url
 	}
 	if (data.result.gramatical_info) {
 		header[0].Type_of_gramm = data.result.gramatical_info.type

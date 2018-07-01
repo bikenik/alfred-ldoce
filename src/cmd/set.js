@@ -1,10 +1,12 @@
+/* eslint-disable capitalized-comments */
+
 const alfy = require('alfy')
 const WorkflowError = require('../utils/error')
 const {errorAction} = require('../utils/error')
 const {hasOwnProperty} = require('../utils')
 const config = require('../config')
 const decks = require('../anki/anki-decks')
-const arrayOfDecks = require('../input/anki-decks.json')
+const ankiCards = require('../input/anki-cards.json')
 
 const variables = {
 	'default-deck': {
@@ -26,7 +28,8 @@ const outputVariables = pattern => {
 			alfy.config.get(key) === undefined ? config.decks.defaults['default-deck'] : alfy.config.get(key)}`,
 		subtitle: `↵ pick out another ...`,
 		valid: false,
-		autocomplete: `!set ${key} `
+		autocomplete: `!set ${key} `,
+		icon: {path: `./icons/settings.png`}
 	})
 
 	const out = alfy.matches(pattern, Object.keys(config.decks.defaults)).map(mapper)
@@ -35,8 +38,6 @@ const outputVariables = pattern => {
 }
 
 module.exports = input => {
-	// !set command value
-
 	if (typeof input !== 'string') {
 		throw new TypeError('input should be a string')
 	}
@@ -62,13 +63,14 @@ module.exports = input => {
 	}
 	const variable = variables[variableName]
 	const value = chunks.slice(2).join(' ')
+	const arrayOfDecks = ankiCards
 
 	if (chunks.length >= 3) {
 		return (async () => {
 			if (await decks() === null) {
 				throw new WorkflowError(`Decks was not found, check your Anki profile`, errorAction('!set decks'))
 			}
-			if (arrayOfDecks.indexOf(value) === -1) {
+			if (Object.getOwnPropertyNames(arrayOfDecks).indexOf(value) === -1) {
 				return variable.outputOptions.render(
 					value.replace(/([a-zA-Z])\s([a-zA-Z])/, `$1-$2`),
 					name => `!set ${variableName} ${name}`,
@@ -83,7 +85,7 @@ module.exports = input => {
 				arg: JSON.stringify({
 					alfredworkflow: {
 						variables: {
-							action: 'config',
+							action: 'set',
 							/* eslint-disable camelcase */
 							config_variable: variableName,
 							config_value: value
@@ -100,7 +102,8 @@ module.exports.meta = {
 	name: '!set',
 	usage: '!set to another deck',
 	help: 'Create deck by the given value or new value.',
-	autocomplete: '!set '
+	autocomplete: '!set ',
+	icon: {path: `./icons/settings.png`}
 }
 
 module.exports.match = input => {

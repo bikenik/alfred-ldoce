@@ -13,7 +13,6 @@ const deletDeck = async () => {
 		)
 		return result
 	} catch (err) {
-		// "process.stdout.write(err)"
 		return err
 	}
 }

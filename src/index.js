@@ -83,63 +83,9 @@ async function getData(card) {
 			card.Headword}</span><span class="HYPHENATION">${card.Headword} </span>`
 	}
 
-	// Audio
-
-	const voices = [
-		{
-			name: 'Julie',
-			id: 'engine=3&language=1&voice=3'
-		},
-		{
-			name: 'Kate',
-			id: 'engine=3&language=1&voice=1'
-		},
-		{
-			name: 'James',
-			id: 'engine=3&language=1&voice=7'
-		}
-	]
-	if (data.body.audioFileName.length === 0) {
-		/* eslint-disable no-await-in-loop */
-		for (let i = 0; i < data.body.audioExamples.length; i++) {
-			const audioFileNameExp = data.body.audioExamples[i].replace(
-				/.*exa_pron\/(.*)/, `$1`
-			)
-			const writeStreamExp = fs.createWriteStream(
-				`${config.mediaDir}/${audioFileNameExp}`
-			)
-			request
-				.get(`http://api.pearson.com${data.body.audioExamples[i]}`)
-				.pipe(writeStreamExp)
-			await streamToPromise(writeStreamExp)
-			writeStreamExp.end()
-			// "console.log(audioFileNameExp)"
-		}
-		/* eslint-enable no-await-in-loop */
-	}
-	if (data.body.audioFileName.length > 0) {
-		/* eslint-disable no-await-in-loop */
-		for (let i = 0; i < data.body.audioFileName.length; i++) {
-			const voiceRandom = voices[Math.floor(Math.random() * Math.floor(voices.length))].id
-			const options = {
-				url: `http://cache-a.oddcast.com/c_fs/${data.body.audioFileName[i]}?${voiceRandom}&text=${encodeURIComponent(data.body.definitionForTranslate[i])}&useUTF8=1`,
-				headers: {
-					Referer: 'http://cache-a.oddcast.com/',
-					'User-Agent': 'stagefright/1.2 (Linux;Android 5.0)'
-				}
-			}
-			const writeStreamExp = fs.createWriteStream(
-				`${config.mediaDir}/${data.body.audioFileName[i]}`
-			)
-			request(options)
-				.pipe(writeStreamExp)
-			await streamToPromise(writeStreamExp)
-			writeStreamExp.end()
-			// "console.log(options.url)"
-			// "console.log(data.body.audioFileName[i])"
-		}
-		/* eslint-enable no-await-in-loop */
-	}
+	/* -----------------------------
+	AudioFileName
+ -------------------------------*/
 
 	const audioURLBre = 'http://api.pearson.com' + card.Brit_audio
 	const audioURLAme = 'http://api.pearson.com' + card.Amer_audio

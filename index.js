@@ -1,12 +1,18 @@
 'use strict'
 const jsonfile = require('jsonfile')
 const alfy = require('alfy')
+const Conf = require('conf')
 const WorkflowError = require('./src/utils/error')
 const {errorAction} = require('./src/utils/error')
 const set = require('./src/cmd/set')
 const del = require('./src/cmd/del')
+const refresh = require('./src/cmd/refresh')
 const decks = require('./src/anki/anki-decks')
 const api = require('./src/api')
+
+const config = new Conf()
+config.delete('subBoxName')
+config.clear()
 
 /* eslint-disable prefer-destructuring */
 const myVar = process.argv[3]
@@ -31,9 +37,12 @@ if (myVar === 'search') {
 	}
 	introMessage[0].title = 'Search generic ...'
 }
+if (myVar === 'decks') {
+	alfy.input = '!set default-deck '
+}
 
 const fileAnkiDecks = './src/input/anki-decks.json'
-const commands = [set, del]
+const commands = [set, del, refresh]
 const option = async input => {
 	for (const command of commands) {
 		if (command.match(input)) {
@@ -50,6 +59,7 @@ const option = async input => {
 			text: {
 				largetype: `${command.meta.help} | Usage: ${command.meta.usage}`
 			},
+			icon: command.meta.icon,
 			valid: false
 		}))
 		return alfy.inputMatches(options, 'title')

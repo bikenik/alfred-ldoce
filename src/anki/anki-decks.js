@@ -1,4 +1,5 @@
 const alfy = require('alfy')
+
 const WorkflowError = require('../utils/error')
 const {errorAction} = require('../utils/error')
 const {capitalize} = require('../utils')
@@ -7,7 +8,7 @@ const ankiConnect = require('./anki-connect')
 module.exports = () => {
 	const outresult = async function () {
 		try {
-			const resultAll = await ankiConnect('deckNames', 6)
+			const resultAll = await ankiConnect('deckNames', 5)
 			return resultAll
 		} catch (err) {
 			throw new WorkflowError(`${err}`, errorAction('main'))
@@ -16,13 +17,11 @@ module.exports = () => {
 	return outresult()
 }
 
-module.exports.render = async (pattern, autocomplete = () => undefined, ankiDecks, cmdIcon) => {
-	if (!pattern) {
-		pattern = ''
-	}
-	const out = await alfy.matches(pattern, ankiDecks)
+module.exports.render = async (pattern = '', autocomplete = () => undefined, ankiDecks, cmdIcon) => {
+	const out = await alfy.matches(pattern, Object.getOwnPropertyNames(ankiDecks).sort())
 		.map(name => ({
 			title: name,
+			subtitle: ankiDecks[name],
 			autocomplete: autocomplete(name),
 			valid: false,
 			icon: {
@@ -37,7 +36,7 @@ module.exports.render = async (pattern, autocomplete = () => undefined, ankiDeck
 			arg: JSON.stringify({
 				alfredworkflow: {
 					variables: {
-						action: 'config',
+						action: 'set',
 						/* eslint-disable camelcase */
 						config_variable: 'default-deck',
 						config_value: capitalize(pattern)

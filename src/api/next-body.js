@@ -1,14 +1,12 @@
 /* eslint max-params: ["error", 8] */
 /* eslint max-depth: ["error", 8] */
-/* eslint complexity: ["error", 33] */
+/* eslint complexity: ["error", 36] */
 /* eslint-disable no-unused-vars */
 /* eslint-env es6 */
 'use strict'
-const fs = require('fs')
-const pathOfFile = require('path')
 const alfy = require('alfy')
+const Render = require('../utils/engine')
 
-const fileBody = './src/input/body.json'
 const {wordOfURL} = process.env
 
 let url = 'http://api.pearson.com' + wordOfURL
@@ -16,51 +14,13 @@ if (wordOfURL === undefined) {
 	url = 'http://api.pearson.com' + alfy.config.get('wordOfURL')
 }
 
-const warning = {
-	notFound: `Not Found The Audio or Example  🤔`,
-	notFoundCouse: `Current page of API should include the Audio with an example but it doesn't contain them.  Maybe a path to file is damaged.`
-}
-class Render {
-	constructor(title, subtitle, sentence, icon, arg, valid = true, mods) {
-		const clearSentences = sentence => sentence ? sentence.replace(/\s(\.|\?|!)/g, `$1`) : sentence
-		sentence = clearSentences(sentence)
-		if (arg && sentence && arg.examples) {
-			arg.examples.forEach(sentence => {
-				sentence.text = clearSentences(sentence.text)
-			})
-		}
-		this.title = title
-		this.subtitle = subtitle
-		this.sentence = sentence
-		this.path = icon
-		this.arg = arg
-		this.items = []
-		this.text = {
-			copy: `${title}\n\n🔑 :${subtitle} \n\n🎯 ${sentence}`,
-			largetype: `${title}\n\n🔑 :${subtitle} \n\n🎯 ${sentence}`
-		}
-		this.icon = {path: icon}
-		this.autocomplete = title
-		this.valid = valid
-		this.mods = {
-			ctrl: mods ? mods : {
-				valid: false
-			}
-		}
-	}
-
-	add(item) {
-		this.items.push(item)
-	}
-}
-
 const addToItems = new Render()
 /* eslint-disable promise/prefer-await-to-then */
 alfy.fetch(url).then(data => {
 	const $ = data.result
-	const commonExamples = $.examples ? $.examples.slice(1, 3) : null
+	const commonExamples = $.examples && $.examples.length <= 3 ? $.examples : ($.examples && $.examples.length > 3 ? $.examples.slice(1, 3) : null)
 	const quicklookurl = `https://www.ldoceonline.com/dictionary/${data.result.headword.replace(/\s/g, '-')}`
-	const notFound = `\t...\n\n🎲 API not exist examples, so the card won't created.\nHint the Enter to go to ldoce.com`
+	const notFound = `does not offer examples\n\n🎲 API not exist examples, so the card won't created.\nHint the Enter to go to ldoce.com`
 	const notDefinition = '_'
 
 	/* ************************
@@ -72,8 +32,9 @@ alfy.fetch(url).then(data => {
 				new Render(
 					runOn.derived_form,
 					runOn.part_of_speech || runOn.examples[0].text,
-					runOn.examples ? runOn.examples[0].text : notFound,
-					runOn.examples ? './icons/runon.png' : './icons/red/runon.png',
+					runOn.examples ? runOn.examples : notFound,
+					null,
+					runOn.examples ? './icons/runon.png' : './icons/red-runon.png',
 					runOn.examples ? {
 						definition: [`${runOn.derived_form}<span class="neutral span"> [</span>${runOn.part_of_speech}<span class="neutral span">]</span>`],
 						examples: runOn.examples,
@@ -97,15 +58,18 @@ alfy.fetch(url).then(data => {
 			const checkForEmpty = sense.examples || sense.definition
 			const booleanTitle = sense.signpost || sense.lexical_unit || $.headword
 			const booleanExamles = sense.examples || !sense.gramatical_examples
-
+			const title = sense.signpost || sense.lexical_unit || $.headword
+			const subtitle = sense.definition ? sense.definition[0] : notDefinition
+			const examples = sense.examples || exampleExist.result ? sense.examples : commonExamples
+			const largetype = `${title}${sense.register_label ? ` ⇒ [${sense.register_label}]` : ''}\n\n🔑 :${subtitle}${examples ? (Array.isArray(examples) ? `\n\n🎯 ${examples.map(x => x.text).join('\n🎯 ')}` : `\n\n🎯 ${examples.text}`) : notFound}`
 			if (booleanTitle && checkForEmpty && !sense.synonym && !sense.opposite && booleanExamles) {
-				const examples = sense.examples || exampleExist.result ? sense.examples : commonExamples
 				addToItems.add(
 					new Render(
-						sense.signpost || sense.lexical_unit || $.headword,
-						sense.definition ? sense.definition[0] : notDefinition,
-						examples ? examples[0].text : notFound,
-						examples ? './icons/flag.png' : './icons/red/flag.png',
+						title,
+						subtitle,
+						examples ? examples : notFound,
+						{copy: largetype, largetype},
+						examples ? './icons/flag.png' : './icons/red-flag.png',
 						examples ? {
 							definition: [`${sense.lexical_unit ? sense.lexical_unit : ''}<span class="neutral span"> [</span>${sense.definition}<span class="neutral span">]</span>`],
 							examples: examples || null,
@@ -127,17 +91,20 @@ alfy.fetch(url).then(data => {
 								sense.signpost ? `${sense.signpost} ⇒ ${gramaticalExample.pattern || sense.definition[0]}` : gramaticalExample.pattern ||
 									sense.definition[0],
 								sense.definition[0],
-								gramaticalExample.examples[0].text,
+								gramaticalExample.examples,
+								null,
 								'./icons/gramatical.png',
 								{
 									examples: gramaticalExample.examples,
-									definition: [`${sense.definition}<span class="neutral span"> [</span>${gramaticalExample.pattern}<span class="neutral span">]</span>`],
+									definition: [`${sense.definition}${gramaticalExample.pattern ? `<span class="neutral span"> [</span>${gramaticalExample.pattern}<span class="neutral span">]</span>` : ''}`],
 									sense
 								}
 							))
 					}
 
-					// Show words: 'SEE ALSO' (syonym & opposite)
+					/* -----------------------------
+					Show words: 'SEE ALSO' (syonym & opposite)
+					 -------------------------------*/
 					if (sense.synonym || sense.opposite) {
 						let typeOfAddition
 						for (const key in sense) {
@@ -152,20 +119,23 @@ alfy.fetch(url).then(data => {
 							new Render(
 								title,
 								sense.definition[0],
-								gramaticalExample.examples[0].text,
+								gramaticalExample.examples,
+								null,
 								'./icons/gramatical.png',
 								{
 									examples: gramaticalExample.examples,
-									definition: [`${sense.definition}<span class="neutral span"> [</span>${gramaticalExample.pattern}<span class="neutral span">]</span>`],
+									definition: [`${sense.definition}${gramaticalExample.pattern ? `<span class="neutral span"> [</span>${gramaticalExample.pattern}<span class="neutral span">]</span>` : ''}`],
 									sense
 								},
 								false,
 								{
-									valid: true,
-									variables: {
-										seeAlso: sense.synonym || sense.opposite
-									},
-									subtitle: 'SEE ALSO'
+									ctrl: {
+										valid: true,
+										variables: {
+											seeAlso: sense.synonym || sense.opposite
+										},
+										subtitle: 'SEE ALSO'
+									}
 								}
 							))
 					}
@@ -183,6 +153,7 @@ alfy.fetch(url).then(data => {
 								sense.signpost ? `${sense.signpost} ⇒ ${collExample.collocation || sense.definition[0]}` : collExample.collocation || sense.definition[0],
 								sense.definition[0],
 								collExample.example.text,
+								null,
 								'./icons/collocation.png',
 								{
 									examples: [collExample.example],
@@ -213,7 +184,8 @@ alfy.fetch(url).then(data => {
 					new Render(
 						title,
 						sense.definition[0],
-						sense.examples[0].text,
+						sense.examples,
+						null,
 						'./icons/flag.png',
 						{
 							definition: sense.definition,
@@ -222,21 +194,162 @@ alfy.fetch(url).then(data => {
 						},
 						false,
 						{
-							valid: true,
-							variables: {
-								seeAlso: sense.synonym || sense.opposite
-							},
-							subtitle: 'SEE ALSO'
+							ctrl: {
+								valid: true,
+								variables: {
+									seeAlso: sense.synonym || sense.opposite
+								},
+								subtitle: 'SEE ALSO'
+							}
 						}
 					))
 			}
 		})
 	}
 
-	const items = addToItems.items.filter(item => addToItems.items)
+	/* ************************
+	Collocation box
+	************************ */
+	if ($.collocation_box) {
+		const box = $.collocation_box
+		const sectionName = []
+		box.sections.forEach(section => {
+			sectionName.push(section.type)
+		})
+		const subtitle = `${box.heading ? box.heading : ''} ⇒ ${sectionName.join(' | ')}`
+		const largetype = `Collocation box\n\n🔑 :${sectionName.join('\n')}`
+		addToItems.add(
+			new Render(
+				'!Collocation box',
+				subtitle,
+				null,
+				{copy: largetype, largetype},
+				'./icons/collocation-box.png',
+				box,
+				null,
+				{
+					alt: {
+						valid: false,
+						subtitle: ''
+					},
+					cmd: {
+						valid: false,
+						subtitle: ''
+					}
+				},
+				{collocation: 'true'}
+			))
+	}
 
+	/* ************************
+	Phrasal-verbs box
+	************************ */
+	if ($.phrasal_verbs) {
+		const box = $.phrasal_verbs
+		const sectionName = []
+		box.forEach(section => sectionName.push(section.headword))
+		const subtitle = `${box.heading ? box.heading : ''} ⇒ ${sectionName.join(' | ')}`
+		addToItems.add(
+			new Render(
+				'!Phrasal-verbs box',
+				subtitle,
+				null,
+				null,
+				'./icons/phrasal_verbs-box.png',
+				box,
+				null,
+				{
+					alt: {
+						valid: false,
+						subtitle: ''
+					},
+					cmd: {
+						valid: false,
+						subtitle: ''
+					}
+				}
+			))
+	}
+
+	/* ************************
+	Thesaurus box
+	************************ */
+	if ($.thesaurus_box) {
+		const box = $.thesaurus_box
+		const sectionNames = []
+		box.sections.forEach(section => {
+			section.exponents.forEach(exponent => {
+				sectionNames.push(exponent.exponent)
+			})
+		})
+		const subtitle = `${sectionNames.join(' | ')}`
+		addToItems.add(
+			new Render(
+				'!Thesaurus box',
+				subtitle,
+				null,
+				{
+					copy: `Thesaurus box\n\n🔑 :${sectionNames.join('\n')}`,
+					largetype: `'Thesaurus box'\n\n🔑 :${sectionNames.join('\n')}`
+				},
+				'./icons/thesaurus-box.png',
+				box,
+				null,
+				{
+					alt: {
+						valid: false,
+						subtitle: ''
+					},
+					cmd: {
+						valid: false,
+						subtitle: ''
+					}
+				},
+				{
+					boxOrder: 'multiple'
+				}
+			))
+	}
+
+	/* -----------------------------
+		Spoken section
+	-------------------------------*/
+	if ($.spoken_section) {
+		const box = $.spoken_section
+		const senseNames = []
+		box.senses.forEach(sense => {
+			senseNames.push(sense.lexical_unit || sense.signpost)
+		})
+		const subtitle = `${senseNames.join(' | ')}`
+		addToItems.add(
+			new Render(
+				'!Spoken box',
+				subtitle,
+				null,
+				{
+					copy: `Spoken box\n\n🔑 :${senseNames.join('\n')}`,
+					largetype: `'Spoken box'\n\n🔑 :${senseNames.join('\n')}`
+				},
+				'./icons/spoken.png',
+				box,
+				null,
+				{
+					alt: {
+						valid: false,
+						subtitle: ''
+					},
+					cmd: {
+						valid: false,
+						subtitle: ''
+					}
+				}
+			))
+	}
+
+	const items = addToItems.items.filter(item => item.title)
+	alfy.input = alfy.input.replace(/.*?\u2023[\s]/gm, '')
 	const variantsToSingleChoose = alfy.inputMatches(items, 'title').map(x => ({
-		title: x.title,
+		title: x.title.replace(/^!/g, ''),
 		subtitle: x.subtitle,
 		arg: JSON.stringify(x.arg, '', 2),
 		icon: x.icon,
@@ -246,30 +359,15 @@ alfy.fetch(url).then(data => {
 		},
 		variables: {
 			word: data.result.headword.toUpperCase(),
-			currentSense: x.text.largetype
+			currentSense: x.text.largetype,
+			type:
+				x.title === '!Collocation box' ? 'collocation' : x.title === '!Phrasal-verbs box' ? 'phrasal-verbs' : x.title === '!Thesaurus box' ? 'thesaurus' : x.title === '!Spoken box' ? 'spoken' : 'regular',
+			boxOrder: x.title === '!Thesaurus box' && x.arg.sections.length > 1 ? 'multiple' : x.title === '!Thesaurus box' ? 'single' : null
 		},
-		autocomplete: x.title,
+		autocomplete: x.autocomplete,
 		quicklookurl,
 		mods: x.mods
 	}))
-
-	try {
-		const test = addToItems.items[0].title
-	} catch (err) {
-		variantsToSingleChoose.push({
-			title: warning.notFound,
-			subtitle: warning.notFoundCouse,
-			text: {
-				copy: warning.notFound,
-				largetype: warning.notFoundCouse
-			},
-			arg: quicklookurl,
-			icon: {
-				path: '/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/AlertStopIcon.icns'
-			},
-			quicklookurl
-		})
-	}
 
 	alfy.output(variantsToSingleChoose)
 
