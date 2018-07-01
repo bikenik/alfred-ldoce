@@ -11,6 +11,7 @@ const addToItems = new Render()
 const itemsTo = []
 const currentWord = process.env.word
 if (process.argv[3] === 'sections') {
+	config.delete('subBoxNameCol')
 	const dataOfBox = JSON.parse(process.env.dataOfBoxCollocations)
 	dataOfBox.sections.forEach(section => {
 		const title = `[${section.collocations.length}] ${section.type}`
@@ -39,6 +40,7 @@ if (process.argv[3] === 'sections') {
 
 if (process.argv[3] === 'collocations') {
 	envRefresh({
+		subBoxNameCol: process.env.subBoxNameCol ? `${process.env.subBoxNameCol}\u2023 ` : '',
 		dataOfBox2Collocations: process.env.dataOfBox2Collocations,
 		dataOfBoxCollocations: process.env.dataOfBoxCollocations,
 		word: process.env.word,
@@ -48,7 +50,7 @@ if (process.argv[3] === 'collocations') {
 	const dataOfBox = JSON.parse(config.get('dataOfBox2Collocations'))
 	dataOfBox.collocations.forEach(collocation => {
 		const title = `${collocation.collocation}${collocation.glossary ? ` (=${collocation.glossary})` : ''}`
-		const largetype = `${process.env.subBoxName}\n\n🔑 : ${title} \n\n🎯 ${collocation.examples ? collocation.examples.map(x => x.text).join('\n🎯') : ''}`
+		const largetype = `${process.env.subBoxNameCol ? `${process.env.subBoxNameCol}\u2023 ` : config.has('subBoxNameCol') ? `${config.get('subBoxNameCol')} ` : ''}\n\n🔑 : ${title} \n\n🎯 ${collocation.examples ? collocation.examples.map(x => x.text).join('\n🎯') : ''}`
 		addToItems.add(
 			new Render(
 				title,
@@ -57,7 +59,7 @@ if (process.argv[3] === 'collocations') {
 				{copy: largetype, largetype},
 				'./icons/collocation-box.png',
 				{
-					definition: [`Collocation ⇒ ${process.env.subBoxName} ⇒ ${collocation.collocation}${collocation.glossary ? ` <span class="COLLGLOSS"><span class="neutral span"> (=</span>${collocation.glossary}<span class="neutral span">)</span></span>` : ''}`],
+					definition: [`Collocation ⇒ ${process.env.subBoxNameCol ? `${process.env.subBoxNameCol}` : config.has('subBoxNameCol') ? `${config.get('subBoxNameCol')} ` : ''} ⇒ ${collocation.collocation}${collocation.glossary ? ` <span class="COLLGLOSS"><span class="neutral span"> (=</span>${collocation.glossary}<span class="neutral span">)</span></span>` : ''}`],
 					examples: collocation.examples
 				},
 				null,
@@ -79,7 +81,7 @@ const items = alfy.inputMatches(elements, 'title')
 		title: x.title,
 		subtitle: x.subtitle,
 		arg: JSON.stringify(x.arg),
-		autocomplete: `${config.get('word')}\u2023 ${process.env.subBoxNameCol}\u2023 ` + x.title,
+		autocomplete: `${config.get('word')}\u2023 ${process.env.subBoxNameCol ? `${process.env.subBoxNameCol}\u2023 ` : config.has('subBoxNameCol') ? `${config.get('subBoxNameCol')}` : ''}` + x.title,
 		text: {
 			copy: x.text.copy,
 			largetype: x.text.largetype

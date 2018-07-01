@@ -14,12 +14,12 @@ const sectionHandle = section => {
 		const title = `${exponent.exponent}`
 		const subtitle = exponent.definition ? exponent.definition : 'not found..'
 		const examples = exponent.examples ? exponent.examples : null
-		const largetype = `${process.env.subBoxName ? `${process.env.subBoxName} ⇒ ` : ''}${title}\n\n🔑 :${subtitle}\n\n🎯 ${examples ? (Array.isArray(examples) ? `${examples.map(x => x.text).join('\n🎯 ')}` : `\n\n🎯 ${examples.text}`) : engine.warning.notFound}`
+		const largetype = `${process.env.subBoxNameTh ? `${process.env.subBoxNameTh}\u2023 ` : config.has('subBoxNameTh') ? `${config.get('subBoxNameTh')} ` : ''}${title}\n\n🔑 :${subtitle}\n\n🎯 ${examples ? (Array.isArray(examples) ? `${examples.map(x => x.text).join('\n🎯 ')}` : `\n\n🎯 ${examples.text}`) : engine.warning.notFound}`
 		itemsTo.push({
 			title,
 			subtitle,
 			arg: examples ? {
-				definition: [`Thesaurus${process.env.subBoxName ? ` ⇒ ${process.env.subBoxName}` : ''}:<br><span class="display EXP">${exponent.exponent}</span> ${exponent.definition}`],
+				definition: [`Thesaurus${process.env.subBoxNameTh ? ` ⇒ ${process.env.subBoxNameTh}` : config.has('subBoxNameTh') ? `${config.get('subBoxNameTh')}` : ''}:<br><span class="display EXP">${exponent.exponent}</span> ${exponent.definition}`],
 				examples: exponent.examples
 			} : quicklookurl,
 			text: {copy: largetype, largetype},
@@ -37,6 +37,7 @@ const sectionHandle = section => {
 }
 
 if (process.argv[3] === 'sections') {
+	config.delete('subBoxNameTh')
 	const dataOfBox = config.has('dataOfBoxThesaurus') ? JSON.parse(config.get('dataOfBoxThesaurus')) : JSON.parse(process.env.dataOfBoxThesaurus)
 	dataOfBox.sections.forEach(section => {
 		const title = section.type ? section.type : currentWord.toLowerCase()
@@ -58,7 +59,7 @@ if (process.argv[3] === 'sections') {
 
 if (process.argv[3] === 'exponents') {
 	envRefresh({
-		subBoxName: process.env.subBoxName ? `${process.env.subBoxName}\u2023 ` : '',
+		subBoxNameTh: process.env.subBoxNameTh ? `${process.env.subBoxNameTh}\u2023 ` : '',
 		dataOfBoxThesaurus: process.env.dataOfBoxThesaurus,
 		word: process.env.word,
 		inputInfo: process.env.inputInfo,
@@ -77,7 +78,7 @@ const items = alfy.inputMatches(itemsTo, 'title')
 		title: x.title,
 		subtitle: x.subtitle,
 		arg: JSON.stringify(x.arg),
-		autocomplete: `${config.get('word')}\u2023 ${process.env.subBoxNameTh ? `${process.env.subBoxNameTh}\u2023 ` : ''}${x.title}`,
+		autocomplete: `${config.get('word')}\u2023 ${process.env.subBoxNameTh ? `${process.env.subBoxNameTh}\u2023 ` : config.has('subBoxNameTh') ? `${config.get('subBoxNameTh')}` : ''}${x.title}`,
 		text: x.text,
 		variables: x.variables,
 		icon: x.icon
