@@ -25,29 +25,6 @@ module.exports.fetching = async query => {
 						inputInfo: `${currentWord.toUpperCase()}${x.part_of_speech ? ` (${x.part_of_speech})` : ''}`
 					}
 				}
-				if (x.part_of_speech === 'verb') {
-					result = {
-						title: x.headword,
-						arg: x.url,
-						subtitle: x.part_of_speech,
-						autocomplete: x.headword || '',
-						quicklookurl: `https://www.ldoceonline.com/dictionary/${currentWord}`,
-						variables: {
-							action: 'dic',
-							mode: 'regular',
-							inputInfo: `${currentWord.toUpperCase()}${x.part_of_speech ? ` (${x.part_of_speech})` : ''}`
-						},
-						mods: {
-							alt: {
-								variables: {
-									action: 'dic',
-									mode: 'phrasal-verb'
-								},
-								subtitle: 'Show Phrasal Verbs'
-							}
-						}
-					}
-				}
 				return result
 			})
 			if (items.length > 0) {

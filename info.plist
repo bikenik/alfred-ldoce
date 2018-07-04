@@ -1280,7 +1280,7 @@
 				<key>modifiersubtext</key>
 				<string></string>
 				<key>vitoclose</key>
-				<false/>
+				<true/>
 			</dict>
 			<dict>
 				<key>destinationuid</key>
@@ -1625,7 +1625,7 @@
 				<key>modifiersubtext</key>
 				<string></string>
 				<key>vitoclose</key>
-				<false/>
+				<true/>
 			</dict>
 			<dict>
 				<key>destinationuid</key>
@@ -4359,7 +4359,7 @@ to translate for instanse or another workflow..</string>
 			<integer>3</integer>
 			<key>note</key>
 			<string>...
-🔦 SEE ALSO</string>
+SEE ALSO</string>
 			<key>xpos</key>
 			<integer>1480</integer>
 			<key>ypos</key>
