@@ -4,6 +4,7 @@
 const alfy = require('alfy')
 const Conf = require('conf')
 const Render = require('../../utils/engine')
+const {notFound} = require('../../utils/engine').warning
 const {envRefresh} = require('../../utils')
 
 const config = new Conf()
@@ -23,7 +24,6 @@ const items = []
 /* eslint-disable promise/prefer-await-to-then */
 const $ = dataOfBox
 const quicklookurl = `https://www.ldoceonline.com/dictionary/${currentWord.replace(/\s/g, '-')}`
-const notFound = `\n\n🎲 API not exist examples, so the card won't created.\nHint the Enter to go to ldoce.com`
 const notDefinition = '_'
 dataOfBox.forEach(phrasalVerbs => {
 	if (phrasalVerbs.senses) {

@@ -6,6 +6,7 @@
 'use strict'
 const alfy = require('alfy')
 const Render = require('../utils/engine')
+const {notFound} = require('../utils/engine').warning
 
 const {wordOfURL} = process.env
 
@@ -20,7 +21,6 @@ alfy.fetch(url).then(data => {
 	const $ = data.result
 	const commonExamples = $.examples && $.examples.length <= 3 ? $.examples : ($.examples && $.examples.length > 3 ? $.examples.slice(1, 3) : null)
 	const quicklookurl = `https://www.ldoceonline.com/dictionary/${data.result.headword.replace(/\s/g, '-')}`
-	const notFound = `does not offer examples\n\n🎲 API not exist examples, so the card won't created.\nHint the Enter to go to ldoce.com`
 	const notDefinition = '_'
 
 	/* ************************

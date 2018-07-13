@@ -22,7 +22,12 @@ module.exports.errorAction = reason => {
 			break
 		case 'profile':
 			title = null
-			subtitle = 'Press ⇧↵ to open Anki. | ⌘L to see the stack trace'
+			subtitle = 'Press ⇧↵ to open Anki and choose profile. | ⌘L to see the stack trace'
+			autocomplete = null
+			break
+		case 'modelExist':
+			title = null
+			subtitle = `Press ⇧↵ to open Anki & choose "Ldoce-Expres" or your own model.\n\nTo apply your own model - point it into Alfred's Workflow setting (Environment Variables: note_type = 'name of your own model')`
 			autocomplete = null
 			break
 		case '!set decks':

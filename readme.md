@@ -69,7 +69,7 @@ _Requires: [Node.js](https://nodejs.org) 7.6+, Alfred [Powerpack](https://www.al
   * <kbd>⌥ + ↩</kbd> — create card from all matching of current query
   * hit <kbd>fn + ↩</kbd> — export current vocabulary entries to other workfows "Call External"
   * hit <kbd>⌃ + ↩</kbd> to turn back from some additional boxes to current session of query
-* <kbd>< ldl ></kbd> or <kbd>< ldp > </kbd> (last query or last query for phrasal verb) go to the definition of the word of the last query
+* <kbd>< ldl ></kbd> (last query or last query for phrasal verb) go to the definition of the word of the last query
 * If you notice this sign 🔦 it means the current deffinition exist additional words for search. Hit <kbd>⌃ + ↵</kbd> (SEE ALSO) to show and search by this words.
 * <kbd><ldoce !></kbd> — Choose, create or delete deck for Anki
   - <kbd><!set></kbd> - choose another deck for new cards

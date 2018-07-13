@@ -8,6 +8,7 @@ const set = require('./src/cmd/set')
 const del = require('./src/cmd/del')
 const refresh = require('./src/cmd/refresh')
 const decks = require('./src/anki/anki-decks')
+const {modelExist} = require('./src/anki/anki-decks')
 const api = require('./src/api')
 
 const config = new Conf()
@@ -66,6 +67,7 @@ const option = async input => {
 	}
 
 	if (input === '') {
+		await modelExist()
 		const ankiDecks = await decks()
 		if (ankiDecks === null) {
 			throw new WorkflowError(`Decks was not found, check your Anki profile`, errorAction('profile'))
@@ -100,14 +102,14 @@ const option = async input => {
 		messages.push('⌘L to see the stack trace')
 
 		alfy.output([{
-			title: err.title ? err.title : `Error: ${err.message}`,
+			title: err.title ? err.title : `${err.message}`,
 			subtitle: err.subtitle ? err.subtitle : messages.join(' | '),
 			autocomplete: err.autocomplete ? err.autocomplete : '',
 			icon: err.icon ? err.icon : {path: alfy.icon.error},
 			valid: err.valid ? err.valid : false,
-			variables: err.variables ? err.variables : {variables: {}},
+			variables: err.variables ? err.variables : {},
 			text: {
-				largetype: err.stack,
+				largetype: `${err.subtitle}\n\n${err.stack}`,
 				copy: err.stack
 			},
 			mods: err.mods ? err.mods : {mods: {}}

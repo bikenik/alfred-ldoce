@@ -4,6 +4,7 @@ const alfy = require('alfy')
 const Conf = require('conf')
 const Render = require('../../utils/engine')
 const {envRefresh} = require('../../utils')
+const {notFound} = require('../../utils/engine').warning
 
 const config = new Conf()
 const addToItems = new Render()
@@ -12,6 +13,7 @@ const itemsTo = []
 const currentWord = process.env.word
 if (process.argv[3] === 'sections') {
 	config.delete('subBoxNameCol')
+	config.delete('dataOfBox2Collocations')
 	const dataOfBox = JSON.parse(process.env.dataOfBoxCollocations)
 	dataOfBox.sections.forEach(section => {
 		const title = `[${section.collocations.length}] ${section.type}`
@@ -50,18 +52,19 @@ if (process.argv[3] === 'collocations') {
 	const dataOfBox = JSON.parse(config.get('dataOfBox2Collocations'))
 	dataOfBox.collocations.forEach(collocation => {
 		const title = `${collocation.collocation}${collocation.glossary ? ` (=${collocation.glossary})` : ''}`
-		const largetype = `${process.env.subBoxNameCol ? `${process.env.subBoxNameCol}\u2023 ` : config.has('subBoxNameCol') ? `${config.get('subBoxNameCol')} ` : ''}\n\n🔑 : ${title} \n\n🎯 ${collocation.examples ? collocation.examples.map(x => x.text).join('\n🎯') : ''}`
+		const quicklookurl = `https://www.ldoceonline.com/dictionary/${title ? title.replace(/\s/g, '-') : config.get('word').replace(/\s/g, '-')}}`
+		const largetype = `${process.env.subBoxNameCol ? `${process.env.subBoxNameCol}\u2023 ` : config.has('subBoxNameCol') ? `${config.get('subBoxNameCol')} ` : ''}\n\n🔑 : ${title} \n\n🎯 ${collocation.examples ? collocation.examples.map(x => x.text).join('\n🎯') : notFound}`
 		addToItems.add(
 			new Render(
 				title,
-				collocation.examples ? collocation.examples[0].text : 'NOT FOUND!',
-				collocation.examples ? collocation.examples[0].text : null,
+				collocation.examples ? collocation.examples[0].text : notFound,
+				collocation.examples ? collocation.examples : notFound,
 				{copy: largetype, largetype},
-				'./icons/collocation-box.png',
-				{
+				collocation.examples ? './icons/collocation-box.png' : './icons/red-collocation-box.png',
+				collocation.examples ? {
 					definition: [`Collocation ⇒ ${process.env.subBoxNameCol ? `${process.env.subBoxNameCol}` : config.has('subBoxNameCol') ? `${config.get('subBoxNameCol')} ` : ''} ⇒ ${collocation.collocation}${collocation.glossary ? ` <span class="COLLGLOSS"><span class="neutral span"> (=</span>${collocation.glossary}<span class="neutral span">)</span></span>` : ''}`],
 					examples: collocation.examples
-				},
+				} : quicklookurl,
 				null,
 				null,
 				{

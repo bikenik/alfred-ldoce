@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 const alfy = require('alfy')
 
 const WorkflowError = require('../utils/error')
@@ -5,13 +6,30 @@ const {errorAction} = require('../utils/error')
 const {capitalize} = require('../utils')
 const ankiConnect = require('./anki-connect')
 
+const {note_type} = process.env
 module.exports = () => {
 	const outresult = async function () {
 		try {
-			const resultAll = await ankiConnect('deckNames', 5)
+			alfy.cache.set('validOutput', 'true')
+			const resultAll = await ankiConnect('deckNames', 6)
 			return resultAll
 		} catch (err) {
+			alfy.cache.set('validOutput', 'false')
 			throw new WorkflowError(`${err}`, errorAction('main'))
+		}
+	}
+	return outresult()
+}
+
+module.exports.modelExist = () => {
+	const outresult = async function () {
+		try {
+			alfy.cache.set('validOutput', 'true')
+			const resultAll = await ankiConnect('modelFieldNames', 6, {modelName: note_type})
+			return resultAll
+		} catch (err) {
+			alfy.cache.set('validOutput', 'false')
+			throw new WorkflowError(`${err}`, err === 'failed to connect to AnkiConnect' ? errorAction('main') : err === 'collection is not available' ? errorAction('profile') : /model was not found/.test(err) ? errorAction('modelExist') : errorAction('main'))
 		}
 	}
 	return outresult()

@@ -8,7 +8,7 @@ module.exports.fetching = async query => {
 	await alfy
 		.fetch('http://api.pearson.com/v2/dictionaries/ldoce5/entries', {query})
 		.then(checkStatus)
-		.then(async data => {
+		.then(data => {
 			let result
 			const items = data.results.map(x => {
 				const currentWord = alfy.input.replace(/\s/g, '-')
@@ -22,6 +22,7 @@ module.exports.fetching = async query => {
 					variables: {
 						action: 'dic',
 						mode: 'regular',
+						validOutput: alfy.cache.get('validOutput') === 'true' ? 'true' : 'false',
 						inputInfo: `${currentWord.toUpperCase()}${x.part_of_speech ? ` (${x.part_of_speech})` : ''}`
 					}
 				}

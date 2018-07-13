@@ -14,7 +14,7 @@ module.exports.hasOwnProperty = (obj, prop) =>
 module.exports.envRefresh = list => {
 	const config = new Conf()
 	Object.keys(list)
-		.filter(x => !config.has(x))
+		.filter(x => !config.has(x) && list[x] !== null)
 		.forEach(x => {
 			config.set(x, list[x])
 		})

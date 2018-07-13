@@ -8,7 +8,7 @@ const config = new Conf()
 
 const itemsTo = []
 const currentWord = process.env.word
-const sectionHandle = section => {
+const handlerOfSection = section => {
 	section.exponents.forEach(exponent => {
 		const quicklookurl = `https://www.ldoceonline.com/dictionary/${exponent.exponent.replace(/\s/g, '-')}`
 		const title = `${exponent.exponent}`
@@ -23,11 +23,12 @@ const sectionHandle = section => {
 				examples: exponent.examples
 			} : quicklookurl,
 			text: {copy: largetype, largetype},
-			icon: {path: './icons/thesaurus.png'},
+			icon: {path: examples ? './icons/thesaurus.png' : './icons/red-thesaurus.png'},
 			variables: {
 				mode: 'thesaurus',
 				currentSense: `Thesaurus ⇒ ${alfy.config.get('currentWord')}\n${largetype}`,
-				dataOfBoxThesaurus: JSON.stringify(config.get('dataOfBoxThesaurus')),
+				dataOfBoxThesaurus: config.get('dataOfBoxThesaurus'),
+				dataOfBox2Thesaurus: config.get('dataOfBox2Thesaurus'),
 				boxOrder: config.get('boxOrder'),
 				word: config.get('word'),
 				inputInfo: config.get('inputInfo')
@@ -38,6 +39,8 @@ const sectionHandle = section => {
 
 if (process.argv[3] === 'sections') {
 	config.delete('subBoxNameTh')
+	config.delete('dataOfBox2Thesaurus')
+	config.delete('dataOfBoxThesaurus')
 	const dataOfBox = config.has('dataOfBoxThesaurus') ? JSON.parse(config.get('dataOfBoxThesaurus')) : JSON.parse(process.env.dataOfBoxThesaurus)
 	dataOfBox.sections.forEach(section => {
 		const title = section.type ? section.type : currentWord.toLowerCase()
@@ -60,15 +63,16 @@ if (process.argv[3] === 'sections') {
 if (process.argv[3] === 'exponents') {
 	envRefresh({
 		subBoxNameTh: process.env.subBoxNameTh ? `${process.env.subBoxNameTh}\u2023 ` : '',
-		dataOfBoxThesaurus: process.env.dataOfBoxThesaurus,
+		dataOfBoxThesaurus: process.env.dataOfBoxThesaurus ? process.env.dataOfBoxThesaurus : null,
+		dataOfBox2Thesaurus: process.env.dataOfBox2Thesaurus ? process.env.dataOfBox2Thesaurus : null,
 		word: process.env.word,
 		inputInfo: process.env.inputInfo,
 		boxOrder: process.env.boxOrder
 	})
-	if (process.env.dataOfBox2Thesaurus && config.has('dataOfBox2')) {
-		sectionHandle(config.get('dataOfBox2'))
+	if (config.has('dataOfBox2Thesaurus')) {
+		handlerOfSection(JSON.parse(config.get('dataOfBox2Thesaurus')))
 	} else {
-		sectionHandle(JSON.parse(config.get('dataOfBoxThesaurus')).sections[0])
+		handlerOfSection(JSON.parse(config.get('dataOfBoxThesaurus')).sections[0])
 	}
 }
 
