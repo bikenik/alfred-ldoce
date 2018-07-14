@@ -360,6 +360,7 @@ alfy.fetch(url).then(data => {
 		variables: {
 			word: data.result.headword.toUpperCase(),
 			currentSense: x.text.largetype,
+			inputInfo: `${data.result.headword.toUpperCase()}${data.result.part_of_speech ? ` (${data.result.part_of_speech})` : ''}`,
 			type:
 				x.title === '!Collocation box' ? 'collocation' : x.title === '!Phrasal-verbs box' ? 'phrasal-verbs' : x.title === '!Thesaurus box' ? 'thesaurus' : x.title === '!Spoken box' ? 'spoken' : 'regular',
 			boxOrder: x.title === '!Thesaurus box' && x.arg.sections.length > 1 ? 'multiple' : x.title === '!Thesaurus box' ? 'single' : null

@@ -10,9 +10,9 @@ const {envRefresh} = require('../../utils')
 const config = new Conf()
 
 envRefresh({
-	dataOfBox: process.env.dataOfBox,
-	word: process.env.word,
-	inputInfo: process.env.inputInfo
+	dataOfBox: process.env.dataOfBox ? process.env.dataOfBox : null,
+	word: process.env.word ? process.env.word : null,
+	inputInfo: process.env.inputInfo ? process.env.inputInfo : null
 })
 
 const dataOfBox = JSON.parse(config.get('dataOfBox'))

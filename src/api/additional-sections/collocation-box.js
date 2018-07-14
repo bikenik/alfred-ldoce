@@ -12,8 +12,6 @@ const addToItems = new Render()
 const itemsTo = []
 const currentWord = process.env.word
 if (process.argv[3] === 'sections') {
-	config.delete('subBoxNameCol')
-	config.delete('dataOfBox2Collocations')
 	const dataOfBox = JSON.parse(process.env.dataOfBoxCollocations)
 	dataOfBox.sections.forEach(section => {
 		const title = `[${section.collocations.length}] ${section.type}`
@@ -42,11 +40,11 @@ if (process.argv[3] === 'sections') {
 
 if (process.argv[3] === 'collocations') {
 	envRefresh({
-		subBoxNameCol: process.env.subBoxNameCol ? `${process.env.subBoxNameCol}\u2023 ` : '',
-		dataOfBox2Collocations: process.env.dataOfBox2Collocations,
-		dataOfBoxCollocations: process.env.dataOfBoxCollocations,
-		word: process.env.word,
-		inputInfo: process.env.inputInfo
+		subBoxNameCol: process.env.subBoxNameCol ? `${process.env.subBoxNameCol}\u2023 ` : null,
+		dataOfBox2Collocations: process.env.dataOfBox2Collocations ? process.env.dataOfBox2Collocations : null,
+		dataOfBoxCollocations: process.env.dataOfBoxCollocations ? process.env.dataOfBoxCollocations : null,
+		word: process.env.word ? process.env.word : null,
+		inputInfo: process.env.inputInfo ? process.env.inputInfo : null
 	})
 
 	const dataOfBox = JSON.parse(config.get('dataOfBox2Collocations'))
@@ -70,6 +68,7 @@ if (process.argv[3] === 'collocations') {
 				{
 					currentSense: `Collocation ⇒ ${currentWord}\n\n${largetype}`,
 					word: config.get('word'),
+					inputInfo: config.get('inputInfo'),
 					dataOfBoxCollocations: config.get('dataOfBoxCollocations'),
 					dataOfBox2Collocations: config.get('dataOfBox2Collocations')
 				}

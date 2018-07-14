@@ -12,7 +12,6 @@ const {modelExist} = require('./src/anki/anki-decks')
 const api = require('./src/api')
 
 const config = new Conf()
-config.delete('subBoxName')
 config.clear()
 
 /* eslint-disable prefer-destructuring */

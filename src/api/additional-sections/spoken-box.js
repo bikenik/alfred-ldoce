@@ -35,9 +35,9 @@ const sectionHandle = section => {
 }
 
 envRefresh({
-	dataOfBoxSpoken: process.env.dataOfBoxSpoken,
-	word: process.env.word,
-	inputInfo: process.env.inputInfo
+	dataOfBoxSpoken: process.env.dataOfBoxSpoken ? process.env.dataOfBoxSpoken : null,
+	word: process.env.word ? process.env.word : null,
+	inputInfo: process.env.inputInfo ? process.env.inputInfo : null
 })
 
 sectionHandle(JSON.parse(config.get('dataOfBoxSpoken')))
