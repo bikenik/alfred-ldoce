@@ -15,10 +15,8 @@ module.exports = async function (output) {
 	/* eslint-disable no-await-in-loop */
 	for (let i = 0; i < output.length; i++) {
 		if (output[i].Homnum) {
-			output[i].Homnum = output[i].Homnum.toString()
 			output[i].Headword = `${output[i].Headword}<span class="HOMNUM-title">${
-				output[i].Homnum}
-    </span>`
+				output[i].Homnum.toString()}</span>`
 		}
 		delete output[i].Inflections // Can't understood the reason of error without delete
 		if (output[i].Definition !== 'notfound' && output[i].Definition !== '') {
@@ -58,4 +56,36 @@ module.exports = async function (output) {
 			process.stdout.write(result)
 		})
 	}
+}
+
+module.exports.canAddNotes = async function (check) {
+	/* eslint-disable no-await-in-loop */
+	for (let i = 0; i < check.length; i++) {
+		const currentFields = {
+			Headword: `${check[i].Headword}${check[i].Homnum ? `<span class="HOMNUM-title">${
+				check[i].Homnum.toString()}</span>` : ''}`,
+			Audio: '',
+			Translation: '',
+			Example: '',
+			Image: '',
+			Verb_table: '',
+			Tag: [check[i].Part_of_speech]
+		}
+		try {
+			const result = await ankiConnect(
+				'canAddNotes', 6,
+				{
+					notes: [{
+						deckName: nameOfDeck,
+						modelName: note_type,
+						fields: currentFields,
+						tags: [currentFields.Tag]
+					}]
+				})
+			return result
+		} catch (err) {
+			return err
+		}
+	}
+	/* eslint-enable no-await-in-loop */
 }

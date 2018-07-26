@@ -11,6 +11,7 @@ const translate = require('google-translate-api')
 const streamToPromise = require('stream-to-promise')
 const pMap = require('p-map')
 const ankiAddCard = require('./anki/anki-add-card')
+const {canAddNotes} = require('./anki/anki-add-card')
 const data = require('./api/mydata')
 const verbTable = require('./api/verb-table')
 const config = require('./config')
@@ -22,7 +23,19 @@ async function main() {
 	setupDirStructure()
 	const inputCollection = jsonfile.readFileSync(config.input)
 	const cleanedInput = cleanInput(inputCollection)
-	const output = await processInput(cleanedInput)
+	const check = await canAddNotes(cleanedInput)
+	const output = check[0] ? await processInput(cleanedInput) : cleanedInput.map(x => {
+		return [{
+			Headword: `${x.Headword}${x.Homnum ? `<span class="HOMNUM-title">${
+				x.Homnum.toString()}</span>` : ''}`,
+			Audio: '',
+			Translation: '',
+			Example: '',
+			Image: '',
+			Verb_table: '',
+			Tag: [x.Part_of_speech]
+		}]
+	})[0]
 	await ankiAddCard(output)
 }
 

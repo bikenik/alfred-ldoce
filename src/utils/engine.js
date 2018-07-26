@@ -39,6 +39,6 @@ module.exports = class Render {
 }
 
 module.exports.warning = {
-	notFound: `does not offer examples\n\n🎲 API not exist examples, so the card won't created.\nHint the Enter to go to ldoce.com`,
+	notFound: `\n\n🎯 does not offer examples\n\n🎲 API not exist examples, so the card won't created.\nHint the Enter to go to ldoce.com`,
 	notFoundCouse: `Current page of API should include the Audio with an example but it doesn't contain them.  Maybe a path to file is damaged.`
 }

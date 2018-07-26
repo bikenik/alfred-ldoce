@@ -25,7 +25,7 @@
 	"author": {
 		"name": "bikeNik",
 		"email": "bikenik@icloud.com",
-		"url": "bikenik.org"
+		"url": "http://bikenik.org"
 	},
 	"bugs": {
 		"url": "https://github.com/bikeNik/alfred-ldoce/issues"
@@ -36,20 +36,14 @@
 		"alfy": "0.7.0",
 		"cheerio": "^1.0.0-rc.2",
 		"conf": "^2.0.0",
-		"del": "^3.0.0",
-		"es6-promise": "^4.2.4",
 		"google-translate-api": "^2.3.0",
-		"isomorphic-fetch": "^2.2.1",
 		"json-server": "^0.14.0",
 		"jsonfile": "^4.0.0",
 		"md5": "^2.2.1",
-		"p-all": "^1.0.0",
 		"p-map": "^1.2.0",
-		"pify": "^3.0.0",
 		"promise": "^8.0.1",
 		"request": "^2.86.0",
 		"request-promise": "^4.2.2",
-		"run-applescript": "^3.1.0",
 		"stream-to-promise": "^2.2.0",
 		"xml2js": "^0.4.19",
 		"xmlhttprequest": "^1.8.0"
