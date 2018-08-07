@@ -2,6 +2,7 @@
 /* eslint-disable camelcase */
 const alfy = require('alfy')
 const ankiConnect = require('./anki-connect')
+const decks = require('./anki-decks')
 
 const nameOfDeck = alfy.config.get('default-deck')
 const {note_type} = process.env
@@ -59,6 +60,7 @@ module.exports = async function (output) {
 }
 
 module.exports.canAddNotes = async function (check) {
+	const ankiDecks = await decks()
 	/* eslint-disable no-await-in-loop */
 	for (let i = 0; i < check.length; i++) {
 		const currentFields = {
@@ -76,7 +78,7 @@ module.exports.canAddNotes = async function (check) {
 				'canAddNotes', 6,
 				{
 					notes: [{
-						deckName: nameOfDeck,
+						deckName: ankiDecks[0],
 						modelName: note_type,
 						fields: currentFields,
 						tags: [currentFields.Tag]

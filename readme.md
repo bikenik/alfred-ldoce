@@ -114,6 +114,10 @@ _Requires: [Node.js](https://nodejs.org) 7.6+, Alfred [Powerpack](https://www.al
 - [x] Add more info (like "due", "new", "suspend" and count of cards) through the AnkiConnect
 - [ ] Tests
 
+### By me a coffee
+
+<a href="https://www.buymeacoffee.com/cLMme6h" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>
+
 ## License
 
 MIT © [bikeNik](https://github.com/bikenik)
