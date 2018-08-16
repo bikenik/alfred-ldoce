@@ -1,9 +1,8 @@
 /* eslint max-params: ["error", 8] */
 /* eslint max-depth: ["error", 8] */
-/* eslint complexity: ["error", 38] */
+/* eslint complexity: ["error", 40] */
 /* eslint-disable no-unused-vars */
 /* eslint-env es6 */
-/* global someFunction example:true */
 
 'use strict'
 const alfy = require('alfy')
@@ -34,12 +33,12 @@ alfy.fetch(url).then(data => {
 				new Render(
 					runOn.derived_form,
 					runOn.part_of_speech || runOn.examples[0].text,
-					runOn.examples ? runOn.examples : example ? example : notFound,
+					runOn.examples ? runOn.examples : notFound,
 					null,
 					runOn.examples ? './icons/runon.png' : './icons/red-runon.png',
 					runOn.examples ? {
 						definition: [`${runOn.derived_form}<span class="neutral span"> [</span>${runOn.part_of_speech}<span class="neutral span">]</span>`],
-						examples: runOn.examples ? runOn.examples : example ? example : null,
+						examples: runOn.examples ? runOn.examples : null,
 						sense: runOn
 					} : quicklookurl,
 					null,
@@ -93,14 +92,14 @@ alfy.fetch(url).then(data => {
 								sense.signpost ? `${sense.signpost} ⇒ ${gramaticalExample.pattern || sense.definition[0]}` : gramaticalExample.pattern ||
 									sense.definition[0],
 								sense.definition[0],
-								gramaticalExample.examples ? gramaticalExample.examples : example ? example : notFound,
+								gramaticalExample.examples ? gramaticalExample.examples : examples ? examples : notFound,
 								null,
-								'./icons/gramatical.png',
-								{
-									examples: gramaticalExample.examples ? gramaticalExample.examples : example ? example : null,
+								gramaticalExample.examples || examples ? './icons/gramatical.png' : './icons/red-gramatical.png',
+								gramaticalExample.examples || examples ? {
+									examples: gramaticalExample.examples ? gramaticalExample.examples : examples ? examples : null,
 									definition: [`${sense.definition}${gramaticalExample.pattern ? `<span class="neutral span"> [</span>${gramaticalExample.pattern}<span class="neutral span">]</span>` : ''}`],
 									sense
-								}
+								} : quicklookurl
 							))
 					}
 
@@ -121,14 +120,14 @@ alfy.fetch(url).then(data => {
 							new Render(
 								title,
 								sense.definition[0],
-								gramaticalExample.examples ? gramaticalExample.examples : example ? example : notFound,
+								gramaticalExample.examples ? gramaticalExample.examples : examples ? examples : notFound,
 								null,
-								'./icons/gramatical.png',
-								{
-									examples: gramaticalExample.examples ? gramaticalExample.examples : example ? example : null,
+								gramaticalExample.examples || examples ? './icons/gramatical.png' : './icons/red-gramatical.png',
+								gramaticalExample.examples || examples ? {
+									examples: gramaticalExample.examples ? gramaticalExample.examples : examples ? examples : null,
 									definition: [`${sense.definition}${gramaticalExample.pattern ? `<span class="neutral span"> [</span>${gramaticalExample.pattern}<span class="neutral span">]</span>` : ''}`],
 									sense
-								},
+								} : quicklookurl,
 								false,
 								{
 									ctrl: {
@@ -149,18 +148,19 @@ alfy.fetch(url).then(data => {
 			************************ */
 			if (sense.collocation_examples) {
 				sense.collocation_examples.forEach(collExample => {
+					const exampleBool = collExample.example && collExample.example.text
 					addToItems.add(
 						new Render(
 							sense.signpost ? `${sense.signpost} ⇒ ${collExample.collocation || sense.definition[0]}` : collExample.collocation || sense.definition[0],
 							sense.definition[0],
-							collExample.example ? collExample.example.text : example ? example : notFound,
+							exampleBool || examples ? collExample.example.text : notFound,
 							null,
-							'./icons/collocation.png',
-							{
-								examples: collExample.example ? [collExample.example] : example ? example : null,
+							exampleBool || examples ? './icons/collocation.png' : './icons/red-collocation.png',
+							exampleBool || examples ? {
+								examples: collExample.example ? [collExample.example] : examples ? examples : null,
 								definition: [`${sense.definition}<span class="neutral span"> [</span>${collExample.collocation}<span class="neutral span">]</span>`],
 								sense
-							},
+							} : quicklookurl,
 							null,
 							null
 						))
@@ -186,12 +186,12 @@ alfy.fetch(url).then(data => {
 						sense.definition[0],
 						examples ? examples : notFound,
 						null,
-						'./icons/flag.png',
-						{
+						examples ? './icons/flag.png' : './icons/red-flag.png',
+						examples ? {
 							definition: sense.definition,
 							examples: examples || null,
 							sense
-						},
+						} : quicklookurl,
 						false,
 						{
 							ctrl: {

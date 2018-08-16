@@ -1233,16 +1233,6 @@
 			</dict>
 			<dict>
 				<key>destinationuid</key>
-				<string>5E76F09B-CF96-4562-B66E-5777A90F7B8F</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
 				<string>33B98F13-213C-406A-8C89-45818A87E3B5</string>
 				<key>modifiers</key>
 				<integer>1048576</integer>
@@ -2579,23 +2569,6 @@
 			<string>alfred.workflow.output.notification</string>
 			<key>uid</key>
 			<string>B90BF452-8B85-47C8-8592-75A47440C42A</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argument</key>
-				<string>{allvars}</string>
-				<key>cleardebuggertext</key>
-				<false/>
-				<key>processoutputs</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.debug</string>
-			<key>uid</key>
-			<string>5E76F09B-CF96-4562-B66E-5777A90F7B8F</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -4816,13 +4789,6 @@ SEE ALSO</string>
 			<key>ypos</key>
 			<integer>830</integer>
 		</dict>
-		<key>5E76F09B-CF96-4562-B66E-5777A90F7B8F</key>
-		<dict>
-			<key>xpos</key>
-			<integer>2590</integer>
-			<key>ypos</key>
-			<integer>460</integer>
-		</dict>
 		<key>5FF1821D-DA89-4CF2-9392-5BE055E6EC19</key>
 		<dict>
 			<key>colorindex</key>
@@ -5624,7 +5590,7 @@ Search for entries with the given headword</string>
 		<string>language</string>
 	</array>
 	<key>version</key>
-	<string>1.3.7</string>
+	<string>1.3.8</string>
 	<key>webaddress</key>
 	<string>https://github.com/bikeNik/alfred-ldoce#readme</string>
 </dict>
