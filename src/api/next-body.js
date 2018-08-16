@@ -1,8 +1,10 @@
 /* eslint max-params: ["error", 8] */
 /* eslint max-depth: ["error", 8] */
-/* eslint complexity: ["error", 36] */
+/* eslint complexity: ["error", 38] */
 /* eslint-disable no-unused-vars */
 /* eslint-env es6 */
+/* global someFunction example:true */
+
 'use strict'
 const alfy = require('alfy')
 const Render = require('../utils/engine')
@@ -32,12 +34,12 @@ alfy.fetch(url).then(data => {
 				new Render(
 					runOn.derived_form,
 					runOn.part_of_speech || runOn.examples[0].text,
-					runOn.examples ? runOn.examples : notFound,
+					runOn.examples ? runOn.examples : example ? example : notFound,
 					null,
 					runOn.examples ? './icons/runon.png' : './icons/red-runon.png',
 					runOn.examples ? {
 						definition: [`${runOn.derived_form}<span class="neutral span"> [</span>${runOn.part_of_speech}<span class="neutral span">]</span>`],
-						examples: runOn.examples,
+						examples: runOn.examples ? runOn.examples : example ? example : null,
 						sense: runOn
 					} : quicklookurl,
 					null,
@@ -91,11 +93,11 @@ alfy.fetch(url).then(data => {
 								sense.signpost ? `${sense.signpost} ⇒ ${gramaticalExample.pattern || sense.definition[0]}` : gramaticalExample.pattern ||
 									sense.definition[0],
 								sense.definition[0],
-								gramaticalExample.examples,
+								gramaticalExample.examples ? gramaticalExample.examples : example ? example : notFound,
 								null,
 								'./icons/gramatical.png',
 								{
-									examples: gramaticalExample.examples,
+									examples: gramaticalExample.examples ? gramaticalExample.examples : example ? example : null,
 									definition: [`${sense.definition}${gramaticalExample.pattern ? `<span class="neutral span"> [</span>${gramaticalExample.pattern}<span class="neutral span">]</span>` : ''}`],
 									sense
 								}
@@ -119,11 +121,11 @@ alfy.fetch(url).then(data => {
 							new Render(
 								title,
 								sense.definition[0],
-								gramaticalExample.examples,
+								gramaticalExample.examples ? gramaticalExample.examples : example ? example : notFound,
 								null,
 								'./icons/gramatical.png',
 								{
-									examples: gramaticalExample.examples,
+									examples: gramaticalExample.examples ? gramaticalExample.examples : example ? example : null,
 									definition: [`${sense.definition}${gramaticalExample.pattern ? `<span class="neutral span"> [</span>${gramaticalExample.pattern}<span class="neutral span">]</span>` : ''}`],
 									sense
 								},
@@ -147,29 +149,27 @@ alfy.fetch(url).then(data => {
 			************************ */
 			if (sense.collocation_examples) {
 				sense.collocation_examples.forEach(collExample => {
-					if (collExample.example.text !== undefined) {
-						addToItems.add(
-							new Render(
-								sense.signpost ? `${sense.signpost} ⇒ ${collExample.collocation || sense.definition[0]}` : collExample.collocation || sense.definition[0],
-								sense.definition[0],
-								collExample.example.text,
-								null,
-								'./icons/collocation.png',
-								{
-									examples: [collExample.example],
-									definition: [`${sense.definition}<span class="neutral span"> [</span>${collExample.collocation}<span class="neutral span">]</span>`],
-									sense
-								},
-								null,
-								null
-							))
-					}
+					addToItems.add(
+						new Render(
+							sense.signpost ? `${sense.signpost} ⇒ ${collExample.collocation || sense.definition[0]}` : collExample.collocation || sense.definition[0],
+							sense.definition[0],
+							collExample.example ? collExample.example.text : example ? example : notFound,
+							null,
+							'./icons/collocation.png',
+							{
+								examples: collExample.example ? [collExample.example] : example ? example : null,
+								definition: [`${sense.definition}<span class="neutral span"> [</span>${collExample.collocation}<span class="neutral span">]</span>`],
+								sense
+							},
+							null,
+							null
+						))
 				})
 			}
 
 			// Show words: 'SEE ALSO' (syonym & opposite)
-			const existSyn = sense.examples && sense.synonym
-			const existOpp = sense.examples && sense.opposite
+			const existSyn = examples && sense.synonym
+			const existOpp = examples && sense.opposite
 			if (existSyn || existOpp) {
 				let typeOfAddition
 				for (const key in sense) {
@@ -184,12 +184,12 @@ alfy.fetch(url).then(data => {
 					new Render(
 						title,
 						sense.definition[0],
-						sense.examples,
+						examples ? examples : notFound,
 						null,
 						'./icons/flag.png',
 						{
 							definition: sense.definition,
-							examples: sense.examples,
+							examples: examples || null,
 							sense
 						},
 						false,

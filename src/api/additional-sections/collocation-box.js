@@ -47,11 +47,11 @@ if (process.argv[3] === 'collocations') {
 		inputInfo: process.env.inputInfo ? process.env.inputInfo : null
 	})
 
-	const dataOfBox = JSON.parse(config.get('dataOfBox2Collocations'))
+	const dataOfBox = JSON.parse(process.env.dataOfBox2Collocations)
 	dataOfBox.collocations.forEach(collocation => {
 		const title = `${collocation.collocation}${collocation.glossary ? ` (=${collocation.glossary})` : ''}`
 		const quicklookurl = `https://www.ldoceonline.com/dictionary/${title ? title.replace(/\s/g, '-') : config.get('word').replace(/\s/g, '-')}}`
-		const largetype = `${process.env.subBoxNameCol ? `${process.env.subBoxNameCol}\u2023 ` : config.has('subBoxNameCol') ? `${config.get('subBoxNameCol')} ` : ''}\n\n🔑 : ${title} \n\n🎯 ${collocation.examples ? collocation.examples.map(x => x.text).join('\n🎯') : notFound}`
+		const largetype = `${process.env.subBoxNameCol ? `${process.env.subBoxNameCol}\u2023 ` : config.has('subBoxNameCol') ? `${config.get('subBoxNameCol')} ` : ''}\n\n🔑 : ${title} ${collocation.examples ? `\n\n🎯 ${collocation.examples.map(x => x.text).join('\n🎯')}` : notFound}`
 		addToItems.add(
 			new Render(
 				title,

@@ -981,7 +981,7 @@
 				<key>modifiersubtext</key>
 				<string></string>
 				<key>vitoclose</key>
-				<false/>
+				<true/>
 			</dict>
 			<dict>
 				<key>destinationuid</key>
@@ -1228,6 +1228,16 @@
 				<integer>524288</integer>
 				<key>modifiersubtext</key>
 				<string>Add All entries and quit from Alfred</string>
+				<key>vitoclose</key>
+				<true/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>5E76F09B-CF96-4562-B66E-5777A90F7B8F</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
 				<key>vitoclose</key>
 				<false/>
 			</dict>
@@ -1544,7 +1554,7 @@
 				<key>modifiersubtext</key>
 				<string></string>
 				<key>vitoclose</key>
-				<false/>
+				<true/>
 			</dict>
 			<dict>
 				<key>destinationuid</key>
@@ -2569,6 +2579,23 @@
 			<string>alfred.workflow.output.notification</string>
 			<key>uid</key>
 			<string>B90BF452-8B85-47C8-8592-75A47440C42A</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string>{allvars}</string>
+				<key>cleardebuggertext</key>
+				<false/>
+				<key>processoutputs</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.debug</string>
+			<key>uid</key>
+			<string>5E76F09B-CF96-4562-B66E-5777A90F7B8F</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -4767,7 +4794,7 @@ SEE ALSO</string>
 			<key>colorindex</key>
 			<integer>3</integer>
 			<key>xpos</key>
-			<integer>1920</integer>
+			<integer>1930</integer>
 			<key>ypos</key>
 			<integer>680</integer>
 		</dict>
@@ -4785,9 +4812,16 @@ SEE ALSO</string>
 			<key>colorindex</key>
 			<integer>3</integer>
 			<key>xpos</key>
-			<integer>1920</integer>
+			<integer>1930</integer>
 			<key>ypos</key>
 			<integer>830</integer>
+		</dict>
+		<key>5E76F09B-CF96-4562-B66E-5777A90F7B8F</key>
+		<dict>
+			<key>xpos</key>
+			<integer>2590</integer>
+			<key>ypos</key>
+			<integer>460</integer>
 		</dict>
 		<key>5FF1821D-DA89-4CF2-9392-5BE055E6EC19</key>
 		<dict>
@@ -5590,7 +5624,7 @@ Search for entries with the given headword</string>
 		<string>language</string>
 	</array>
 	<key>version</key>
-	<string>1.3.6</string>
+	<string>1.3.7</string>
 	<key>webaddress</key>
 	<string>https://github.com/bikeNik/alfred-ldoce#readme</string>
 </dict>
