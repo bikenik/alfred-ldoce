@@ -104,7 +104,7 @@ _Requires: [Node.js](https://nodejs.org) 7.6+, Alfred [Powerpack](https://www.al
 
 * There is three options: 
 	- `language`: [Choose your language](https://cloud.google.com/translate/docs/languages) (it use google-translate-api).
-	- `path_to_anki-media`: by default don't need to change.
+	- `path_to_anki-media`: /Library/Application Support/Anki2/< Profile name of Anki >/collection.media.
   - `note_type`: "Ldoce-Express" - by default don't need to change.
 
 ### ToDo
