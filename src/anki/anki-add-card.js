@@ -5,7 +5,8 @@ const ankiConnect = require('./anki-connect')
 const decks = require('./anki-decks')
 
 const nameOfDeck = alfy.config.get('default-deck')
-const {note_type} = process.env
+// "" const {note_type} = process.env
+const note_type = 'Ldoce-Express'
 
 const logResult = {
 	error: [],
@@ -27,8 +28,8 @@ module.exports = async function (output) {
 					{
 						deck: nameOfDeck
 					})
-			} catch (err) {
-				logResult.error.push(err)
+			} catch (error) {
+				logResult.error.push(error)
 			}
 			try {
 				const result2 = await ankiConnect(
@@ -42,8 +43,8 @@ module.exports = async function (output) {
 						}
 					})
 				logResult.result.push(`\n${nameOfDeck}: ${result2}`)
-			} catch (err) {
-				logResult.error.push(err)
+			} catch (error) {
+				logResult.error.push(error)
 			}
 		}
 	}
@@ -85,8 +86,8 @@ module.exports.canAddNotes = async function (check) {
 					}]
 				})
 			return result
-		} catch (err) {
-			return err
+		} catch (error) {
+			return error
 		}
 	}
 	/* eslint-enable no-await-in-loop */

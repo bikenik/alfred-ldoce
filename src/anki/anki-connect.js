@@ -17,8 +17,8 @@ module.exports = function (action, version, params) {
 					resolve(response.result)
 				}
 				reject(new Error('failed to get results from AnkiConnect'))
-			} catch (err) {
-				reject(err)
+			} catch (error) {
+				reject(error)
 			}
 		})
 

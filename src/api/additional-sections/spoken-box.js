@@ -1,12 +1,13 @@
 'use strict'
 const alfy = require('alfy')
 const Conf = require('conf')
+const Render = require('../../utils/engine')
 const engine = require('../../utils/engine')
 const {envRefresh} = require('../../utils')
 
 const config = new Conf()
+const data = []
 
-const itemsTo = []
 const sectionHandle = section => {
 	section.senses.forEach(sense => {
 		const quicklookurl = `https://www.ldoceonline.com/dictionary/${sense.lexical_unit ? sense.lexical_unit.replace(/\s/g, '-') : config.get('word').replace(/\s/g, '-')}}`
@@ -14,23 +15,24 @@ const sectionHandle = section => {
 		const subtitle = sense.definition ? sense.definition[0] || sense.geography : 'not found..'
 		const examples = sense.examples ? sense.examples : null
 		const largetype = `(Spoken box) ⇒ ${title}\n\n🔑 :${subtitle}\n\n🎯 ${examples ? (Array.isArray(examples) ? `${examples.map(x => x.text).join('\n🎯 ')}` : `\n\n🎯 ${examples.text}`) : engine.warning.notFound}`
-		itemsTo.push({
-			title,
-			subtitle,
-			arg: examples ? {
-				definition: [`Spoken ⇒ <br><span class="display EXP">${sense.sense}</span> ${sense.definition[0]}`],
-				examples: sense.examples
-			} : quicklookurl,
-			text: {copy: largetype, largetype},
-			icon: {path: examples ? './icons/spoken.png' : './icons/red-spoken.png'},
-			variables: {
-				mode: 'spoken',
-				currentSense: `Spoken ⇒ ${alfy.config.get('currentWord')}\n${largetype}`,
-				dataOfBoxThesaurus: JSON.stringify(config.get('dataOfBoxSpoken')),
-				word: config.get('word'),
-				inputInfo: config.get('inputInfo')
-			}
-		})
+		const item = new Render('spoken box',
+			'title', 'subtitle', 'arg', 'text', 'icon', 'variables')
+		item.title = title
+		item.subtitle = subtitle
+		item.arg = examples ? {
+			definition: [`Spoken ⇒ <br><span class="display EXP">${sense.sense}</span> ${sense.definition[0]}`],
+			examples: sense.examples
+		} : quicklookurl
+		item.text = {copy: largetype, largetype}
+		item.icon = examples ? './icons/spoken.png' : './icons/red-spoken.png'
+		item.variables = {
+			mode: 'spoken',
+			currentSense: `Spoken ⇒ ${alfy.config.get('currentWord')}\n${largetype}`,
+			dataOfBoxThesaurus: JSON.stringify(config.get('dataOfBoxSpoken')),
+			word: config.get('word'),
+			inputInfo: config.get('inputInfo')
+		}
+		data.push(item.getProperties())
 	})
 }
 
@@ -43,7 +45,8 @@ envRefresh({
 sectionHandle(JSON.parse(config.get('dataOfBoxSpoken')))
 
 alfy.input = alfy.input.replace(/.*?\u2023[\s]/gm, '')
-const items = alfy.inputMatches(itemsTo, 'title')
+const items = alfy
+	.inputMatches(data, 'title')
 	.map(x => ({
 		title: x.title,
 		subtitle: x.subtitle,

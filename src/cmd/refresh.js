@@ -39,13 +39,13 @@ const runUpdate = async () => {
 	/* eslint-enable no-await-in-loop */
 	jsonfile.writeFile(fileAnkiCards, cards2Json, {
 		spaces: 2
-	}, err => {
-		if (err !== null) {
-			console.log(err)
+	}, error => {
+		if (error !== null) {
+			process.stderr.write(error)
 		}
 	})
 }
-if (process.argv[2] === 'run') {
+if (process.argv[2] === 'runref') {
 	runUpdate()
 }
 // Output matching for config variables
@@ -58,10 +58,10 @@ const outputVariables = pattern => {
 
 	const mapper = key => ({
 		title: key,
-		subtitle: pattern === '' ? `Hit ↵ to refresh cards in decks | It will take a few seconds` : 'hold on, your collection will be update',
+		subtitle: pattern === '' ? 'Hit ↵ to refresh cards in decks | It will take a few seconds' : 'hold on, your collection will be update',
 		valid: false,
-		autocomplete: `!refresh refreshing... `,
-		icon: {path: `./icons/refresh.png`}
+		autocomplete: '!refresh refreshing... ',
+		icon: {path: './icons/refresh.png'}
 	})
 
 	const out = alfy.matches(pattern, Object.keys(config.decks.refresh)).map(mapper)
@@ -99,8 +99,8 @@ module.exports = async input => {
 
 	if (chunks.length >= 3) {
 		return [{
-			title: `Collection updated`,
-			subtitle: `hit ↵ to go settings`,
+			title: 'Collection updated',
+			subtitle: 'hit ↵ to go settings',
 			valid: false,
 			autocomplete: '!',
 			arg: JSON.stringify({
@@ -127,7 +127,7 @@ module.exports.meta = {
 	usage: '!refresh to another deck',
 	help: 'Refreshing decks by Anki-Connect.',
 	autocomplete: '!refresh ',
-	icon: {path: `./icons/refresh.png`}
+	icon: {path: './icons/refresh.png'}
 }
 
 module.exports.match = input => {

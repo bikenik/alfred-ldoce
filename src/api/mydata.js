@@ -1,10 +1,11 @@
 /* eslint camelcase: ["error", {properties: "never"}] */
-/* eslint complexity: ["error", 35] */
 const fs = require('fs')
 const request = require('request-promise')
 const md5 = require('md5')
 const streamToPromise = require('stream-to-promise')
+
 const config = require('../config')
+// eslint-disable-next-line import/no-unresolved, import/no-extraneous-dependencies
 const mainDataExp = require('../input/body.json')
 const header = require('../input/header.json')
 
@@ -33,7 +34,7 @@ function removeDuplicates(arr) {
 }
 const mainData = removeDuplicates(mainDataExp)
 
-mainData.forEach(data => {
+for (const data of mainData) {
 	let options = ''
 	/* ************************
 	Sense START
@@ -145,12 +146,12 @@ mainData.forEach(data => {
 			body.definitionForTranslate.push(example.text)
 		})
 	}
-})
+}
 body.definitionForTranslate.forEach((clearText, i) => {
-	body.definitionForTranslate[i] = clearText ? clearText.replace(/([a-z])\(/, `$1 (`) : ''
+	body.definitionForTranslate[i] = clearText ? clearText.replace(/([a-z])\(/, '$1 (') : ''
 })
 let HTMLoutput = ''
-mainData.forEach(data => {
+for (const data of mainData) {
 	if (data.definition) {
 		HTMLoutput += `<span class="newline Sense"><span class="DEF">${
 			data.definition[0]}</span>`
@@ -182,7 +183,7 @@ mainData.forEach(data => {
 			HTMLoutput += `<span class="EXAMPLE"><span class="speaker exafile fa fa-volume-up">${
 				example.audio[0].url}</span>${example.text}</span>`
 			const audioFileNameExp = example.audio[0].url.replace(
-				/.*exa_pron\/(.*)/, `$1`
+				/.*exa_pron\/(.*)/, '$1'
 			)
 			const writeStreamExp = fs.createWriteStream(
 				`${config.mediaDir}/${audioFileNameExp}`
@@ -216,11 +217,11 @@ mainData.forEach(data => {
 			writeStreamExp.end()
 		})
 	}
-	HTMLoutput += `</span>`
-})
+	HTMLoutput += '</span>'
+}
 
 const regex = /\/v2\/.*?exa_pron\/(.*?mp3)/g
-const subst = `[sound:$1]`
+const subst = '[sound:$1]'
 HTMLoutput = HTMLoutput.replace(regex, subst)
 
 module.exports = {

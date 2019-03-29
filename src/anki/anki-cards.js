@@ -12,8 +12,8 @@ module.exports.cards = async decks => {
 			)
 		}
 		/* eslint-enable no-await-in-loop */
-	} catch (err) {
-		return err
+	} catch (error) {
+		return error
 	}
 	return ankiCards
 }
@@ -22,8 +22,8 @@ module.exports.areDue = async cards => {
 		const ankiCards = await ankiConnect('areDue', 6,
 			{cards})
 		return ankiCards
-	} catch (err) {
-		return err
+	} catch (error) {
+		return error
 	}
 }
 module.exports.areSuspend = async cards => {
@@ -31,7 +31,7 @@ module.exports.areSuspend = async cards => {
 		const ankiCards = await ankiConnect('areSuspended', 6,
 			{cards})
 		return ankiCards
-	} catch (err) {
-		return err
+	} catch (error) {
+		return error
 	}
 }

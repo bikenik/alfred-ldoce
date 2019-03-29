@@ -6,7 +6,7 @@ module.exports = {
 }
 
 module.exports.capitalize = x =>
-	x.slice(0, 1).toUpperCase() + x.slice(1).toLowerCase()
+	x.charAt(0).toUpperCase() + x.slice(1)
 
 module.exports.hasOwnProperty = (obj, prop) =>
 	Object.prototype.hasOwnProperty.call(obj, prop)

@@ -67,5 +67,6 @@ typings/
 
 #other
 .DS_Store
+test
 
 # End of https://www.gitignore.io/api/node

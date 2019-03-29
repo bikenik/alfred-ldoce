@@ -30,7 +30,7 @@ const outputVariables = pattern => {
 		subtitle: `current deck is ⇒ ${alfy.config.get('default-deck')} | ↵ choose this or pick out another`,
 		valid: false,
 		autocomplete: `!del ${key} `,
-		icon: {path: `./icons/delete.png`}
+		icon: {path: './icons/delete.png'}
 	})
 
 	const out = alfy.matches(pattern, Object.keys(config.decks.delete)).map(mapper)
@@ -71,19 +71,19 @@ module.exports = input => {
 	if (chunks.length >= 3) {
 		return (async () => {
 			if (await decks() === null) {
-				throw new WorkflowError(`Decks was not found, check your Anki profile`, errorAction('!del decks'))
+				throw new WorkflowError('Decks was not found, check your Anki profile', errorAction('!del decks'))
 			}
 			if (Object.getOwnPropertyNames(arrayOfDecks).indexOf(value) === -1) {
 				return variable.outputOptions.render(
 					value,
 					name => `!del ${variableName} ${name}`,
 					arrayOfDecks,
-					`./icons/del.png`
+					'./icons/del.png'
 				)
 			}
 			return [{
 				title: `The deck [${value}] will be deleted`,
-				subtitle: `All cards in this deck will be deleted. Are you sure?`,
+				subtitle: 'All cards in this deck will be deleted. Are you sure?',
 				valid: true,
 				arg: JSON.stringify({
 					alfredworkflow: {
@@ -108,7 +108,7 @@ module.exports.meta = {
 	usage: '!delete any your deck',
 	help: 'Delete deck by the given value.',
 	autocomplete: '!del ',
-	icon: {path: `./icons/delete.png`}
+	icon: {path: './icons/delete.png'}
 }
 
 module.exports.match = input => {

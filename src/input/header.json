@@ -1,12 +1,14 @@
 [
   {
-    "Headword": "example",
-    "Brit_audio": "/v2/dictionaries/assets/ldoce/gb_pron/example0205.mp3",
-    "Amer_audio": "/v2/dictionaries/assets/ldoce/us_pron/example.mp3",
+    "Headword": "table",
+    "Brit_audio": "/v2/dictionaries/assets/ldoce/gb_pron/table_las2_br.mp3",
+    "Amer_audio": "/v2/dictionaries/assets/ldoce/us_pron/table1.mp3",
     "Part_of_speech": "noun",
+    "Image": "/v2/dictionaries/assets/ldoce/dvd_pics/dining_room_table.jpg",
     "Type_of_gramm": "countable",
+    "Homnum": 1,
     "Inflections": {
-      "plural": "examples"
+      "plural": "tables"
     }
   }
 ]

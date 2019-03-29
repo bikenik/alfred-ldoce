@@ -1,12 +1,15 @@
 'use strict'
 const alfy = require('alfy')
 const Conf = require('conf')
+const Render = require('../../utils/engine')
 const engine = require('../../utils/engine')
-const {envRefresh} = require('../../utils')
+const {
+	envRefresh
+} = require('../../utils')
 
 const config = new Conf()
+const items = []
 
-const itemsTo = []
 const currentWord = process.env.word
 const handlerOfSection = section => {
 	section.exponents.forEach(exponent => {
@@ -15,25 +18,27 @@ const handlerOfSection = section => {
 		const subtitle = exponent.definition ? exponent.definition : 'not found..'
 		const examples = exponent.examples ? exponent.examples : null
 		const largetype = `${process.env.subBoxNameTh ? `${process.env.subBoxNameTh}\u2023 ` : config.has('subBoxNameTh') ? `${config.get('subBoxNameTh')} ` : ''}${title}\n\n🔑 :${subtitle}\n\n🎯 ${examples ? (Array.isArray(examples) ? `${examples.map(x => x.text).join('\n🎯 ')}` : `\n\n🎯 ${examples.text}`) : engine.warning.notFound}`
-		itemsTo.push({
-			title,
-			subtitle,
-			arg: examples ? {
-				definition: [`Thesaurus${process.env.subBoxNameTh ? ` ⇒ ${process.env.subBoxNameTh}` : config.has('subBoxNameTh') ? `${config.get('subBoxNameTh')}` : ''}:<br><span class="display EXP">${exponent.exponent}</span> ${exponent.definition}`],
-				examples: exponent.examples
-			} : quicklookurl,
-			text: {copy: largetype, largetype},
-			icon: {path: examples ? './icons/thesaurus.png' : './icons/red-thesaurus.png'},
-			variables: {
-				mode: 'thesaurus',
-				currentSense: `Thesaurus ⇒ ${alfy.config.get('currentWord')}\n${largetype}`,
-				dataOfBoxThesaurus: config.get('dataOfBoxThesaurus'),
-				dataOfBox2Thesaurus: config.get('dataOfBox2Thesaurus'),
-				boxOrder: config.get('boxOrder'),
-				word: config.get('word'),
-				inputInfo: config.get('inputInfo')
-			}
-		})
+
+		const item = new Render('thesaurus box 2',
+			'title', 'subtitle', 'text', 'arg', 'icon', 'variables')
+		item.title = title
+		item.subtitle = subtitle
+		item.text = {copy: largetype, largetype}
+		item.arg = examples ? {
+			definition: [`Thesaurus${process.env.subBoxNameTh ? ` ⇒ ${process.env.subBoxNameTh}` : config.has('subBoxNameTh') ? `${config.get('subBoxNameTh')}` : ''}:<br><span class="display EXP">${exponent.exponent}</span> ${exponent.definition}`],
+			examples: exponent.examples
+		} : quicklookurl
+		item.icon = examples ? './icons/thesaurus.png' : './icons/red-thesaurus.png'
+		item.variables = {
+			mode: 'thesaurus',
+			currentSense: `Thesaurus ⇒ ${alfy.config.get('currentWord')}\n${largetype}`,
+			dataOfBoxThesaurus: config.get('dataOfBoxThesaurus'),
+			dataOfBox2Thesaurus: config.get('dataOfBox2Thesaurus'),
+			boxOrder: config.get('boxOrder'),
+			word: config.get('word'),
+			inputInfo: config.get('inputInfo')
+		}
+		items.push(item.getProperties())
 	})
 }
 
@@ -45,18 +50,20 @@ if (process.argv[3] === 'sections') {
 	dataOfBox.sections.forEach(section => {
 		const title = section.type ? section.type : currentWord.toLowerCase()
 		const largetype = `🔑 :${title}\n\n🎯 ${section.exponents.map(x => x.exponent).join('\n\t')}`
-		itemsTo.push({
-			title,
-			subtitle: section.exponents.map(x => x.exponent).join(' | '),
-			text: {copy: largetype, largetype},
-			arg: section,
-			variables: {
-				subBoxNameTh: title,
-				mode: 'collocation',
-				inputInfo: config.get('inputInfo'),
-				word: config.get('word')
-			}
-		})
+		const item = new Render('thesaurus box 2',
+			'title', 'subtitle', 'text', 'arg', 'icon', 'variables')
+		item.title = title
+		item.subtitle = section.exponents.map(x => x.exponent).join(' | ')
+		item.text = {copy: largetype, largetype}
+		item.arg = section
+		item.icon = './icons/thesaurus.png'
+		item.variables = {
+			subBoxNameTh: title,
+			mode: 'collocation',
+			inputInfo: config.get('inputInfo'),
+			word: config.get('word')
+		}
+		items.push(item.getProperties())
 	})
 }
 
@@ -77,7 +84,7 @@ if (process.argv[3] === 'exponents') {
 }
 
 alfy.input = alfy.input.replace(/.*?\u2023[\s]/gm, '')
-const items = alfy.inputMatches(itemsTo, 'title')
+const itemsResult = alfy.inputMatches(items, 'title')
 	.map(x => ({
 		title: x.title,
 		subtitle: x.subtitle,
@@ -87,6 +94,6 @@ const items = alfy.inputMatches(itemsTo, 'title')
 		variables: x.variables,
 		icon: x.icon
 	}))
-alfy.output(items)
+alfy.output(itemsResult)
 
-alfy.config.set('allPhrases', items.map(x => JSON.parse(x.arg)))
+alfy.config.set('allPhrases', itemsResult.map(x => JSON.parse(x.arg)))

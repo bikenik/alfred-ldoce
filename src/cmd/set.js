@@ -26,10 +26,10 @@ const outputVariables = pattern => {
 	const mapper = key => ({
 		title: `${key} ⇒ ${
 			alfy.config.get(key) === undefined ? config.decks.defaults['default-deck'] : alfy.config.get(key)}`,
-		subtitle: `↵ pick out another ...`,
+		subtitle: '↵ pick out another ...',
 		valid: false,
 		autocomplete: `!set ${key} `,
-		icon: {path: `./icons/settings.png`}
+		icon: {path: './icons/settings.png'}
 	})
 
 	const out = alfy.matches(pattern, Object.keys(config.decks.defaults)).map(mapper)
@@ -61,21 +61,30 @@ module.exports = input => {
 			autocomplete: '!set '
 		})
 	}
+	// for (let i = 2; i < chunks.length; i++) {
+	// 	chunks[i] = chunks[i].charAt(0).toUpperCase() + chunks[i].slice(1)
+	// }
+
+	// value.split('-').forEach(x => {x.charAt(0).toUpperCase() + x.slice(1)}).join('-'),
 	const variable = variables[variableName]
-	const value = chunks.slice(2).join(' ')
+	let value = chunks.slice(2).join(' ')
 	const arrayOfDecks = ankiCards
 
 	if (chunks.length >= 3) {
 		return (async () => {
 			if (await decks() === null) {
-				throw new WorkflowError(`Decks was not found, check your Anki profile`, errorAction('!set decks'))
+				throw new WorkflowError('Decks was not found, check your Anki profile', errorAction('!set decks'))
 			}
 			if (Object.getOwnPropertyNames(arrayOfDecks).indexOf(value) === -1) {
+				value = value.split(' ')
+					.map(x => x.charAt(0).toUpperCase() + x.slice(1))
+					.join('-')
 				return variable.outputOptions.render(
-					value.replace(/([a-zA-Z])\s([a-zA-Z])/, `$1-$2`),
+					// value.replace(/\s/g, `-`),
+					value,
 					name => `!set ${variableName} ${name}`,
 					arrayOfDecks,
-					`./icons/deck.png`
+					'./icons/deck.png'
 				)
 			}
 			return [{
@@ -103,7 +112,7 @@ module.exports.meta = {
 	usage: '!set to another deck',
 	help: 'Create deck by the given value or new value.',
 	autocomplete: '!set ',
-	icon: {path: `./icons/settings.png`}
+	icon: {path: './icons/settings.png'}
 }
 
 module.exports.match = input => {

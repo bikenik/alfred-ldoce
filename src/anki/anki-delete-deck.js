@@ -12,8 +12,8 @@ const deletDeck = async () => {
 			}
 		)
 		return result
-	} catch (err) {
-		return err
+	} catch (error) {
+		return error
 	}
 }
 deletDeck()

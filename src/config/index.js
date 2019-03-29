@@ -3,7 +3,8 @@
 const os = require('os')
 
 const user = os.userInfo()
-const {path_to_ankiMedia} = process.env
+const path_to_ankiMedia = '/Library/Application Support/Anki2/English/collection.media'
+// "" const {path_to_ankiMedia} = process.env
 
 module.exports = {
 	concurrency: 10,
@@ -30,6 +31,9 @@ module.exports = {
 		},
 		refresh: {
 			'refreshing...': 'refreshings ...'
+		},
+		theme: {
+			'change theme': 'toogle ...'
 		}
 	}
 }

@@ -1,4 +1,5 @@
 /* eslint one-var: [2, { var: "always", let: "always" }] */
+
 module.exports = class WorkflowError extends Error {
 	constructor(message, data) {
 		// `data` is an object with the following optional props:
@@ -27,7 +28,7 @@ module.exports.errorAction = reason => {
 			break
 		case 'modelExist':
 			title = null
-			subtitle = `Press ⇧↵ to open Anki & choose "Ldoce-Expres" or your own model.\n\nTo apply your own model - point it into Alfred's Workflow setting (Environment Variables: note_type = 'name of your own model')`
+			subtitle = 'Press ⇧↵ to open Anki & choose "Ldoce-Expres" or your own model.\n\nTo apply your own model - point it into Alfred\'s Workflow setting (Environment Variables: note_type = \'name of your own model\')'
 			autocomplete = null
 			break
 		case '!set decks':

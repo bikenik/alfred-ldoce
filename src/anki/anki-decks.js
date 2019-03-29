@@ -3,19 +3,18 @@ const alfy = require('alfy')
 
 const WorkflowError = require('../utils/error')
 const {errorAction} = require('../utils/error')
-const {capitalize} = require('../utils')
 const ankiConnect = require('./anki-connect')
 
 const {note_type} = process.env
 module.exports = () => {
 	const outresult = async function () {
 		try {
-			alfy.cache.set('validOutput', 'true')
 			const resultAll = await ankiConnect('deckNames', 6)
+			alfy.cache.set('validOutput', 'true')
 			return resultAll
-		} catch (err) {
+		} catch (error) {
 			alfy.cache.set('validOutput', 'false')
-			throw new WorkflowError(`${err}`, errorAction('main'))
+			throw new WorkflowError(`${error}`, errorAction('main'))
 		}
 	}
 	return outresult()
@@ -27,9 +26,9 @@ module.exports.modelExist = () => {
 			alfy.cache.set('validOutput', 'true')
 			const resultAll = await ankiConnect('modelFieldNames', 6, {modelName: note_type})
 			return resultAll
-		} catch (err) {
+		} catch (error) {
 			alfy.cache.set('validOutput', 'false')
-			throw new WorkflowError(`${err}`, err === 'failed to connect to AnkiConnect' ? errorAction('main') : err === 'collection is not available' ? errorAction('profile') : /model was not found/.test(err) ? errorAction('modelExist') : errorAction('main'))
+			throw new WorkflowError(`${error}`, error === 'failed to connect to AnkiConnect' ? errorAction('main') : error === 'collection is not available' ? errorAction('profile') : /model was not found/.test(error) ? errorAction('modelExist') : errorAction('main'))
 		}
 	}
 	return outresult()
@@ -48,7 +47,7 @@ module.exports.render = async (pattern = '', autocomplete = () => undefined, ank
 		}))
 	if (out.length === 0) {
 		out.push({
-			title: `Create new Deck as '${capitalize(pattern)}'`,
+			title: `Create new Deck as '${pattern}'`,
 			subtitle: `Old value ⇒ ${alfy.config.get('default-deck')}`,
 			valid: true,
 			arg: JSON.stringify({
@@ -57,7 +56,7 @@ module.exports.render = async (pattern = '', autocomplete = () => undefined, ank
 						action: 'set',
 						/* eslint-disable camelcase */
 						config_variable: 'default-deck',
-						config_value: capitalize(pattern)
+						config_value: pattern
 						/* eslint-enable camelcase */
 					}
 				}

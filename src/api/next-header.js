@@ -51,7 +51,7 @@ alfy.fetch(url).then(data => {
 	try {
 		fs.unlinkSync(fileBody)
 		console.log('successfully deleted: fileBody')
-	} catch (err) {
+	} catch (error) {
 	}
 	jsonfile.writeFile(fileHeader, header, {
 		spaces: 2
