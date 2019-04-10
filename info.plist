@@ -3166,6 +3166,25 @@ fi
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>inputstring</key>
+				<string>{var:type}</string>
+				<key>matchcasesensitive</key>
+				<true/>
+				<key>matchmode</key>
+				<integer>0</integer>
+				<key>matchstring</key>
+				<string>collocation</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.filter</string>
+			<key>uid</key>
+			<string>16FA0774-9A83-4242-9033-213FBCC890BD</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>json</key>
 				<string>{
   "alfredworkflow" : {
@@ -3180,25 +3199,6 @@ fi
 			<string>alfred.workflow.utility.json</string>
 			<key>uid</key>
 			<string>54542543-C4C4-41D7-AA34-7809D0B83201</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>inputstring</key>
-				<string>{var:type}</string>
-				<key>matchcasesensitive</key>
-				<true/>
-				<key>matchmode</key>
-				<integer>0</integer>
-				<key>matchstring</key>
-				<string>collocation</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.filter</string>
-			<key>uid</key>
-			<string>16FA0774-9A83-4242-9033-213FBCC890BD</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -4912,7 +4912,7 @@ SENSES</string>
 			<key>colorindex</key>
 			<integer>10</integer>
 			<key>xpos</key>
-			<integer>2880</integer>
+			<integer>2870</integer>
 			<key>ypos</key>
 			<integer>150</integer>
 		</dict>

@@ -5,7 +5,7 @@
 /* eslint-env es6 */
 
 'use strict'
-const jsonfile = require('jsonfile')
+const fs = require('fs')
 const alfy = require('alfy')
 const Render = require('../../utils/engine')
 const {notFound} = require('../../utils/engine').warning
@@ -13,16 +13,17 @@ const {notFound} = require('../../utils/engine').warning
 const regularRender = require('./regular-senses')
 
 const {wordOfURL} = process.env
-// Const wordOfURL = '/v2/dictionaries/entries/cqAFHg3kwG'
+// Const wordOfURL = '/v2/dictionaries/entries/cqAFmvgmaf'
 
 const fileBody = './src/input/body.json'
-jsonfile.writeFile(fileBody, {}, {
-	spaces: 2
-}, error => {
-	if (error !== null) {
+try {
+	fs.unlinkSync(fileBody)
+	process.stdout.write('successfully deleted: fileBody')
+} catch (error) {
+	if (error.code !== 'ENOENT') {
 		process.stderr.write(error)
 	}
-})
+}
 
 let url = 'http://api.pearson.com' + wordOfURL
 if (wordOfURL === undefined) {
