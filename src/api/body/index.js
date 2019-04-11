@@ -5,24 +5,14 @@
 /* eslint-env es6 */
 
 'use strict'
-const fs = require('fs')
 const alfy = require('alfy')
+
 const Render = require('../../utils/engine')
 const {notFound} = require('../../utils/engine').warning
 
 const regularRender = require('./regular-senses')
 
 const {wordOfURL} = process.env
-
-const fileBody = './src/input/body.json'
-try {
-	fs.unlinkSync(fileBody)
-	// Process.stderr.write('successfully deleted: fileBody')
-} catch (error) {
-	if (error.code !== 'ENOENT') {
-		// Process.stderr.write(error)
-	}
-}
 
 let url = 'http://api.pearson.com' + wordOfURL
 if (wordOfURL === undefined) {

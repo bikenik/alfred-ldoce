@@ -285,6 +285,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>2E27C628-8855-4CC5-935F-F8C8440E4166</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>60239ACA-891F-4E12-917F-7F44BC48D1E5</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>304FBE70-5ED7-4A8B-878F-57F7EE085D9E</key>
 		<array>
 			<dict>
@@ -2980,6 +2993,31 @@ fi
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>adduuid</key>
+				<false/>
+				<key>allowemptyfiles</key>
+				<true/>
+				<key>createintermediatefolders</key>
+				<false/>
+				<key>filename</key>
+				<string>src/input/body.json</string>
+				<key>filetext</key>
+				<string></string>
+				<key>relativepathmode</key>
+				<integer>1</integer>
+				<key>type</key>
+				<integer>1</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.writefile</string>
+			<key>uid</key>
+			<string>60239ACA-891F-4E12-917F-7F44BC48D1E5</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
 				<key>alfredfiltersresultsmatchmode</key>
@@ -4838,6 +4876,17 @@ SEE ALSO</string>
 			<integer>3900</integer>
 			<key>ypos</key>
 			<integer>1330</integer>
+		</dict>
+		<key>60239ACA-891F-4E12-917F-7F44BC48D1E5</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>1</integer>
+			<key>note</key>
+			<string>REFRESH JSON BODY</string>
+			<key>xpos</key>
+			<integer>1080</integer>
+			<key>ypos</key>
+			<integer>650</integer>
 		</dict>
 		<key>60F69ACD-78BA-4639-AAE9-2AA03E2576DB</key>
 		<dict>

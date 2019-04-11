@@ -5,8 +5,8 @@ const md5 = require('md5')
 const streamToPromise = require('stream-to-promise')
 
 const config = require('../config')
-const mainDataExp = require('../input/body.json')
 const header = require('../input/header.json')
+const mainDataExp = require('../input/body.json')
 
 const body = {
 	definitionForTranslate: [],

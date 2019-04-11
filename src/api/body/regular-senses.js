@@ -149,7 +149,6 @@ module.exports = (items, $, quicklookurl, commonExamples) => {
 			Collocation examples
 			************************ */
 			if (sense.collocation_examples) {
-				// Items.push(...sense.collocation_examples.map(collExample => {
 				for (const collExample of sense.collocation_examples) {
 					const exampleBool = collExample.example && collExample.example.text
 

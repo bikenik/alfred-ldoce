@@ -2,7 +2,7 @@
 /* eslint-env es6 */
 /* eslint max-depth: ["error", 8] */
 
-const fs = require('fs')
+// const fs = require('fs')
 const alfy = require('alfy')
 const jsonfile = require('jsonfile')
 
@@ -11,7 +11,6 @@ alfy.config.set('wordOfURL', wordOfURL)
 
 const url = 'http://api.pearson.com' + wordOfURL
 const fileHeader = './src/input/header.json'
-const fileBody = './src/input/body.json'
 alfy.fetch(url).then(data => {
 	const header = [
 		{
@@ -48,15 +47,6 @@ alfy.fetch(url).then(data => {
 
 	if (data.result.geography) {
 		header[0].Geography = data.result.geography
-	}
-
-	try {
-		fs.unlinkSync(fileBody)
-		process.stdout.write('successfully deleted: fileBody')
-	} catch (error) {
-		if (error.code !== 'ENOENT') {
-			process.stderr.write(error)
-		}
 	}
 
 	jsonfile.writeFile(fileHeader, header, {
