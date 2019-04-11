@@ -69,5 +69,6 @@ module.exports.checkStatus = response => {
 	if (response.status === 200) {
 		return Promise.resolve(response)
 	}
+
 	return Promise.reject(new Error(response.status))
 }

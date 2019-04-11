@@ -55,7 +55,6 @@ module.exports = input => {
 		return outputVariables(chunks[1])
 	}
 
-	// eslint-disable-next-line prefer-destructuring
 	const variableName = chunks[1]
 
 	// Throw if variable is invalid
@@ -64,6 +63,7 @@ module.exports = input => {
 			autocomplete: '!del '
 		})
 	}
+
 	const variable = variables[variableName]
 	const value = chunks.slice(2).join(' ')
 	const arrayOfDecks = ankiCards
@@ -73,6 +73,7 @@ module.exports = input => {
 			if (await decks() === null) {
 				throw new WorkflowError('Decks was not found, check your Anki profile', errorAction('!del decks'))
 			}
+
 			if (Object.getOwnPropertyNames(arrayOfDecks).indexOf(value) === -1) {
 				return variable.outputOptions.render(
 					value,
@@ -81,6 +82,7 @@ module.exports = input => {
 					'./icons/del.png'
 				)
 			}
+
 			return [{
 				title: `The deck [${value}] will be deleted`,
 				subtitle: 'All cards in this deck will be deleted. Are you sure?',
@@ -92,6 +94,7 @@ module.exports = input => {
 							/* eslint-disable camelcase */
 							config_variable: variableName,
 							config_value: value
+							/* eslint-enable camelcase */
 						}
 					}
 				}),

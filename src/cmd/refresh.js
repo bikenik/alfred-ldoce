@@ -30,12 +30,15 @@ const runUpdate = async () => {
 		while (countFormat.length <= 10) {
 			countFormat += '  '
 		}
+
 		while (countNew.length <= 10) {
 			countNew += '  '
 		}
+
 		cards2Json[`${ankiDecks[i]}`] = `\tCards: ${countFormat}New: ${countNew}Due: ${ankiCardsCount[i].length - elem
 			.filter(x => x).length}\t\t${elem2.filter(x => x).length > 0 ? ` Suspend: ${elem2.filter(x => x).length}` : ''}`
 	}
+
 	/* eslint-enable no-await-in-loop */
 	jsonfile.writeFile(fileAnkiCards, cards2Json, {
 		spaces: 2
@@ -45,9 +48,11 @@ const runUpdate = async () => {
 		}
 	})
 }
+
 if (process.argv[2] === 'runref') {
 	runUpdate()
 }
+
 // Output matching for config variables
 const outputVariables = pattern => {
 	if (!pattern) {
@@ -86,7 +91,6 @@ module.exports = async input => {
 		return outputVariables(chunks[1])
 	}
 
-	// eslint-disable-next-line prefer-destructuring
 	const variableName = chunks[1]
 
 	// Throw if variable is invalid
@@ -95,6 +99,7 @@ module.exports = async input => {
 			autocomplete: '!refresh '
 		})
 	}
+
 	const value = chunks.slice(2).join(' ')
 
 	if (chunks.length >= 3) {
@@ -111,6 +116,7 @@ module.exports = async input => {
 						/* eslint-disable camelcase */
 						config_variable: variableName,
 						config_value: value
+						/* eslint-enable camelcase */
 					},
 					arg: await runUpdate()
 				}

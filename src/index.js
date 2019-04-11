@@ -41,7 +41,7 @@ async function main() {
 
 function setupDirStructure() {
 	fs.existsSync(config.mediaDir)
-	// "console.log(chalk.green('Success your media folder path!', config.mediaDir))"
+	// Console.log(chalk.green('Success your media folder path!', config.mediaDir))
 }
 
 function cleanInput(input) {
@@ -76,11 +76,12 @@ async function getData(card) {
 	if (card.Homnum !== undefined && $('.dictentry')) {
 		$ = cheerio.load($('.dictentry')[card.Homnum - 1])
 	}
+
 	if ($('.dictentry')[0]) {
 		$ = cheerio.load($('.dictentry')[0])
 	}
 
-	// "console.log('getData: ' + word)"
+	// Console.log('getData: ' + word)
 
 	const {definitionForTranslate} = data.body
 	let header = ''
@@ -89,6 +90,7 @@ async function getData(card) {
 		const regex = /<span class="POS">.*?<\/span>|<span\sdata-src-mp3.*?<\/span>|<\/span>$/g
 		return header.replace(regex, '')
 	}
+
 	if ($('.Head').length < 2) {
 		header = headerReg()
 	} else {
@@ -129,7 +131,8 @@ async function getData(card) {
 		translation += translated.text + ' | '
 	}
 	/* eslint-enable no-await-in-loop */
-	// "console.log(chalk.blue('Translate: '), translation)"
+
+	// Console.log(chalk.blue('Translate: '), translation)
 
 	// Format example
 	const originalExample = card[config.fields.example]
@@ -139,10 +142,12 @@ async function getData(card) {
 	for (let i = 0; i < data.body.definition.length; i++) {
 		definition += `${data.body.definition[i]} | `
 	}
+
 	let image
 	for (let i = 0; i < data.body.definitionForTranslate.length; i++) {
 		example += `${data.body.definitionForTranslate[i]} | `
 	}
+
 	if (card.Image) {
 		const imageFileName = `${word}_ldoce.jpg`
 		image = `<img src="${imageFileName}" />`
@@ -156,9 +161,11 @@ async function getData(card) {
 	} else {
 		image = ''
 	}
+
 	if (!card.Part_of_speech) {
 		card.Part_of_speech = ''
 	}
+
 	return {
 		Audio: audioField,
 		Translation: translation,

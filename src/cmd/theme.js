@@ -68,7 +68,6 @@ module.exports = async input => {
 		return outputVariables(chunks[1])
 	}
 
-	// eslint-disable-next-line prefer-destructuring
 	const variableName = chunks[1]
 
 	// Throw if variable is invalid
@@ -77,6 +76,7 @@ module.exports = async input => {
 			autocomplete: '!toogle'
 		})
 	}
+
 	const value = chunks.slice(2).join(' ')
 
 	if (chunks.length >= 3) {
@@ -93,6 +93,7 @@ module.exports = async input => {
 						/* eslint-disable camelcase */
 						config_variable: variableName,
 						config_value: value
+						/* eslint-enable camelcase */
 					},
 					arg: await copyFiles()
 				}

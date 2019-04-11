@@ -47,8 +47,6 @@
 		"request-promise": "^4.2.4",
 		"run-applescript": "^3.2.0",
 		"stream-to-promise": "^2.2.0",
-		"xml-js": "^1.6.11",
-		"xml2js": "^0.4.19",
 		"xmlhttprequest": "^1.8.0"
 	},
 	"deprecated": false,

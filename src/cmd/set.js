@@ -52,7 +52,6 @@ module.exports = input => {
 		return outputVariables(chunks[1])
 	}
 
-	// eslint-disable-next-line prefer-destructuring
 	const variableName = chunks[1]
 
 	// Throw if variable is invalid
@@ -75,6 +74,7 @@ module.exports = input => {
 			if (await decks() === null) {
 				throw new WorkflowError('Decks was not found, check your Anki profile', errorAction('!set decks'))
 			}
+
 			if (Object.getOwnPropertyNames(arrayOfDecks).indexOf(value) === -1) {
 				value = value.split(' ')
 					.map(x => x.charAt(0).toUpperCase() + x.slice(1))
@@ -87,6 +87,7 @@ module.exports = input => {
 					'./icons/deck.png'
 				)
 			}
+
 			return [{
 				title: `Set ${variableName} to '${value}'`,
 				subtitle: `Old value ⇒ ${alfy.config.get(variableName)}`,
