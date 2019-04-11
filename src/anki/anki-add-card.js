@@ -20,6 +20,7 @@ module.exports = async function (output) {
 			output[i].Headword = `${output[i].Headword}<span class="HOMNUM-title">${
 				output[i].Homnum.toString()}</span>`
 		}
+
 		delete output[i].Inflections // Can't understood the reason of error without delete
 		if (output[i].Definition !== 'notfound' && output[i].Definition !== '') {
 			try {
@@ -31,6 +32,7 @@ module.exports = async function (output) {
 			} catch (error) {
 				logResult.error.push(error)
 			}
+
 			try {
 				const result2 = await ankiConnect(
 					'addNote', 6,
@@ -48,6 +50,7 @@ module.exports = async function (output) {
 			}
 		}
 	}
+
 	/* eslint-enable no-await-in-loop */
 	if (logResult.error.length > 0) {
 		logResult.error.forEach(error => {

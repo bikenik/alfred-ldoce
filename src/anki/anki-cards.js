@@ -1,4 +1,3 @@
-/* eslint-disable capitalized-comments */
 
 const ankiConnect = require('./anki-connect')
 
@@ -15,8 +14,10 @@ module.exports.cards = async decks => {
 	} catch (error) {
 		return error
 	}
+
 	return ankiCards
 }
+
 module.exports.areDue = async cards => {
 	try {
 		const ankiCards = await ankiConnect('areDue', 6,
@@ -26,6 +27,7 @@ module.exports.areDue = async cards => {
 		return error
 	}
 }
+
 module.exports.areSuspend = async cards => {
 	try {
 		const ankiCards = await ankiConnect('areSuspended', 6,

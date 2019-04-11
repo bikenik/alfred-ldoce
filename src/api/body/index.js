@@ -51,7 +51,6 @@ const runOnsRender = ($, quicklookurl) => {
 	}
 }
 
-/* eslint-disable promise/prefer-await-to-then */
 alfy.fetch(url).then(data => {
 	const $ = data.result
 	const commonExamples = $.examples && $.examples.length <= 3 ? $.examples : ($.examples && $.examples.length > 3 ? $.examples.slice(1, 3) : null)
@@ -232,4 +231,3 @@ alfy.fetch(url).then(data => {
 	const variantsAllArgs = variantsAll.map(x => x.arg)
 	alfy.config.set('allPhrases', variantsAllArgs)
 })
-/* eslint-enable promise/prefer-await-to-then */

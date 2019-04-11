@@ -1,5 +1,4 @@
 /* eslint camelcase: ["error", {properties: "never"}] */
-/* eslint-disable no-unused-vars */
 /* eslint-env es6 */
 /* eslint max-depth: ["error", 8] */
 
@@ -13,7 +12,6 @@ alfy.config.set('wordOfURL', wordOfURL)
 const url = 'http://api.pearson.com' + wordOfURL
 const fileHeader = './src/input/header.json'
 const fileBody = './src/input/body.json'
-/* eslint-disable promise/prefer-await-to-then */
 alfy.fetch(url).then(data => {
 	const header = [
 		{
@@ -27,23 +25,27 @@ alfy.fetch(url).then(data => {
 	if (data.result.run_ons && !data.result.part_of_speech) {
 		header[0].Part_of_speech = data.result.run_ons[0].part_of_speech
 	}
+
 	if (data.result.images) {
 		header[0].Image = data.result.images.filter(image => /\.jpg$/.test(image.url)).length > 0 ? data.result.images.filter(image => /\.jpg$/.test(image.url))[0].url : data.result.images[0].url
 	}
+
 	if (data.result.gramatical_info) {
 		header[0].Type_of_gramm = data.result.gramatical_info.type
 	}
+
 	if (data.result.lexical_unit) {
 		header[0].Lexical_unit = data.lexical_unit
 	}
+
 	if (data.result.homnum) {
 		header[0].Homnum = data.result.homnum
 	}
+
 	if (data.result.inflections) {
-		/* eslint-disable prefer-destructuring */
 		header[0].Inflections = data.result.inflections[0]
-		/* eslint-enable prefer-destructuring */
 	}
+
 	if (data.result.geography) {
 		header[0].Geography = data.result.geography
 	}
@@ -56,6 +58,7 @@ alfy.fetch(url).then(data => {
 			process.stderr.write(error)
 		}
 	}
+
 	jsonfile.writeFile(fileHeader, header, {
 		spaces: 2
 	}, err => {
@@ -64,5 +67,4 @@ alfy.fetch(url).then(data => {
 		}
 	})
 }
-	/* eslint-disable promise/prefer-await-to-then */
 )

@@ -17,9 +17,7 @@ const api = require('./src/api')
 const config = new Conf()
 config.clear()
 
-/* eslint-disable prefer-destructuring */
 const myVar = process.argv[3]
-/* eslint-enable prefer-destructuring */
 
 let query
 const introMessage = [{
@@ -34,6 +32,7 @@ if (myVar === 'headword') {
 	introMessage[0].title = 'Search headwords ...'
 	introMessage[0].icon = {path: './icons/anki.png'}
 }
+
 if (myVar === 'search') {
 	query = {
 		search: `${alfy.input}`,
@@ -41,6 +40,7 @@ if (myVar === 'search') {
 	}
 	introMessage[0].title = 'Search generic ...'
 }
+
 if (myVar === 'decks') {
 	alfy.input = '!set default-deck '
 }
@@ -75,6 +75,7 @@ const option = async input => {
 		if (ankiDecks === null) {
 			throw new WorkflowError('Decks was not found, check your Anki profile', errorAction('profile'))
 		}
+
 		jsonfile.writeFile(fileAnkiDecks, ankiDecks, {
 			spaces: 2
 		}, error => {
@@ -89,11 +90,13 @@ const option = async input => {
 if (!alfy.cache.get('start-PID')) {
 	alfy.cache.set('start-PID', process.pid, {maxAge: 30000}) // 30 sec.
 }
+
 (async () => {
 	if (alfy.config.get('theme') === undefined) {
 		await fs.copy(`${process.env.PWD}/icons/for-light-theme/`, `${process.env.PWD}/icons/`)
 		alfy.config.set('theme', 'dark')
 	}
+
 	try {
 		if (alfy.cache.get('start-PID') === process.pid) { // Prevent for 30 second
 			await runApplescript(`
@@ -104,6 +107,7 @@ if (!alfy.cache.get('start-PID')) {
 				end tell
 		`)
 		}
+
 		const out = await option(alfy.input)
 		if (out || /!.*/.test(alfy.input)) {
 			alfy.output(out)

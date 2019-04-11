@@ -17,6 +17,7 @@ module.exports = () => {
 			throw new WorkflowError(`${error}`, errorAction('main'))
 		}
 	}
+
 	return outresult()
 }
 
@@ -31,6 +32,7 @@ module.exports.modelExist = () => {
 			throw new WorkflowError(`${error}`, error === 'failed to connect to AnkiConnect' ? errorAction('main') : error === 'collection is not available' ? errorAction('profile') : /model was not found/.test(error) ? errorAction('modelExist') : errorAction('main'))
 		}
 	}
+
 	return outresult()
 }
 
@@ -54,15 +56,14 @@ module.exports.render = async (pattern = '', autocomplete = () => undefined, ank
 				alfredworkflow: {
 					variables: {
 						action: 'set',
-						/* eslint-disable camelcase */
 						config_variable: 'default-deck',
 						config_value: pattern
-						/* eslint-enable camelcase */
 					}
 				}
 			})
 		})
 		return out
 	}
+
 	return out
 }

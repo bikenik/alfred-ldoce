@@ -141,6 +141,7 @@ header.forEach(elem => {
   </table>
 </div>`
 		}
+
 		if (elem.Inflections.present_participle) {
 			verbTable += `
 <div class="DIV_2">

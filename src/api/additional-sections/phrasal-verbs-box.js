@@ -20,7 +20,6 @@ const dataOfBox = JSON.parse(config.get('dataOfBox'))
 const currentWord = config.get('word')
 
 const items = []
-/* eslint-disable promise/prefer-await-to-then */
 const $ = dataOfBox
 const quicklookurl = `https://www.ldoceonline.com/dictionary/${currentWord.replace(/\s/g, '-')}`
 const notDefinition = '_'
@@ -101,4 +100,3 @@ const variantsAll = alfy.inputMatches(items, 'title').map(x => ({
 
 const variantsAllArgs = variantsAll.map(x => x.arg)
 alfy.config.set('allPhrases', variantsAllArgs)
-/* eslint-enable promise/prefer-await-to-then */

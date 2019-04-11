@@ -16,4 +16,5 @@ const deletDeck = async () => {
 		return error
 	}
 }
+
 deletDeck()

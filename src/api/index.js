@@ -44,8 +44,10 @@ function itemsWithFrequency(data) {
 		for (let i = 0; i < spaceNum; i++) {
 			space += ' '
 		}
+
 		items[i].subtitle += `${space}\t\t\t\t\t\t${existFreq ? `${existFreq.comm_S ? `${existFreq.comm_S} |` : ''} ${existFreq.comm_W ? `${existFreq.comm_W}\t` : ''}\t${existFreq.frequency ? `${existFreq.frequency}` : ''}` : ''}`
 	}
+
 	return items
 }
 

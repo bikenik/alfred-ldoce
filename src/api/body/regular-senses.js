@@ -136,12 +136,14 @@ module.exports = (items, $, quicklookurl, commonExamples) => {
 						if (gramaticalExample.examples && (!sense.synonym && !sense.opposite)) {
 							result = grammaticalCom(obj)
 						}
+
 						/* -----------------------------
 						Show words: 'SEE ALSO' (syonym & opposite)
 					  -------------------------------*/
 						if (sense.synonym || sense.opposite) {
 							result = grammaticalSynAndOpp(obj, $)
 						}
+
 						return result
 					}))
 			}

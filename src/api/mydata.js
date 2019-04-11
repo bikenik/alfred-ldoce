@@ -5,7 +5,7 @@ const md5 = require('md5')
 const streamToPromise = require('stream-to-promise')
 
 const config = require('../config')
-// eslint-disable-next-line import/no-unresolved, import/no-extraneous-dependencies
+// eslint-disable-next-line import/no-unresolved
 const mainDataExp = require('../input/body.json')
 const header = require('../input/header.json')
 
@@ -32,6 +32,7 @@ function removeDuplicates(arr) {
 	})
 	return data
 }
+
 const mainData = removeDuplicates(mainDataExp)
 
 for (const data of mainData) {
@@ -43,10 +44,12 @@ for (const data of mainData) {
 		if (data.sense.signpost) {
 			options += `<span class="SIGNPOST">${data.sense.signpost}</span>`
 		}
+
 		if (data.sense.gramatical_info) {
 			options += `<span class="GRAM"><span class="neutral span"> [</span>${
 				data.sense.gramatical_info.type}<span class="neutral span">]</span></span>`
 		}
+
 		if (header[0].Type_of_gramm && !data.sense.gramatical_info) {
 			options += `<span class="GRAM"><span class="neutral span"> [</span>${
 				header[0].Type_of_gramm}<span class="neutral span">]</span></span>`
@@ -56,14 +59,17 @@ for (const data of mainData) {
 			options += `<span class="OPP"> <span class="synopp span">OPP</span> ${
 				data.sense.opposite}</span>`
 		}
+
 		if (data.sense.synonym) {
 			options += `<span class="SYN"> <span class="synopp span">SYN</span> ${
 				data.sense.synonym}</span>`
 		}
+
 		let options2 = ''
 		if (data.sense.geography) {
 			options2 += `<span class="GEO"> ${data.sense.geography}</span>`
 		}
+
 		if (header[0].Geography) {
 			options2 += `<span class="GEO"> ${header[0].Geography}</span>`
 		}
@@ -71,6 +77,7 @@ for (const data of mainData) {
 		if (data.sense.register_label) {
 			options2 += `<span class="REGISTERLAB"> ${data.sense.register_label}</span>`
 		}
+
 		if (header[0].Register_label) {
 			options2 += `<span class="REGISTERLAB"> ${header[0].Register_label}</span>`
 		}
@@ -80,21 +87,26 @@ for (const data of mainData) {
 				options2 += `<span class="neutral span">(</span><span class="LINKWORD">${
 					data.sense.variants[0].link_word}</span><span class="neutral span">)</span>`
 			}
+
 			if (data.sense.variants[0].spelling_variant) {
 				options2 += `<span class="neutral span">(</span><span class="ORTHVAR"> ${data.sense.variants[0].spelling_variant}</span><span class="neutral span">)</span>`
 			}
+
 			if (data.sense.variants[0].lexical_variant) {
 				options2 += `<span class="LEXVAR"> ${
 					data.sense.variants[0].lexical_variant}</span>`
 			}
+
 			if (data.sense.variants[0].lang) {
 				options2 += `<span class="neutral span">(</span><span class="geo span"> ${
 					data.sense.variants[0].lang}</span><span class="neutral span">)</span>`
 			}
 		}
+
 		if (data.sense.american_equivalent) {
 			options2 += `<br><b>${data.sense.american_equivalent}</b><span class="geo span"> American English</span>`
 		}
+
 		if (options2 !== '') {
 			options += `<br>${options2}`
 		}
@@ -125,6 +137,7 @@ for (const data of mainData) {
 				body.definitionForTranslate.push(example.text)
 			})
 		}
+
 		if (data.sense.examples && !data.sense.examples[0].audio && data.sense.headword === undefined) {
 			for (let x = 0; x < data.sense.examples.length; x++) {
 				body.definitionForTranslate.push(data.sense.examples[x].text)
@@ -147,6 +160,7 @@ for (const data of mainData) {
 		})
 	}
 }
+
 body.definitionForTranslate.forEach((clearText, i) => {
 	body.definitionForTranslate[i] = clearText ? clearText.replace(/([a-z])\(/, '$1 (') : ''
 })
@@ -217,6 +231,7 @@ for (const data of mainData) {
 			writeStreamExp.end()
 		})
 	}
+
 	HTMLoutput += '</span>'
 }
 

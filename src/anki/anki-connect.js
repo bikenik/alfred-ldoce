@@ -13,9 +13,11 @@ module.exports = function (action, version, params) {
 				if (response.error) {
 					throw response.error
 				}
+
 				if (Object.prototype.hasOwnProperty.call(response, 'result')) {
 					resolve(response.result)
 				}
+
 				reject(new Error('failed to get results from AnkiConnect'))
 			} catch (error) {
 				reject(error)
