@@ -39,6 +39,7 @@ This workflow searches from Longman Dictionary of Contemporary English (5th edit
 ```
 $ npm install --global alfred-ldoce
 ```
+or as [ldoce-Express.alfredworkflow](https://github.com/bikenik/alfred-ldoce/releases)
 
 * Download and import the [deck example](https://github.com/bikenik/alfred-ldoce/blob/master/Ldoce-Express.apkg) for Anki to install template for this grabbing from ldoce Api.
 
