@@ -2,8 +2,6 @@
 const Render = require('../../utils/engine')
 const {notFound} = require('../../utils/engine').warning
 
-const {typeOfAddition} = require('./internal-function')
-
 const objectOfSense = (sense, $) => {
 	return {
 		checkForEmpty: sense.examples || sense.definition,
@@ -62,8 +60,7 @@ const grammaticalCom = obj => {
 const grammaticalSynAndOpp = (obj, $) => {
 	const {sense, gramaticalExample, examples, quicklookurl} = obj
 	let {item} = obj
-	const title = `${gramaticalExample.pattern || sense.signpost || $.headword || sense.definition[0]}\t 🔦 ${typeOfAddition(sense)}: ${sense.synonym || sense.opposite}`
-
+	const title = `${gramaticalExample.pattern || sense.signpost || $.headword || sense.definition[0]}\t 🔦 ${sense.synonym ? 'SYN' : 'OPP'}: ${sense.synonym || sense.opposite}`
 	item = new Render('Words with Synonyms & opposites',
 		'title', 'subtitle', 'sentence', 'icon', 'arg', 'mods')
 	item.title = title
@@ -90,7 +87,7 @@ const grammaticalSynAndOpp = (obj, $) => {
 
 const seeAlso = obj => {
 	const {sense, examples, quicklookurl, $} = obj
-	const title = `${sense.signpost || $.headword || sense.definition[0]}\t 🔦 ${typeOfAddition(sense)}: ${sense.synonym || sense.opposite}`
+	const title = `${sense.signpost || $.headword || sense.definition[0]}\t 🔦 ${sense.synonym ? 'SYN' : 'OPP'}: ${sense.synonym || sense.opposite}`
 	const item = new Render('words with synonyms & opposites case 2',
 		'title', 'subtitle', 'sentence', 'icon', 'arg', 'mods')
 	item.title = title

@@ -13,15 +13,14 @@ const {notFound} = require('../../utils/engine').warning
 const regularRender = require('./regular-senses')
 
 const {wordOfURL} = process.env
-// Const wordOfURL = '/v2/dictionaries/entries/cqAFmvgmaf'
 
 const fileBody = './src/input/body.json'
 try {
 	fs.unlinkSync(fileBody)
-	process.stdout.write('successfully deleted: fileBody')
+	// Process.stderr.write('successfully deleted: fileBody')
 } catch (error) {
 	if (error.code !== 'ENOENT') {
-		process.stderr.write(error)
+		// Process.stderr.write(error)
 	}
 }
 
@@ -199,7 +198,6 @@ alfy.fetch(url).then(data => {
 		items.push(item.getProperties())
 	}
 
-	// Const itemsResult = items.filter(item => item.title)
 	const itemsResult = items.filter(item => item && item.title)
 	alfy.input = alfy.input.replace(/.*?\u2023[\s]/gm, '')
 	const variantsToSingleChoose = alfy.inputMatches(itemsResult, 'title').map(x => ({

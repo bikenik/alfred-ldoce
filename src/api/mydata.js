@@ -5,7 +5,6 @@ const md5 = require('md5')
 const streamToPromise = require('stream-to-promise')
 
 const config = require('../config')
-// eslint-disable-next-line import/no-unresolved
 const mainDataExp = require('../input/body.json')
 const header = require('../input/header.json')
 
